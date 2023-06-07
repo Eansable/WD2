@@ -1,0 +1,32 @@
+.header {
+    padding: 10px 25px;
+    width: 100%;
+    background-color: green;
+}
+
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1368px;
+    margin: 0 auto;
+}
+
+.logo {
+    height: 50px;
+    width: 50px;
+    border: 1px black solid;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    color: #ffffff;
+    text-transform: uppercase;
+}
+
+.link {
+    color: #ffffff;
+    text-decoration: none;
+}
