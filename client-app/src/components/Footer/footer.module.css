@@ -1,0 +1,24 @@
+.footer {
+    width: 100%;
+    min-height: 50px;
+    background-color: green;
+}
+
+.wrapper {
+    max-width: 1368px;
+    margin: 0 auto;
+}
+
+.social {
+    height: 75px;
+    border: 1px solid #000000;
+}
+
+.copyright {
+    border: 1px solid #000000;
+    margin: 16px 0;
+}
+
+.copyright p {
+    padding: 0;
+}
