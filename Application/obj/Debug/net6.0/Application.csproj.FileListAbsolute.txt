@@ -1,0 +1,15 @@
+D:\Projects\WD2\stenles\Application\bin\Debug\net6.0\Application.deps.json
+D:\Projects\WD2\stenles\Application\bin\Debug\net6.0\Application.dll
+D:\Projects\WD2\stenles\Application\bin\Debug\net6.0\Application.pdb
+D:\Projects\WD2\stenles\Application\bin\Debug\net6.0\Domain.dll
+D:\Projects\WD2\stenles\Application\bin\Debug\net6.0\Domain.pdb
+D:\Projects\WD2\stenles\Application\obj\Debug\net6.0\Application.csproj.AssemblyReference.cache
+D:\Projects\WD2\stenles\Application\obj\Debug\net6.0\Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\WD2\stenles\Application\obj\Debug\net6.0\Application.AssemblyInfoInputs.cache
+D:\Projects\WD2\stenles\Application\obj\Debug\net6.0\Application.AssemblyInfo.cs
+D:\Projects\WD2\stenles\Application\obj\Debug\net6.0\Application.csproj.CoreCompileInputs.cache
+D:\Projects\WD2\stenles\Application\obj\Debug\net6.0\Application.csproj.CopyComplete
+D:\Projects\WD2\stenles\Application\obj\Debug\net6.0\Application.dll
+D:\Projects\WD2\stenles\Application\obj\Debug\net6.0\refint\Application.dll
+D:\Projects\WD2\stenles\Application\obj\Debug\net6.0\Application.pdb
+D:\Projects\WD2\stenles\Application\obj\Debug\net6.0\ref\Application.dll
