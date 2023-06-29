@@ -88,6 +88,7 @@ namespace Application.Account
                 var result = new UserDto()
                 {
                     Id= user.Id,
+                    UserName = user.UserName,
                     Email= user.Email,
                     Roles= user.UserRoles.Select(u => u.Role.Name).ToList(),
                     SessionId = token.Id,

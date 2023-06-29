@@ -3,7 +3,8 @@ import rootReducer from "./reducer"
 
 export const store = configureStore({
     reducer: rootReducer,
-    preloadedState: {}
+    preloadedState: {},
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware()
 }) 
 
 export type RootState = ReturnType<typeof store.getState>

@@ -1,9 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { userInterface, stateInterface } from "../types/types";
 
 const initialState = {
     isLoading: false,
     registred: '',
-    user: null
+    user: {},
+    roles: []
 }
 
 export const accountReducer = createSlice({
@@ -23,7 +25,17 @@ export const accountReducer = createSlice({
         loginSuccess: (state, action) => {
             state.isLoading = false
             state.user = action.payload
+            state.roles = action.payload.roles
+            window.localStorage.setItem("user", JSON.stringify({
+                userName: action.payload.userName,
+                token: action.payload.token,
+                refreshToken: action.payload.refreshToken,
+                sessionId: action.payload.sessionId
+            }))
         },
+        refreshSuccess: (state, action) => {
+            state.isLoading = false
+        }
     }
 })
 

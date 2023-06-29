@@ -12,6 +12,23 @@ axios.defaults.headers['Cache-Control'] = 'no-cache, no-store'
 // 	return Promise.reject(error)
 // })
 
+axios.interceptors.request.use((config) => {
+    const jsonUser = window.localStorage.getItem("user")
+    if (jsonUser) {
+        const user = JSON.parse(jsonUser)
+        config.headers.Authorization = `Bearer ${ user.token }`
+    }
+
+    return config
+},
+    error => Promise.reject(error)
+)
+
+axios.interceptors.response.use(undefined, (error) => {
+    
+    console.log(error.config);
+})
+
 export const requests = {
     get: (url) => axios.get(url).then(res => res.data),
     post: (url, params) => axios.post(url, params).then(res => res.data)
