@@ -1,7 +1,21 @@
 import Link from "next/link"
 import styles from "./header.module.css"
+import { useAppDispatch, useAppSelector } from "@/helpers/hooks";
+import { useEffect } from "react";
+import { refreshUserDataAction } from "../Account/store/actions";
 
 const Header = () => {
+    const dispatch = useAppDispatch();
+    const { user } = useAppSelector(state => state.accountReducer)
+
+    useEffect(() => {
+        console.log(user);
+        
+        if (!user?.id) {
+            dispatch(refreshUserDataAction())
+        }
+    }, [dispatch])
+
     return (
         <header className={styles.header}>
             <div className={styles.wrapper}>

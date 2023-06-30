@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { userInterface, stateInterface } from "../types/types";
 
-const initialState = {
+const initialState: { isLoading: boolean, registred: string, user: userInterface, roles: string[]} = {
     isLoading: false,
     registred: '',
     user: {},
@@ -35,6 +35,11 @@ export const accountReducer = createSlice({
         },
         refreshSuccess: (state, action) => {
             state.isLoading = false
+        },
+        refreshUserDataSuccess: (state, action) => {
+            state.isLoading = false,
+            state.user = action.payload
+            state.roles = action.payload.roles
         }
     }
 })

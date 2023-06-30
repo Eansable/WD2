@@ -22,5 +22,18 @@ namespace stenles.Controllers
         {
             return await Mediator.Send(query);
         }
+
+        [AllowAnonymous]
+        [HttpPost("refresh")]
+        public async Task<UserDto> Refresh([FromBody] Refresh.RefreshRequest query)
+        {
+            return await Mediator.Send(query);
+        }
+        [AllowAnonymous]
+        [HttpGet("refreshUserData")]
+        public async Task<UserDto> RefreshUserData([FromHeader] RefreshUserData.RefreshUserDataRequest query)
+        {
+            return await Mediator.Send(query);
+        }
     }
 }

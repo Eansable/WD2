@@ -1,11 +1,11 @@
 export interface userInterface {
-    email: string,
-    id: string,
-    refreshToken: string,
-    roles: string[],
-    sessionId: number,
-    token: string,
-    userName: string,
+    email?: string,
+    id?: string,
+    refreshToken?: string,
+    roles?: string[],
+    sessionId?: number,
+    token?: string,
+    userName?: string,
 }
 
 export interface stateInterface {

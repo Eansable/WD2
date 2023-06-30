@@ -6,7 +6,9 @@ const {
     setLoading,
     registerSuccess,
     setError,
-    loginSuccess
+    loginSuccess,
+    refreshSuccess,
+    refreshUserDataSuccess
 } = accountReducer.actions
 
 export const registerAction = (values) => {
@@ -29,6 +31,19 @@ export const loginAction = (values) => {
         suc: loginSuccess,
         service: {
             func: api.login,
+            params: values
+        }
+    }
+    return defActionSlice(dispatchObj)
+}
+
+export const refreshUserDataAction = (values) => {
+    const dispatchObj = {
+        req: setLoading,
+        fail: setError,
+        suc: refreshUserDataSuccess,
+        service: {
+            func: api.refreshUserData,
             params: values
         }
     }

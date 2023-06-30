@@ -32,8 +32,7 @@ namespace Application.NRI.Positions
                 try
                 {
                     var pos = _context.Positions.ToList();
-                    var user = await _userManager.FindByNameAsync(_userAccessor.GetCurrentUsername());
-                    var roles = await _userManager.GetRolesAsync(user);
+
                     return pos;
                 }
                 catch (Exception ex)
