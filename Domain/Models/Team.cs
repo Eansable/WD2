@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace Domain.Models
 {
-    internal class Team
+    public class Team : IId
     {
+
+        public string Name { get; set; }
+        public string? Description { get; set; }
+        public DateTime? CreateTeam { get; set; }
+        public long CaptainId { get; set; }
+
     }
 }
