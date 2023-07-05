@@ -1,6 +1,7 @@
 
 import { useAppDispatch, useAppSelector } from "@/helpers/hooks";
 import styles from "./styles.module.css";
+import CustomButton from "@/components/CustomElement/Button";
 
 export default function Home() {
   const dispatch = useAppDispatch();
@@ -10,6 +11,7 @@ export default function Home() {
       <div className="avatar">Фото профиля</div>
       <div className="info">Информация профиля</div>
       <div className="statics">Статистика профиля</div>
+      <CustomButton>Изменить профиль</CustomButton>
     </section>
   );
 }
