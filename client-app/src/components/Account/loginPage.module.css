@@ -1,0 +1,14 @@
+.wrapper {
+  width: 100%;
+  max-height: 100vh;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.loginPage {
+  width: 100%;
+}

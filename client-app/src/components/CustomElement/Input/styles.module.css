@@ -1,0 +1,11 @@
+.custom__input {
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 16px;
+  border: gray 1px solid;
+  transition: all 0.3s ease-in;
+}
+
+.custom__input:focus-visible {
+  outline: solid 2px green;
+}

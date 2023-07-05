@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace Domain.Models
 {
-    internal class Player : IId
+    public class Player : IId
     {
         public string? Name { get; set; }
         public string? SecondName { get; set; }
         public string? MiddleName { get; set; }
-        public long? TeamId { get; set; }
+        public long TeamId { get; set; }
+        public Team Team { get; set; }
         
     }
 }

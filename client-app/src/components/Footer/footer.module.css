@@ -7,6 +7,7 @@
 .wrapper {
     max-width: 1368px;
     margin: 0 auto;
+    width: 95%;
 }
 
 .social {
@@ -17,6 +18,8 @@
 .copyright {
     border: 1px solid #000000;
     margin: 16px 0;
+    font-size: 12px;
+    color: #ffffff;
 }
 
 .copyright p {

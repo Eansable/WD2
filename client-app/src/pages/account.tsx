@@ -1,9 +1,15 @@
-import { useAppSelector } from "@/helpers/hooks"
 
-const Account = () => {
-  const { user } = useAppSelector(state => state.accountReducer)
+import { useAppDispatch, useAppSelector } from "@/helpers/hooks";
+import styles from "./styles.module.css";
 
-  return (<section>{user.userName}</section>)
+export default function Home() {
+  const dispatch = useAppDispatch();
+  const { user } = useAppSelector((state) => state.accountReducer);
+  return (
+    <section className={styles.account}>
+      <div className="avatar">Фото профиля</div>
+      <div className="info">Информация профиля</div>
+      <div className="statics">Статистика профиля</div>
+    </section>
+  );
 }
-
-export default Account

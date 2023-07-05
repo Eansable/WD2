@@ -13,6 +13,8 @@ namespace Domain.Models
         public long VisitorId { get; set; }
         public Team Visitor { get; set; }
         public DateTime StartMatch { get; set; }
+        public long ChampionatId { get; set; }
+        public Championat Championat { get; set; }
 
     }
 }
