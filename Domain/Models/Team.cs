@@ -12,7 +12,7 @@ namespace Domain.Models
         public string Name { get; set; }
         public string? Description { get; set; }
         public DateTime? CreateTeam { get; set; }
-        public long CaptainId { get; set; }
+        public long? CaptainId { get; set; }
         public long? LogoId { get; set; }
 
     }

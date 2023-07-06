@@ -1,3 +1,4 @@
+'use client'
 import { ComponentProps } from "react";
 import styles from "./styles.module.css";
 

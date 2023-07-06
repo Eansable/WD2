@@ -1,0 +1,30 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 26px;
+}
+
+.logo {
+    width: 74px;
+    height: 74px;
+    border: 1px black solid;
+}
+
+.name {
+    font-size: 20px;
+    line-height: 30px;
+}
+
+.button__add {
+    width: 126px;
+    height: 156px;
+    background-color: #dddddd;
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.button__add:hover {
+    transform: scale(1.02);
+}

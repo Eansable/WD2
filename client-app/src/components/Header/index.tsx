@@ -9,8 +9,6 @@ const Header = () => {
     const { user } = useAppSelector(state => state.accountReducer)
 
     useEffect(() => {
-        console.log(user);
-        
         if (!user?.id) {
             dispatch(refreshUserDataAction())
         }

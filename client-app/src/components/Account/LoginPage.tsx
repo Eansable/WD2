@@ -1,3 +1,4 @@
+'use client'
 import { useAppDispatch, useAppSelector } from "@/helpers/hooks";
 import { useState } from "react";
 import { loginAction } from "./store/actions";

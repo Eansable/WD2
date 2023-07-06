@@ -1,4 +1,5 @@
-﻿using Domain.Models.Account;
+﻿using Domain.Models;
+using Domain.Models.Account;
 using Domain.Models.NRI;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -11,6 +12,16 @@ namespace Domain.Context
         public DbSet<Position> Positions  { get; set; }
         public DbSet<UserType> UserTypes { get; set; }
         public DbSet<RefreshToken> RefreshTokens { get; set; }
+        public DbSet<Championat> Championats { get; set; }
+        public DbSet<Team> Teams { get; set; }
+        public DbSet<Player> Players{ get; set; }
+        public DbSet<Event> Events{ get; set; }
+        public DbSet<Match> Matches { get; set; }
+        public DbSet<Squad> Squads { get; set; }
+        public DbSet<MatchEvent> MatchEvents { get; set; }
+        public DbSet<ChampionatStats> ChampionatStats { get; set; }
+
+
 
         public AppDbContext(DbContextOptions<AppDbContext> options)
             : base(options)

@@ -11,6 +11,7 @@ namespace Domain.Models
         public string? Name { get; set; }
         public string? SecondName { get; set; }
         public string? MiddleName { get; set; }
+        public DateTime? Birthday { get; set; }
         public long TeamId { get; set; }
         public Team Team { get; set; }
         

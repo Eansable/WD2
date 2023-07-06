@@ -16,3 +16,11 @@ html, body {
     margin: 32px auto;
     width: 95%;
 }
+
+.loader__wrapper {
+    width: 100%;
+    height: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

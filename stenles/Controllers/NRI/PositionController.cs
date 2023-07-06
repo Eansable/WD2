@@ -16,6 +16,7 @@ namespace InternetRecources.Controllers.NRI
             return await Mediator.Send(query);
         }
 
+        [Authorize(Roles = "admin")]
         [HttpPost("Add")]
         public async Task<bool> Add([FromBody] Add.AddRequest query)
         {

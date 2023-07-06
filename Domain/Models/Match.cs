@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Domain.Models.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,8 @@ namespace Domain.Models
         public DateTime StartMatch { get; set; }
         public long ChampionatId { get; set; }
         public Championat Championat { get; set; }
+        public MatchResultEnum? MatchResult { get; set; }
+
 
     }
 }
