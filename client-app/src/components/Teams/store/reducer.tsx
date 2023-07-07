@@ -18,12 +18,13 @@ export const TeamReducer = createSlice({
     reducers: {
         setLoading: (state) => {
             state.isLoading = true
+            state.changed = undefined
         },
         setError: (state) => {
             state.isLoading = false
         },
         getAllSuccess: (state, action) => {
-            state.isLoading = true
+            state.isLoading = false
             state.teams = action.payload
         },
         addSuccess: (state, action) => {

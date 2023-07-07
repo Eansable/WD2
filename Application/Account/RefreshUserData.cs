@@ -1,5 +1,6 @@
 ﻿using Application.Account.Dto;
 using Domain.Context;
+using Domain.Errors;
 using Domain.Helpers.JWT;
 using Domain.Models.Account;
 using MediatR;
@@ -34,7 +35,7 @@ namespace Application.Account
 
                 if (userName == null)
                 {
-                    throw new Exception("Пользователь не найден");
+                    throw new RestException(System.Net.HttpStatusCode.Unauthorized, "Пользователь не найден");
                 }
 
                 var user = _context.Users.Where(u => u.UserName == userName).FirstOrDefault();

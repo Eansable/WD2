@@ -29,10 +29,10 @@ const Header = () => {
                         <p>Новости</p>
                     </Link>
                     <Link
-                        href='/club'
+                        href='/teams'
                         className={styles.link}
                     >
-                        <p>Клуб</p>
+                        <p>Команды</p>
                     </Link>
                     <Link
                         href='/squad'
