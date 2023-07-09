@@ -48,3 +48,23 @@
 .button__add:hover {
     transform: scale(1.02);
 }
+
+.modal__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.modal__wrapper label {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal__footer {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}

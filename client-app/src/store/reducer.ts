@@ -6,5 +6,6 @@ import teamReducer from "../components/Teams/store/reducer";
 export default combineReducers({
     PositionReducer,
     accountReducer,
-    teamReducer
+    teamReducer,
+    champ
 })
