@@ -38,7 +38,9 @@ namespace Application.Teams
                     Name = request.Name,
                     Description = request.Description,
                     CreateTeam = DateTime.Now,
-                    CaptainId = 1
+                    CaptainId = 1,
+                    IsActive= true,
+
                 };
                 _context.Teams.Add(team);
                 return _context.SaveChanges() > 0;

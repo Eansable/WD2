@@ -3,7 +3,7 @@ import { ComponentProps } from "react";
 import styles from "./styles.module.css";
 
 interface InputProps extends ComponentProps<"input"> {
-  value: string;
+  value?: string;
 }
 
 const CustomInput = ({ value, ...otherProps }: InputProps) => {

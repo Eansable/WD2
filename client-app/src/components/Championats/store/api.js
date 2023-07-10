@@ -1,8 +1,8 @@
 import { requests } from "../../../settings/axios";
 
 const api = {
-  getAll: () => requests.get("championat/getAll"),
-  getAllActive: (values) => requests.get("championat/getAllActive", values),
+  getAll: (values) => requests.get("championat/getAll", values),
+  getAllActive: (values) => requests.post("championat/Add", values),
 };
 
 export default api;

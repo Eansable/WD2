@@ -14,6 +14,7 @@ namespace Domain.Models
         public DateTime? Birthday { get; set; }
         public long TeamId { get; set; }
         public Team Team { get; set; }
+        public bool IsActive { get; set; }
         
     }
 }

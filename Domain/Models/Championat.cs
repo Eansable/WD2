@@ -15,5 +15,6 @@ namespace Domain.Models
         public DateTime EndDate { get; set; }
         public int PLayersCount { get; set; }
         public ChampionatFormatEnum ChampionatFormat { get; set; }
+        public bool IsActive { get; set; }
     }
 }

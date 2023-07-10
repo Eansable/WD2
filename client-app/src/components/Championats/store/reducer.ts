@@ -1,15 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { ChampionatType } from "../types";
 
 interface InitialStateTypes {
   isLoading: boolean,
   error?: any,
-  championats?: string[]
+  championats?: ChampionatType[],
+  changed?: string
 }
 
 const initialState: InitialStateTypes = {
   isLoading: false,
   error: null,
-  championats: undefined
+  championats: undefined,
+  changed: undefined
 }
 
 export const championatReducer = createSlice({
@@ -25,6 +28,10 @@ export const championatReducer = createSlice({
     getAllSuccess: (state, action) => {
       state.isLoading = false
       state.championats = action.payload
+    }, 
+    addSuccess: (state, action) => {
+      state.isLoading = false
+      state.changed = action.payload ? "Чемпионат успешно добавлен" : undefined
     } 
   }
 })

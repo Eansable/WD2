@@ -22,5 +22,26 @@ namespace stenles.Controllers
         {
             return await Mediator.Send(request);
         }
+
+        [Authorize(Roles = "admin")]
+        [HttpPost("Update")]
+        public async Task<bool> Update([FromBody] Add.TeamAddRequest request)
+        {
+            return await Mediator.Send(request);
+        }
+
+        [Authorize(Roles = "admin")]
+        [HttpPost("Deactivated")]
+        public async Task<bool> Deactivated([FromBody] Deactivated.TeamDeactivatedRequest request)
+        {
+            return await Mediator.Send(request);
+        }
+
+        [Authorize(Roles = "admin")]
+        [HttpPost("Activated")]
+        public async Task<bool> Activated([FromBody] Activated.TeamActivatedRequest request)
+        {
+            return await Mediator.Send(request);
+        }
     }
 }

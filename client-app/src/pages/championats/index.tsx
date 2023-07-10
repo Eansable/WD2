@@ -1,7 +1,8 @@
+import ChampionatList from "@/components/Championats/ChampionatList";
 import styles from "./styles.module.css";
 
 const Championats = () => {
-  return <div>Championat</div>;
+  return <ChampionatList />;
 };
 
 export default Championats;

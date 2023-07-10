@@ -14,6 +14,7 @@ namespace Domain.Models
         public DateTime? CreateTeam { get; set; }
         public long? CaptainId { get; set; }
         public long? LogoId { get; set; }
+        public bool IsActive { get; set; }
 
     }
 }
