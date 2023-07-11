@@ -22,7 +22,7 @@ export const getAllAction = (params) => {
     return defActionSlice(defActionObj)
 }
 
-export const AddAction = (params) => {
+export const addAction = (params) => {
     const defActionObj = { 
         req: setLoading,
         fail: setError,

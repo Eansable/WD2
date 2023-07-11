@@ -21,6 +21,7 @@ export const championatReducer = createSlice({
   reducers: {
     setLoading: (state) => {
       state.isLoading = true
+      state.changed = undefined
     },
     setError: (state) => {
       state.isLoading = false

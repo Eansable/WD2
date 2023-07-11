@@ -8,3 +8,11 @@ export interface ChampionatType {
     championatFormat?: number,
     isActive?: boolean
 }
+
+export interface AddChampFormType {
+    name: string,
+    format?: number,
+    playersCount?: number,
+    startDate?: Date,
+    endDate?: Date
+}

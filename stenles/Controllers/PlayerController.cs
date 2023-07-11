@@ -1,5 +1,6 @@
-﻿using Application.Championats;
+﻿using Application.Players;
 using Domain.Models;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Project.Controllers;
@@ -7,17 +8,16 @@ using Project.Controllers;
 namespace stenles.Controllers
 {
     [Route("api/[controller]")]
-
-    public class ChampionatController : BaseController
+    public class PlayerController : BaseController
     {
-        [HttpGet("GetAll")]
-        public async Task<List<Championat>> GetAll([FromHeader] GetAll.ChampionatGetAll request)
+        [HttpGet("GetByTeamId")]
+        public async Task<List<Player>> GetByTeamId([FromHeader] GetByTeamId.PlayersGetAllByTeamId request)
         {
             return await Mediator.Send(request);
         }
-        [Authorize]
+
         [HttpPost("Add")]
-        public async Task<bool> Add([FromBody] Add.ChampionatAdd request)
+        public async Task<bool> Add([FromBody] Add.PlayerAdd request)
         {
             return await Mediator.Send(request);
         }
