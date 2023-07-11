@@ -34,3 +34,34 @@
     height: 150px;
     border: 1px solid #888888;
 }
+
+/* ONE CHAMPIONAT PAGE */
+
+.championat__wrapper {
+    display: flex; 
+    flex-direction: column;
+    gap: 32px;
+}
+
+.championat__info {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    column-gap: 32px;
+}
+
+.championat__logo {
+    width: 100%;
+height: 178px;
+border: 1px solid #888888;
+}
+
+.short__info {
+    width: 100%;
+    border: 1px solid #888888;
+}
+
+.championat__manage {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
