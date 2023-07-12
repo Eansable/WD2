@@ -65,3 +65,7 @@ border: 1px solid #888888;
     gap: 16px;
     flex-wrap: wrap;
 }
+
+.team__select {
+    width: 100%;
+}

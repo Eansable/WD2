@@ -18,7 +18,7 @@ const ListTeam = () => {
     (state) => state.teamReducer
   );
   const { roles } = useAppSelector((state) => state.accountReducer);
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState(false);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
 
@@ -57,7 +57,7 @@ const ListTeam = () => {
       {teams.map((team) => {
         return <TeamCard team={team} key={team.id}></TeamCard>;
       })}
-      {!roles.includes("admin") ? (
+      {roles.includes("admin") ? (
         <>
           <button className={styles.button__add} onClick={showModal}>
             {Plus}

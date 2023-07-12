@@ -29,7 +29,6 @@ axios.interceptors.response.use(undefined, (error) => {
     if (error.config.url === "/account/refreshUserData" && !originalReq._retry) {
         originalReq._error = true
         const jsonUser = window.localStorage.getItem("user")
-        console.log(jsonUser);
         if (jsonUser) {
             const user = JSON.parse(jsonUser)
             return axios.post('/account/refresh', {
@@ -59,11 +58,10 @@ axios.interceptors.response.use(undefined, (error) => {
                 })
         }
     }
-    console.log(error.config);
 })
 
 export const requests = {
-    get: (url) => axios.get(url).then(res => res.data),
-    post: (url, params) => axios.post(url, params).then(res => res.data)
+    get: (url, params) => axios.get(url, { params }).then(res => res.data),
+    post: (url, params = {}) => axios.post(url, params).then(res => res.data)
 
 }

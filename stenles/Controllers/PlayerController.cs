@@ -1,7 +1,5 @@
 ﻿using Application.Players;
 using Domain.Models;
-using MediatR;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Project.Controllers;
 

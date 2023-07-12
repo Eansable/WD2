@@ -21,5 +21,11 @@ namespace stenles.Controllers
         {
             return await Mediator.Send(request);
         }
+        [Authorize]
+        [HttpPost("AddTeam")]
+        public async Task<bool> AddTeaam([FromBody] AddTeam.AddTeamInChampionat request)
+        {
+            return await Mediator.Send(request);
+        }
     }
 }

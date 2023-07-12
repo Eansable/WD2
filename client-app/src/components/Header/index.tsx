@@ -35,10 +35,10 @@ const Header = () => {
                         <p>Команды</p>
                     </Link>
                     <Link
-                        href='/squad'
+                        href='/championats'
                         className={styles.link}
                     >
-                        <p>Состав</p>
+                        <p>Турниры</p>
                     </Link>
                     <Link href='/tables'
                         className={styles.link}

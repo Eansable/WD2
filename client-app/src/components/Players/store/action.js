@@ -5,14 +5,13 @@ import { PlayersReducer } from "./reducer"
 const { addSuccess,getByTeamIdSuccess,setError,setLoading} = PlayersReducer.actions
 
 export const getByTeamIdAction = (params) => {
-    console.log(params);
     const defAction = {
         req: setLoading,
         fail: setError,
         suc: getByTeamIdSuccess,
         service: {
             func: api.getByTeamId,
-            params
+            params: params
         }
     }
     return defActionSlice(defAction)

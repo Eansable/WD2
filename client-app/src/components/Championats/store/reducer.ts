@@ -33,6 +33,10 @@ export const championatReducer = createSlice({
     addSuccess: (state, action) => {
       state.isLoading = false
       state.changed = action.payload ? "Чемпионат успешно добавлен" : undefined
+    }, 
+    addTeamSuccess: (state, action) => {
+      state.isLoading = false
+      state.changed = action.payload ? "Команда успешно добавлена в чемпионат" : undefined
     } 
   }
 })
