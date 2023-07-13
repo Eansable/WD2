@@ -5,7 +5,6 @@ const OneChampionatPage = () => {
   const router = useRouter();
   return (
     <div>
-      {router.query?.id}
       <OneChampionat id={Number(router.query?.id)}></OneChampionat>
     </div>
   );

@@ -1,4 +1,5 @@
 import PositionsNRI from "./Positions/"
+import StadiumNRI from "./Stadiums"
 
 export const routes = [
     {
@@ -7,9 +8,9 @@ export const routes = [
         children: <PositionsNRI />
     },
     {
-        label: "Позиции",
+        label: "Стадионы",
         key: '2',
-        children: <PositionsNRI />
+        children: <StadiumNRI />
     },
     {
         label: "Позиции",

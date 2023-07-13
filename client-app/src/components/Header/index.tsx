@@ -6,7 +6,7 @@ import { refreshUserDataAction } from "../Account/store/actions";
 
 const Header = () => {
     const dispatch = useAppDispatch();
-    const { user } = useAppSelector(state => state.accountReducer)
+    const { user, roles } = useAppSelector(state => state.accountReducer)
 
     useEffect(() => {
         if (!user?.id) {
@@ -19,7 +19,7 @@ const Header = () => {
             <div className={styles.wrapper}>
 
                 <Link href='/' >
-                <div className={styles.logo}></div>
+                    <div className={styles.logo}></div>
                 </Link>
                 <div className={styles.menu}>
                     <Link
@@ -45,16 +45,24 @@ const Header = () => {
                     >
                         <p>Таблицы</p>
                     </Link>
-                    <Link href='/galery'
-                        className={styles.link}
-                    >
-                        <p>Галерея</p>
-                    </Link>
+
                     <Link href='/predictions'
                         className={styles.link}
                     >
                         <p>Конкурс прогнозов</p>
                     </Link>
+                    {roles.length ?
+                        <Link href='/account'
+                            className={styles.link}
+                        >
+                            <p>Личный кабинет</p>
+                        </Link> :
+                        <Link href='/login'
+                            className={styles.link}
+                        >
+                            <p>Вход</p>
+                        </Link>
+                    }
                 </div>
             </div>
         </header>

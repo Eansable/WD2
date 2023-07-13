@@ -5,8 +5,9 @@ import CustomButton from "../CustomElement/Button";
 import styles from "./styles.module.css";
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "@/helpers/hooks";
-import { addTeamAction } from "./store/actions";
+import { addTeamAction, getOneByIdAction } from "./store/actions";
 import { getAllTeamAction } from "../Teams/store/actions";
+import ChampionatTable from "./ChampionatTable";
 interface PropsType {
   id: number;
 }
@@ -15,6 +16,7 @@ const OneChampionat = ({ id }: PropsType) => {
   const dispatch = useAppDispatch()
   const [openAddTeam, setOpenAddTeam] = useState(false)
   const { teams } = useAppSelector(state => state.teamReducer)
+  const { oneChampionat, isLoading } = useAppSelector(state => state.championatReducer)
   const [searchTeam, setSearchTeam] = useState('')
   const [teamId, setTeamId] = useState(0)
 
@@ -23,8 +25,6 @@ const OneChampionat = ({ id }: PropsType) => {
   }
 
   const addTeam = () => {
-    console.log(teamId);
-    
     dispatch(addTeamAction({ championatId: id, teamId: teamId}))
   }
 
@@ -33,11 +33,17 @@ const OneChampionat = ({ id }: PropsType) => {
       dispatch(getAllTeamAction())
   }, [])
 
+  useEffect(() => {
+    if (!isNaN(id))  
+      dispatch(getOneByIdAction({ id: Number(id) }))  
+  }, [id])
+
   return (
     <div className={styles.championat__wrapper}>
       <div className={styles.championat__info}>
         <div className={styles.championat__logo}>Logo</div>
-        <div className={styles.short__info}></div>
+        <div className={styles.short__info}>Info</div>
+          {oneChampionat?.table ? <ChampionatTable table={oneChampionat?.table}></ChampionatTable> : null}
       </div>
       <div className={styles.championat__manage}>
         <CustomButton onClick={() => setOpenAddTeam(true)}>Добавить команду в турнир</CustomButton>

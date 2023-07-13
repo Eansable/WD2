@@ -5,14 +5,16 @@ interface InitialStateTypes {
   isLoading: boolean,
   error?: any,
   championats?: ChampionatType[],
-  changed?: string
+  changed?: string,
+  oneChampionat?: ChampionatType
 }
 
 const initialState: InitialStateTypes = {
   isLoading: false,
   error: null,
   championats: undefined,
-  changed: undefined
+  changed: undefined,
+  oneChampionat: undefined
 }
 
 export const championatReducer = createSlice({
@@ -37,6 +39,10 @@ export const championatReducer = createSlice({
     addTeamSuccess: (state, action) => {
       state.isLoading = false
       state.changed = action.payload ? "Команда успешно добавлена в чемпионат" : undefined
+    },
+    getOneByIdSuccess: (state, action) => {
+      state.isLoading = false
+      state.oneChampionat = action.payload
     } 
   }
 })

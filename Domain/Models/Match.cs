@@ -1,4 +1,5 @@
 ﻿using Domain.Models.Enums;
+using Domain.Models.NRI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,8 @@ namespace Domain.Models
         public long ChampionatId { get; set; }
         public Championat Championat { get; set; }
         public MatchResultEnum? MatchResult { get; set; }
-
+        public long? StadiumId { get; set; }
+        public Stadium Stadium { get; set; }
 
     }
 }

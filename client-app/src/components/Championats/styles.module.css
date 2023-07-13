@@ -47,6 +47,7 @@
     display: grid;
     grid-template-columns: 1fr 2fr;
     column-gap: 32px;
+    row-gap: 32px;
 }
 
 .championat__logo {
@@ -68,4 +69,30 @@ border: 1px solid #888888;
 
 .team__select {
     width: 100%;
+}
+
+
+.table__wrapper {
+    display: grid;
+    grid-template-columns: 30px auto repeat(4, 30px) 70px 50px;
+    width: 100%;
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+.green__cell {
+    background-color: green;
+    color: #ffffff;
+}
+
+.gray__cell {
+    background-color: #aaaaaa;
+}
+
+.table__wrapper div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 0;
+    border-right: #888888 1px solid;
 }

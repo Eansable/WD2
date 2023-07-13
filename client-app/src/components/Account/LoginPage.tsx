@@ -1,15 +1,17 @@
 'use client'
 import { useAppDispatch, useAppSelector } from "@/helpers/hooks";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { loginAction } from "./store/actions";
 import NotFound from "../NotFound";
 import CustomButton from "../CustomElement/Button";
 import styles from "./loginPage.module.css";
 import CustomInput from "../CustomElement/Input";
+import { useRouter } from "next/navigation";
 
 const LoginPage = () => {
   const dispatch = useAppDispatch();
   const { user, roles } = useAppSelector((state) => state.accountReducer);
+  const router = useRouter()
 
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
@@ -22,6 +24,12 @@ const LoginPage = () => {
       })
     );
   };
+
+  useEffect(() => {
+    if (roles.length) {
+      router.push("/account")
+    }
+  }, []) 
 
   return (
     <div className={styles.loginPage}>

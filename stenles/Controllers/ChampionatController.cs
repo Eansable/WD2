@@ -1,4 +1,5 @@
 ﻿using Application.Championats;
+using Application.Championats.Dto;
 using Domain.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -12,6 +13,11 @@ namespace stenles.Controllers
     {
         [HttpGet("GetAll")]
         public async Task<List<Championat>> GetAll([FromHeader] GetAll.ChampionatGetAll request)
+        {
+            return await Mediator.Send(request);
+        }
+        [HttpGet("GetOneById")]
+        public async Task<ChampionatDto> GetOneById([FromHeader] GetOneById.ChampionatGetOneById request)
         {
             return await Mediator.Send(request);
         }

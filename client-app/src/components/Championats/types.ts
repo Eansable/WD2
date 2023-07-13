@@ -6,7 +6,8 @@ export interface ChampionatType {
     endDate?: Date,
     playersCount?: number,
     championatFormat?: number,
-    isActive?: boolean
+    isActive?: boolean,
+    table?: ChampionatStatsType[]
 }
 
 export interface AddChampFormType {
@@ -15,4 +16,17 @@ export interface AddChampFormType {
     playersCount?: number,
     startDate?: Date,
     endDate?: Date
+}
+
+export default interface ChampionatStatsType {
+    teamId: number,
+    teamName: string,
+    win: number,
+    draw: number,
+    lose: number,
+    goals: number,
+    goalsConceded: number,
+    yellowCards: number,
+    redCards: number,
+    points: number
 }

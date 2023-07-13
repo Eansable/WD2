@@ -8,7 +8,8 @@ namespace Application.Teams
     {
         public class TeamGetAllRequest :  IRequest<List<Team>> 
         {
-            public string? Name { get; set; }    
+            public string? Name { get; set; }
+            public bool IsOnlyActive { get; set; } = false;
         }
         public class Handler : IRequestHandler<TeamGetAllRequest, List<Team>>
         {
@@ -21,7 +22,7 @@ namespace Application.Teams
 
             public async Task<List<Team>> Handle(TeamGetAllRequest request, CancellationToken cancellationToken)
             {
-                var teams = _context.Teams.ToList();
+                var teams = _context.Teams.Where(t => !request.IsOnlyActive || t.IsActive == true).ToList();
                 if (request.Name != null)
                 {
                     teams = teams.Where(t => t.Name.ToUpper().Contains(request.Name.ToUpper())).ToList();

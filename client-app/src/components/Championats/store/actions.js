@@ -7,7 +7,8 @@ const {
     setError,
     getAllSuccess,
     addSuccess,
-    addTeamSuccess
+    addTeamSuccess,
+    getOneByIdSuccess
 } = championatReducer.actions
 
 export const getAllAction = (params) => {
@@ -43,6 +44,19 @@ export const addTeamAction = (params) => {
         suc: addTeamSuccess,
         service: {
             func: api.addTeam,
+            params
+        }
+    }
+    return defActionSlice(defActionObj)
+}
+
+export const getOneByIdAction = (params) => {
+    const defActionObj = { 
+        req: setLoading,
+        fail: setError,
+        suc: getOneByIdSuccess,
+        service: {
+            func: api.getOneById,
             params
         }
     }
