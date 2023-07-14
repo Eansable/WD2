@@ -16,5 +16,7 @@ namespace Domain.Models
         public int PLayersCount { get; set; }
         public ChampionatFormatEnum ChampionatFormat { get; set; }
         public bool IsActive { get; set; }
+        public long? LogoId { get; set; }
+        public LogoFile? LogoFile { get; set; }
     }
 }

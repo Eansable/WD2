@@ -15,6 +15,8 @@ namespace Domain.Models
         public long TeamId { get; set; }
         public Team Team { get; set; }
         public bool IsActive { get; set; }
-        
+        public long? AvatarId { get; set; }
+        public LogoFile? AvatarFile { get; set; }
+
     }
 }

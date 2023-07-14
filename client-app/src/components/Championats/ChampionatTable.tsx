@@ -18,7 +18,7 @@ const ChampionatTable = ({ table }: PropsType) => {
         {table.map((stand, index) => {
             return <>
                 <div className={index % 2 == 0 ? styles.gray__cell : ''}>{index + 1}</div>
-                <div className={index % 2 == 0 ? styles.gray__cell : ''}>{stand.teamName}</div>
+                <div className={index % 2 == 0 ? styles.gray__cell : ''}><img src={`https://localhost:44326/api/logo/GetById?id=${stand?.teamLogoId}`} />{stand.teamName}</div>
                 <div className={index % 2 == 0 ? styles.gray__cell : ''}>{stand.draw + stand.win + stand.lose}</div>
                 <div className={index % 2 == 0 ? styles.gray__cell : ''}>{stand.win}</div>
                 <div className={index % 2 == 0 ? styles.gray__cell : ''}>{stand.draw}</div>

@@ -2,7 +2,8 @@
 export interface TeamInterface {
     id: number,
     name: string,
-    description: string
+    description: string,
+    logoId?: number
 }
 
 export interface OneTeamProfileType {

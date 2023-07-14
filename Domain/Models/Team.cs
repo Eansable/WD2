@@ -13,8 +13,9 @@ namespace Domain.Models
         public string? Description { get; set; }
         public DateTime? CreateTeam { get; set; }
         public long? CaptainId { get; set; }
-        public long? LogoId { get; set; }
         public bool IsActive { get; set; }
+        public long? LogoId { get; set; }
+        public LogoFile? LogoFile { get; set; }
 
     }
 }

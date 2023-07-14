@@ -61,3 +61,10 @@ D:\Projects\WD2\stenles\stenles\bin\Debug\net7.0\FluentValidation.DependencyInje
 D:\Projects\WD2\stenles\stenles\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 D:\Projects\WD2\stenles\stenles\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.dll
 D:\Projects\WD2\stenles\stenles\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\Projects\WD2\stenles\stenles\bin\Debug\net7.0\System.Web.Mvc.dll
+D:\Projects\WD2\stenles\stenles\bin\Debug\net7.0\System.Web.Razor.dll
+D:\Projects\WD2\stenles\stenles\bin\Debug\net7.0\System.Web.Helpers.dll
+D:\Projects\WD2\stenles\stenles\bin\Debug\net7.0\System.Web.WebPages.Deployment.dll
+D:\Projects\WD2\stenles\stenles\bin\Debug\net7.0\System.Web.WebPages.Razor.dll
+D:\Projects\WD2\stenles\stenles\bin\Debug\net7.0\System.Web.WebPages.dll
+D:\Projects\WD2\stenles\stenles\bin\Debug\net7.0\Microsoft.Web.Infrastructure.dll

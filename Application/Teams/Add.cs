@@ -1,11 +1,7 @@
 ﻿using Domain.Context;
 using Domain.Models;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 
 namespace Application.Teams
 {
@@ -15,6 +11,7 @@ namespace Application.Teams
         {
             public string Name { get; set; }
             public string? Description { get; set; }
+            public IFormFile? Logo { get; set; }
 
         }
 
@@ -39,8 +36,25 @@ namespace Application.Teams
                     Description = request.Description,
                     CreateTeam = DateTime.Now,
                     CaptainId = 1,
-                    IsActive= true,
-
+                    IsActive = true,
+                };
+                if (!(request.Logo.Length == 0)) 
+                {
+                   using var ms = new MemoryStream();
+                    request.Logo.CopyTo(ms);
+                    var file = new LogoFile()
+                    {
+                        FileName = Path.GetFileNameWithoutExtension(request.Logo.FileName),
+                        FileExtension = Path.GetExtension(request.Logo.FileName),
+                        ContentType = request.Logo.ContentType,
+                        FileLength = request.Logo?.Length ?? 0,
+                        DateUpload = DateTime.Now,
+                        Content = ms.ToArray()
+                        
+                    };
+                    _context.LogoFiles.Add(file);
+                    _context.SaveChanges();
+                    team.LogoId = file.Id;
                 };
                 _context.Teams.Add(team);
                 return _context.SaveChanges() > 0;

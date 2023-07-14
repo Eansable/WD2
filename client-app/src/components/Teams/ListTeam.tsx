@@ -11,6 +11,8 @@ import CustomInput from "../CustomElement/Input";
 import CustomButton from "../CustomElement/Button";
 import { addTeamAction, getAllTeamAction } from "./store/actions";
 import FileLoader from "../CustomElement/FileLoader";
+import { TeamInterface } from "./types";
+import { editTeamAction } from "./store/actions";
 
 const ListTeam = () => {
   const dispatch = useAppDispatch();
@@ -21,6 +23,8 @@ const ListTeam = () => {
   const [visible, setVisible] = useState(false);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
+  const [editTeam, setEditTeam] = useState<TeamInterface>()
+  const [logo, setLogo] = useState<File>()
 
   const showModal = () => {
     setVisible(true);
@@ -30,15 +34,30 @@ const ListTeam = () => {
     setName("");
     setDescription("");
     setVisible(false);
+    setEditTeam(undefined);
+    setLogo(undefined)
   };
 
   const saveTeam = () => {
-    dispatch(
-      addTeamAction({
-        name,
-        description,
-      })
-    );
+
+    const formData = new FormData()
+    formData.append("Name", name)
+    if (description) {
+      formData.append("Description", description)
+    }
+    if (logo) {
+      formData.append("Logo", logo)
+    }
+    if (editTeam) {
+      formData.append("Id", String(editTeam.id))
+      dispatch(
+        editTeamAction(formData)
+      );
+    } else {
+      dispatch(
+        addTeamAction(formData)
+      );
+    }
   };
 
   useEffect(() => {
@@ -52,10 +71,18 @@ const ListTeam = () => {
     }
   }, [changed]);
 
+  useEffect(() => {
+    if (editTeam) {
+      setVisible(true)
+      setName(editTeam.name)
+      setDescription(editTeam.description)
+    }
+  }, [editTeam]);
+
   return !isLoading ? (
     <section className={styles.list}>
       {teams.map((team) => {
-        return <TeamCard team={team} key={team.id}></TeamCard>;
+        return <TeamCard team={team} key={team.id} setEditTeam={setEditTeam}></TeamCard>;
       })}
       {roles.includes("admin") ? (
         <>
@@ -90,10 +117,12 @@ const ListTeam = () => {
               </label>
               <label>
                 Выберите лого:
-                <FileLoader></FileLoader>
+                <FileLoader
+                  onChange={(e) => e.target.files?.length ? setLogo(e.target.files[0]) : setLogo(undefined)}
+                ></FileLoader>
               </label>
               <footer className={styles.modal__footer}>
-                <CustomButton onClick={saveTeam}>Сохранить</CustomButton>
+                <CustomButton onClick={saveTeam} disabled={!Boolean(name)}>Сохранить</CustomButton>
               </footer>
             </div>
           </Modal>

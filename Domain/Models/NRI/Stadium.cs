@@ -10,7 +10,9 @@ namespace Domain.Models.NRI
     {
         public string Name { get; set; }
         public string Adress { get; set; }
-        public string Description { get; set; }
+        public string? Description { get; set; }
+        public long? LogoId { get; set; }
+        public LogoFile? LogoFile { get; set; }
 
     }
 }

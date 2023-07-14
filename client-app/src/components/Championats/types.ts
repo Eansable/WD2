@@ -21,6 +21,7 @@ export interface AddChampFormType {
 export default interface ChampionatStatsType {
     teamId: number,
     teamName: string,
+    teamLogoId: number,
     win: number,
     draw: number,
     lose: number,

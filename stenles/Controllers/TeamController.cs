@@ -18,14 +18,14 @@ namespace stenles.Controllers
 
         [Authorize(Roles = "admin")]
         [HttpPost("Add")]
-        public async Task<bool> Add([FromBody] Add.TeamAddRequest request)
+        public async Task<bool> Add([FromForm] Add.TeamAddRequest request)
         {
             return await Mediator.Send(request);
         }
 
         [Authorize(Roles = "admin")]
         [HttpPost("Update")]
-        public async Task<bool> Update([FromBody] Add.TeamAddRequest request)
+        public async Task<bool> Update([FromForm] Update.TeamUpdateRequest request)
         {
             return await Mediator.Send(request);
         }

@@ -31,6 +31,7 @@ namespace Application.Championats
                 var table = _context.ChampionatStats.Where(s => s.ChampionatId == request.Id).Include(t => t.Team).Select(tab => new ChampionatStatsDto() {
                     TeamId = tab.TeamId,
                     TeamName = tab.Team.Name,
+                    TeamLogoId = tab.Team.LogoId,
                     Draw = tab.Draw,
                     Goals= tab.Goals,
                     GoalsConceded= tab.GoalsConceded,

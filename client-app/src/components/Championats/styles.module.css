@@ -96,3 +96,9 @@ border: 1px solid #888888;
     padding: 6px 0;
     border-right: #888888 1px solid;
 }
+
+.table__wrapper img {
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+}

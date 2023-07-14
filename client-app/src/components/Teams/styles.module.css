@@ -12,12 +12,13 @@
     align-items: center;
     justify-content: center;
     gap: 24px;
-    padding: 16px;
+    padding: 20px;
     cursor: pointer;
     transition: all 0.3s ease;
     height: min-content;
     box-shadow: 0px 7px 20px 0px #0000000F;
     border-radius: 5px;
+    position: relative;
 }
 
 .wrapper:hover {
@@ -27,12 +28,36 @@
 .logo {
     width: 74px;
     height: 74px;
-    border: 1px black solid;
+}
+
+.logo img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
 }
 
 .name {
     font-size: 20px;
     line-height: 30px;
+}
+
+.card__manage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    position: absolute;
+    right: 12px;
+    top: 12px;
+}
+
+.card__manage img {
+    width: 20px;
+    height: 20px;
+    transition: all 0.3s ease;
+}
+
+.card__manage img:hover {
+    transform: scale(1.1);
 }
 
 .button__add {
