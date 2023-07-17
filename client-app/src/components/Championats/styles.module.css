@@ -74,7 +74,7 @@ border: 1px solid #888888;
 
 .table__wrapper {
     display: grid;
-    grid-template-columns: 30px auto repeat(4, 30px) 70px 50px;
+    grid-template-columns: 30px auto repeat(4, 30px) 70px 50px 30px;
     width: 100%;
     grid-column-start: 1;
     grid-column-end: 3;

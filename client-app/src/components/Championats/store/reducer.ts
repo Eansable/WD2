@@ -34,15 +34,23 @@ export const championatReducer = createSlice({
     }, 
     addSuccess: (state, action) => {
       state.isLoading = false
-      state.changed = action.payload ? "Чемпионат успешно добавлен" : undefined
+      state.changed = action.payload ? "Чемпионат успешно добавлен!" : undefined
     }, 
     addTeamSuccess: (state, action) => {
       state.isLoading = false
-      state.changed = action.payload ? "Команда успешно добавлена в чемпионат" : undefined
+      state.changed = action.payload ? "Команда успешно добавлена в чемпионат!" : undefined
+    },
+    deleteTeamSuccess: (state, action) => {
+      state.isLoading = false
+      state.changed = action.payload ? "Команда успешно удалена!" : undefined
     },
     getOneByIdSuccess: (state, action) => {
       state.isLoading = false
       state.oneChampionat = action.payload
+    }, 
+    addMatchSuccess: (state, action) => {
+      state.isLoading = false
+      state.changed = action.payload ? "Матч успешно добавлен в чемпионат!" : undefined
     } 
   }
 })

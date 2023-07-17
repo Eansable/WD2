@@ -20,6 +20,7 @@ namespace Domain.Models
         public MatchResultEnum? MatchResult { get; set; }
         public long? StadiumId { get; set; }
         public Stadium Stadium { get; set; }
+        
 
     }
 }

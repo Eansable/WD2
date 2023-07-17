@@ -23,7 +23,7 @@ export const addAction = (params) => {
         fail: setError,
         suc: addSuccess,
         service: {
-            func: api.getAll,
+            func: api.add,
             params
         }
     }

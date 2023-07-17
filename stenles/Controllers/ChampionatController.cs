@@ -27,9 +27,24 @@ namespace stenles.Controllers
         {
             return await Mediator.Send(request);
         }
-        [Authorize]
+        [Authorize(Roles ="admin")]
         [HttpPost("AddTeam")]
         public async Task<bool> AddTeaam([FromBody] AddTeam.AddTeamInChampionat request)
+        {
+            return await Mediator.Send(request);
+        }
+
+        [Authorize(Roles ="admin")]
+        [HttpPost("DeleteTeam")]
+        public async Task<bool> DeleteTeaam([FromBody] DeleteTeamFromChampionat.DeleteTeam request)
+        {
+            return await Mediator.Send(request);
+        }
+
+
+        [Authorize(Roles = "admin")]
+        [HttpPost("AddMatch")]
+        public async Task<bool> AddMatch([FromBody] AddMatch.ChampionatAddMatch request)
         {
             return await Mediator.Send(request);
         }

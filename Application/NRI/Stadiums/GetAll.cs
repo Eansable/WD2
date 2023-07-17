@@ -6,11 +6,11 @@ namespace Application.NRI.Stadiums
 {
     public class GetAll
     {
-        public class StadiumGetAll : IRequest<List<Domain.Models.NRI.Stadium>>
+        public class StadiumGetAll : IRequest<List<Stadium>>
         {
             public string? Name { get; set; }
         }
-        public class Handler : IRequestHandler<StadiumGetAll, List<Domain.Models.NRI.Stadium>>
+        public class Handler : IRequestHandler<StadiumGetAll, List<Stadium>>
         {
             private readonly AppDbContext _context;
 
@@ -19,7 +19,7 @@ namespace Application.NRI.Stadiums
                 _context = context;
             }
 
-            public async Task<List<Domain.Models.NRI.Stadium>> Handle(StadiumGetAll request, CancellationToken cancellationToken)
+            public async Task<List<Stadium>> Handle(StadiumGetAll request, CancellationToken cancellationToken)
             {
                 var stadiums = _context.Stadiums.ToList();
                 if (request.Name != null)

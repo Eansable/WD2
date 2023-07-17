@@ -8,7 +8,9 @@ const {
     getAllSuccess,
     addSuccess,
     addTeamSuccess,
-    getOneByIdSuccess
+    getOneByIdSuccess,
+    deleteTeamSuccess,
+    addMatchSuccess
 } = championatReducer.actions
 
 export const getAllAction = (params) => {
@@ -44,6 +46,32 @@ export const addTeamAction = (params) => {
         suc: addTeamSuccess,
         service: {
             func: api.addTeam,
+            params
+        }
+    }
+    return defActionSlice(defActionObj)
+}
+
+export const addMatchAction = (params) => {
+    const defActionObj = { 
+        req: setLoading,
+        fail: setError,
+        suc: addMatchSuccess,
+        service: {
+            func: api.addMatch,
+            params
+        }
+    }
+    return defActionSlice(defActionObj)
+}
+
+export const deleteTeamAction = (params) => {
+    const defActionObj = { 
+        req: setLoading,
+        fail: setError,
+        suc: deleteTeamSuccess,
+        service: {
+            func: api.deleteTeam,
             params
         }
     }

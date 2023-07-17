@@ -9,6 +9,7 @@ namespace Application.Teams
         public class TeamGetAllRequest :  IRequest<List<Team>> 
         {
             public string? Name { get; set; }
+            public long? ChampionatId { get; set; }
             public bool IsOnlyActive { get; set; } = false;
         }
         public class Handler : IRequestHandler<TeamGetAllRequest, List<Team>>
@@ -27,6 +28,11 @@ namespace Application.Teams
                 {
                     teams = teams.Where(t => t.Name.ToUpper().Contains(request.Name.ToUpper())).ToList();
                 }
+                if (request.ChampionatId != null)
+                {
+                    var champStats = _context.ChampionatStats.Where(cs => cs.ChampionatId == request.ChampionatId).ToList();
+                    teams = teams.Where(t => !champStats.Any(ct => ct.TeamId == t.Id)).ToList();
+                }   
                 return teams;
             }
         }
