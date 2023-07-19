@@ -12,6 +12,6 @@ namespace Domain.Models
         public Player Player { get; set; }
         public long MatchId { get; set; }
         public Match Match { get; set; }
-        public bool isStartSquad { get; set; }
+        public bool IsStartSquad { get; set; }
     }
 }

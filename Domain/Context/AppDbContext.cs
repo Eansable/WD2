@@ -1,5 +1,6 @@
 ﻿using Domain.Models;
 using Domain.Models.Account;
+using Domain.Models.News;
 using Domain.Models.NRI;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -22,6 +23,7 @@ namespace Domain.Context
         public DbSet<ChampionatStats> ChampionatStats { get; set; }
         public DbSet<Stadium> Stadiums { get; set; }
         public DbSet<LogoFile> LogoFiles { get; set; }
+        public DbSet<News> News { get; set; }
 
 
 

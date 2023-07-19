@@ -1,20 +1,28 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { ChampionatType } from "../types";
+import ChampionatStatsType, { ChampionatType } from "../types";
 
 interface InitialStateTypes {
   isLoading: boolean,
+  isLoadingDefault: boolean
   error?: any,
   championats?: ChampionatType[],
   changed?: string,
-  oneChampionat?: ChampionatType
+  oneChampionat?: ChampionatType,
+  deleted?: string,
+  addedId?: number,
+  defChampionat?: ChampionatStatsType[]
 }
 
 const initialState: InitialStateTypes = {
   isLoading: false,
+  isLoadingDefault: false,
   error: null,
   championats: undefined,
   changed: undefined,
-  oneChampionat: undefined
+  oneChampionat: undefined,
+  addedId: undefined,
+  defChampionat: undefined,
+  deleted: undefined
 }
 
 export const championatReducer = createSlice({
@@ -24,17 +32,31 @@ export const championatReducer = createSlice({
     setLoading: (state) => {
       state.isLoading = true
       state.changed = undefined
+      state.deleted = undefined
+    },
+    setDefaultLoading: (state) => {
+      state.isLoadingDefault = true
     },
     setError: (state) => {
       state.isLoading = false
+      state.isLoadingDefault = false
     },
     getAllSuccess: (state, action) => {
       state.isLoading = false
       state.championats = action.payload
     }, 
+    getDefaultSuccess: (state, action) => {
+      state.isLoadingDefault = false
+      state.defChampionat = action.payload
+    }, 
     addSuccess: (state, action) => {
       state.isLoading = false
       state.changed = action.payload ? "Чемпионат успешно добавлен!" : undefined
+      state.addedId = action.payload
+    }, 
+    deleteSuccess: (state, action) => {
+      state.isLoading = false
+      state.deleted = action.payload ? "Чемпионат успешно удалён!" : undefined
     }, 
     addTeamSuccess: (state, action) => {
       state.isLoading = false

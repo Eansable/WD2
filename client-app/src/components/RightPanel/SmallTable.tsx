@@ -1,16 +1,43 @@
+import { useAppDispatch, useAppSelector } from "@/helpers/hooks";
 import { Table } from "antd";
+import styles from "./right-panel.module.css"
+import loading from "../CustomElement/Loader/LocalLoader"
+import { useEffect } from "react";
+import { getDefaultAction } from "../Championats/store/actions";
 
 const SmallTable = () => {
-  return (
-    <Table>
-      <Table.Column dataIndex="name" key="name" title="Команда" />
-      <Table.Column dataIndex="gameCount" key="gameCount" title="И" />
-      <Table.Column dataIndex="winCount" key="winCount" title="В" />
-      <Table.Column dataIndex="drawCount" key="drawCount" title="н" />
-      <Table.Column dataIndex="loseCount" key="loseCount" title="П" />
-      <Table.Column dataIndex="points" key="points" title="О" />
-    </Table>
-  );
+  const dispatch = useAppDispatch()
+  const {isLoadingDefault, defChampionat} = useAppSelector(state => state.championatReducer)
+
+  useEffect(() => {
+    dispatch(getDefaultAction())
+  }, [])
+
+  return !isLoadingDefault ? (
+    <div className={styles.small__table}>
+      <div className={styles.line}>
+          <div>№</div>
+          <div>Название</div>
+          <div>В</div>
+          <div>Н</div>
+          <div>П</div>
+          <div>РМ</div>
+          <div>О</div>
+        </div>
+      {defChampionat?.length ? defChampionat.map((stand, index) => {
+        return <div className={styles.line}>
+          <div>{index + 1}</div>
+          <div>{stand.teamName}</div>
+          <div>{stand.win}</div>
+          <div>{stand.draw}</div>
+          <div>{stand.lose}</div>
+          <div>{stand.goals - stand.goalsConceded}</div>
+          <div>{stand.points}</div>
+        </div>
+      }) : null}
+      
+    </div>
+  ) : <>{loading}</>
 };
 
 export default SmallTable;

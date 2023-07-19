@@ -10,7 +10,10 @@ const {
     addTeamSuccess,
     getOneByIdSuccess,
     deleteTeamSuccess,
-    addMatchSuccess
+    addMatchSuccess,
+    deleteSuccess,
+    getDefaultSuccess,
+    setDefaultLoading
 } = championatReducer.actions
 
 export const getAllAction = (params) => {
@@ -26,6 +29,19 @@ export const getAllAction = (params) => {
     return defActionSlice(defActionObj)
 }
 
+export const getDefaultAction = (params) => {
+    const defActionObj = { 
+        req: setLoading,
+        fail: setError,
+        suc: getDefaultSuccess,
+        service: {
+            func: api.getDefault,
+            params
+        }
+    }
+    return defActionSlice(defActionObj)
+}
+
 export const addAction = (params) => {
     const defActionObj = { 
         req: setLoading,
@@ -33,6 +49,19 @@ export const addAction = (params) => {
         suc: addSuccess,
         service: {
             func: api.add,
+            params
+        }
+    }
+    return defActionSlice(defActionObj)
+}
+
+export const deleteAction = (params) => {
+    const defActionObj = { 
+        req: setLoading,
+        fail: setError,
+        suc: deleteSuccess,
+        service: {
+            func: api.delete,
             params
         }
     }

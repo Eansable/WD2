@@ -32,13 +32,15 @@
 .link__logo {
     width: 75%;
     height: 150px;
-    border: 1px solid #888888;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* ONE CHAMPIONAT PAGE */
 
 .championat__wrapper {
-    display: flex; 
+    display: flex;
     flex-direction: column;
     gap: 32px;
 }
@@ -52,8 +54,14 @@
 
 .championat__logo {
     width: 100%;
-height: 178px;
-border: 1px solid #888888;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.championat__logo img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
 }
 
 .short__info {

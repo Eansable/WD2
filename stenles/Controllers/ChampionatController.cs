@@ -16,14 +16,26 @@ namespace stenles.Controllers
         {
             return await Mediator.Send(request);
         }
+        [AllowAnonymous]
+        [HttpGet("GetDefault")]
+        public async Task<List<ChampionatStatsDto>> GetDefault([FromHeader] GetDefaultChampionat.ChamionatGetDefault request)
+        {
+            return await Mediator.Send(request);
+        }
         [HttpGet("GetOneById")]
         public async Task<ChampionatDto> GetOneById([FromHeader] GetOneById.ChampionatGetOneById request)
         {
             return await Mediator.Send(request);
         }
-        [Authorize]
+        [Authorize(Roles ="admin")]
         [HttpPost("Add")]
-        public async Task<bool> Add([FromBody] Add.ChampionatAdd request)
+        public async Task<long> Add([FromForm] Add.ChampionatAdd request)
+        {
+            return await Mediator.Send(request);
+        }
+        [Authorize(Roles ="admin") ]
+        [HttpPost("Delete")]
+        public async Task<bool> Delete([FromBody] Delete.ChampionatDelete request)
         {
             return await Mediator.Send(request);
         }

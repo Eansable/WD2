@@ -51,7 +51,8 @@ namespace Application.Championats
                     PlayersCount = championat.PLayersCount,
                     StartDate= championat.StartDate,
                     Table= table,
-                    YearString = championat.YearString
+                    YearString = championat.YearString,
+                    LogoId = championat.LogoId,
                 };
             }
         }
