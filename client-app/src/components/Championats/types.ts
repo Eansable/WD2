@@ -7,15 +7,12 @@ export interface ChampionatType {
     playersCount?: number,
     championatFormat?: number,
     isActive?: boolean,
-    table?: ChampionatStatsType[]
-}
-
-export interface AddChampFormType {
-    name: string,
-    format?: number,
-    playersCount?: number,
-    startDate?: Date,
-    endDate?: Date
+    table?: ChampionatStatsType[],
+    logoId?: number,
+    minutesTime: number,
+    countYellowAfterDis: number,
+    maxPlayerPerMatch: number,
+    isDefaultChamp: boolean,
 }
 
 export default interface ChampionatStatsType {

@@ -16,20 +16,47 @@ namespace stenles.Controllers
         {
             return await Mediator.Send(request);
         }
+        [AllowAnonymous]
+        [HttpGet("GetDefault")]
+        public async Task<List<ChampionatStatsDto>> GetDefault([FromHeader] GetDefaultChampionat.ChamionatGetDefault request)
+        {
+            return await Mediator.Send(request);
+        }
         [HttpGet("GetOneById")]
         public async Task<ChampionatDto> GetOneById([FromHeader] GetOneById.ChampionatGetOneById request)
         {
             return await Mediator.Send(request);
         }
-        [Authorize]
+        [Authorize(Roles ="admin")]
         [HttpPost("Add")]
-        public async Task<bool> Add([FromBody] Add.ChampionatAdd request)
+        public async Task<long> Add([FromForm] Add.ChampionatAdd request)
         {
             return await Mediator.Send(request);
         }
-        [Authorize]
+        [Authorize(Roles ="admin") ]
+        [HttpPost("Delete")]
+        public async Task<bool> Delete([FromBody] Delete.ChampionatDelete request)
+        {
+            return await Mediator.Send(request);
+        }
+        [Authorize(Roles ="admin")]
         [HttpPost("AddTeam")]
         public async Task<bool> AddTeaam([FromBody] AddTeam.AddTeamInChampionat request)
+        {
+            return await Mediator.Send(request);
+        }
+
+        [Authorize(Roles ="admin")]
+        [HttpPost("DeleteTeam")]
+        public async Task<bool> DeleteTeaam([FromBody] DeleteTeamFromChampionat.DeleteTeam request)
+        {
+            return await Mediator.Send(request);
+        }
+
+
+        [Authorize(Roles = "admin")]
+        [HttpPost("AddMatch")]
+        public async Task<bool> AddMatch([FromBody] AddMatch.ChampionatAddMatch request)
         {
             return await Mediator.Send(request);
         }

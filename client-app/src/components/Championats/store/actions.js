@@ -8,7 +8,12 @@ const {
     getAllSuccess,
     addSuccess,
     addTeamSuccess,
-    getOneByIdSuccess
+    getOneByIdSuccess,
+    deleteTeamSuccess,
+    addMatchSuccess,
+    deleteSuccess,
+    getDefaultSuccess,
+    setDefaultLoading
 } = championatReducer.actions
 
 export const getAllAction = (params) => {
@@ -18,6 +23,19 @@ export const getAllAction = (params) => {
         suc: getAllSuccess,
         service: {
             func: api.getAll,
+            params
+        }
+    }
+    return defActionSlice(defActionObj)
+}
+
+export const getDefaultAction = (params) => {
+    const defActionObj = { 
+        req: setLoading,
+        fail: setError,
+        suc: getDefaultSuccess,
+        service: {
+            func: api.getDefault,
             params
         }
     }
@@ -37,6 +55,19 @@ export const addAction = (params) => {
     return defActionSlice(defActionObj)
 }
 
+export const deleteAction = (params) => {
+    const defActionObj = { 
+        req: setLoading,
+        fail: setError,
+        suc: deleteSuccess,
+        service: {
+            func: api.delete,
+            params
+        }
+    }
+    return defActionSlice(defActionObj)
+}
+
 export const addTeamAction = (params) => {
     const defActionObj = { 
         req: setLoading,
@@ -44,6 +75,32 @@ export const addTeamAction = (params) => {
         suc: addTeamSuccess,
         service: {
             func: api.addTeam,
+            params
+        }
+    }
+    return defActionSlice(defActionObj)
+}
+
+export const addMatchAction = (params) => {
+    const defActionObj = { 
+        req: setLoading,
+        fail: setError,
+        suc: addMatchSuccess,
+        service: {
+            func: api.addMatch,
+            params
+        }
+    }
+    return defActionSlice(defActionObj)
+}
+
+export const deleteTeamAction = (params) => {
+    const defActionObj = { 
+        req: setLoading,
+        fail: setError,
+        suc: deleteTeamSuccess,
+        service: {
+            func: api.deleteTeam,
             params
         }
     }

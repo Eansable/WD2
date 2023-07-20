@@ -18,5 +18,6 @@ namespace Application.Championats.Dto
         public int? ChampionatFormat { get; set; }
         public bool isActive { get; set; }
         public List<ChampionatStatsDto>? Table { get; set; }
+        public long? LogoId { get; set; }
     }
 }

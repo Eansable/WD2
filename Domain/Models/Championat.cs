@@ -18,5 +18,10 @@ namespace Domain.Models
         public bool IsActive { get; set; }
         public long? LogoId { get; set; }
         public LogoFile? LogoFile { get; set; }
+        public int LapsCount { get; set; }
+        public int CountYellowAfterDis { get; set; }
+        public int MinutesTime { get; set; }
+        public int MaxPlayerPerMatch { get; set; }
+        public bool IsDefaultChamp { get; set; }
     }
 }
