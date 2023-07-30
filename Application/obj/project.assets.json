@@ -5192,11 +5192,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Work\\PAF\\Application\\Application.csproj",
+      "projectUniqueName": "D:\\Work\\PAF\\WD2\\Application\\Application.csproj",
       "projectName": "Application",
-      "projectPath": "D:\\Work\\PAF\\Application\\Application.csproj",
+      "projectPath": "D:\\Work\\PAF\\WD2\\Application\\Application.csproj",
       "packagesPath": "C:\\Users\\Andrey\\.nuget\\packages\\",
-      "outputPath": "D:\\Work\\PAF\\Application\\obj\\",
+      "outputPath": "D:\\Work\\PAF\\WD2\\Application\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Andrey\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -5213,8 +5213,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "D:\\Work\\PAF\\Domain\\Domain.csproj": {
-              "projectPath": "D:\\Work\\PAF\\Domain\\Domain.csproj"
+            "D:\\Work\\PAF\\WD2\\Domain\\Domain.csproj": {
+              "projectPath": "D:\\Work\\PAF\\WD2\\Domain\\Domain.csproj"
             }
           }
         }

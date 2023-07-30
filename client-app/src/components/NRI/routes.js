@@ -1,3 +1,4 @@
+import EventsNRI from "./Events"
 import PositionsNRI from "./Positions/"
 import StadiumNRI from "./Stadiums"
 
@@ -13,9 +14,9 @@ export const routes = [
         children: <StadiumNRI />
     },
     {
-        label: "Позиции",
+        label: "Действия",
         key: '3',
-        children: <PositionsNRI></PositionsNRI>
+        children: <EventsNRI></EventsNRI>
     },
     {
         label: "Позиции",

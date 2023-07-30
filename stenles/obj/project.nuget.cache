@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "vhdIqGQTWQ7oRynN9CG+ZG/BaPjG7Qm/duWLxJA2pfKo0nIsPFkAiXp57yHvs6POmeBRT5YiqgvUlevtZt6XmQ==",
+  "dgSpecHash": "DIRh7G8rqKHdA3STei32Dfx2hFLRHe8aHK5M202lvdFTpwhNS1dj/NuOgRyGPsMYSsAZnklmSKPyJ0wrmRDEdw==",
   "success": true,
-  "projectFilePath": "D:\\Work\\PAF\\stenles\\stenles.csproj",
+  "projectFilePath": "D:\\Work\\PAF\\WD2\\stenles\\stenles.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Andrey\\.nuget\\packages\\fluentvalidation\\11.5.2\\fluentvalidation.11.5.2.nupkg.sha512",
     "C:\\Users\\Andrey\\.nuget\\packages\\fluentvalidation.aspnetcore\\11.3.0\\fluentvalidation.aspnetcore.11.3.0.nupkg.sha512",

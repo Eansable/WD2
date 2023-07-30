@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "rsCN8tyvAMuZLcHk54DsSodZBgtqxKhadEFREeNVTK9hi4wLEjQVAq8MCZqRa9pOAYglT2vLR4viaFAiCcvbvw==",
+  "dgSpecHash": "Gmmd/7yFzy7K8FEw1A1crMXY4x4Qw2/oVE7abMY6kwKgNgHnvZ9r2iA2WJUChGBh2UhdaS1bue+RwKfs+y3iSQ==",
   "success": true,
-  "projectFilePath": "D:\\Work\\PAF\\Application\\Application.csproj",
+  "projectFilePath": "D:\\Work\\PAF\\WD2\\Application\\Application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Andrey\\.nuget\\packages\\fluentvalidation\\11.5.2\\fluentvalidation.11.5.2.nupkg.sha512",
     "C:\\Users\\Andrey\\.nuget\\packages\\mediatr\\11.1.0\\mediatr.11.1.0.nupkg.sha512",

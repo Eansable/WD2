@@ -7,9 +7,7 @@ const NRI = () => {
             tabPosition="left"
             items={routes}
         >
-аптьадлтьадльтдла
         </Tabs>
-        авптатарар
     </div>
 }
 

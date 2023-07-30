@@ -1,0 +1,96 @@
+/* ONE MATCH */
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+}
+/*  */
+
+/* MATCH BANNER */
+.baner {
+    display: grid;
+    grid-template-columns: 2fr 1fr 2fr;
+    width: 100%;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    border: 1px solid #888888;
+    aspect-ratio: 3 / 1;
+}
+
+.visitor {
+    grid-column-end: -1;
+    grid-column-start: -2;
+    grid-row-start: 1;
+    grid-row-end: -1;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 8px;
+    font-size: 36px;
+    font-weight: 500;
+}
+
+.visitor img,
+.home img 
+{
+    width: 60px;
+    aspect-ratio: 1 / 1;
+}
+
+.home {
+    grid-column-end: 2;
+    grid-column-start: 1;
+    grid-row-start: 1;
+    grid-row-end: -1;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: 8px;
+    font-size: 36px;
+    font-weight: 500;
+}
+
+.baner__info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.baner__date {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.baner__date footer,
+.baner__date header {
+    padding: 6px;
+    font-size: 24px;
+}
+
+.baner__date footer {
+    border-bottom: green 1px solid;
+}
+
+.stadiums {
+    position: absolute;
+    top: 48px;
+    color: #000000;
+    text-decoration: none;
+    text-align: center;
+}
+
+/*  */
+
+/* MANAGE MATCH */
+
+.manage {
+    display: flex;
+    gap: 16px;
+}
+
+/*  */

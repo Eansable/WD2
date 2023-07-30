@@ -4,7 +4,6 @@ import styles from "./styles.module.css"
 import CustomButton from "../CustomElement/Button"
 import { useAppDispatch, useAppSelector } from "@/helpers/hooks"
 import { deleteAction } from "./store/actions"
-import { useReducer } from "react"
 
 interface PropsType {
     championat: ChampionatType

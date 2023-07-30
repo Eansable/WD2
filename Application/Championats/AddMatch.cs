@@ -31,7 +31,7 @@ namespace Application.Championats
                     HomeTeamId = request.HomeId,
                     VisitorId = request.VisitorId,
                     StadiumId = request.StadiumId,
-                    StartMatch = DateTime.Now
+                    StartMatch = request.DateStartMatch.HasValue ? request.DateStartMatch.Value : DateTime.Now
                 };
                 await _context.AddAsync(match);
                 return await _context.SaveChangesAsync() > 0;

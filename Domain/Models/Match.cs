@@ -21,6 +21,10 @@ namespace Domain.Models
         public long? StadiumId { get; set; }
         public Stadium Stadium { get; set; }
         public int Round { get; set; }
+        public string? Score { get; set; }
+        public bool IsLive { get; set; }
+        public bool IsEnded { get; set; }
+        public bool FanCount { get; set; }
 
     }
 }

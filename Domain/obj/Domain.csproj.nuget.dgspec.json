@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Work\\PAF\\Domain\\Domain.csproj": {}
+    "D:\\Work\\PAF\\WD2\\Domain\\Domain.csproj": {}
   },
   "projects": {
-    "D:\\Work\\PAF\\Domain\\Domain.csproj": {
+    "D:\\Work\\PAF\\WD2\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Work\\PAF\\Domain\\Domain.csproj",
+        "projectUniqueName": "D:\\Work\\PAF\\WD2\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "D:\\Work\\PAF\\Domain\\Domain.csproj",
+        "projectPath": "D:\\Work\\PAF\\WD2\\Domain\\Domain.csproj",
         "packagesPath": "C:\\Users\\Andrey\\.nuget\\packages\\",
-        "outputPath": "D:\\Work\\PAF\\Domain\\obj\\",
+        "outputPath": "D:\\Work\\PAF\\WD2\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Andrey\\AppData\\Roaming\\NuGet\\NuGet.Config",

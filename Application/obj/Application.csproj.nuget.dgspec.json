@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Work\\PAF\\Application\\Application.csproj": {}
+    "D:\\Work\\PAF\\WD2\\Application\\Application.csproj": {}
   },
   "projects": {
-    "D:\\Work\\PAF\\Application\\Application.csproj": {
+    "D:\\Work\\PAF\\WD2\\Application\\Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Work\\PAF\\Application\\Application.csproj",
+        "projectUniqueName": "D:\\Work\\PAF\\WD2\\Application\\Application.csproj",
         "projectName": "Application",
-        "projectPath": "D:\\Work\\PAF\\Application\\Application.csproj",
+        "projectPath": "D:\\Work\\PAF\\WD2\\Application\\Application.csproj",
         "packagesPath": "C:\\Users\\Andrey\\.nuget\\packages\\",
-        "outputPath": "D:\\Work\\PAF\\Application\\obj\\",
+        "outputPath": "D:\\Work\\PAF\\WD2\\Application\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Andrey\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,8 +28,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\Work\\PAF\\Domain\\Domain.csproj": {
-                "projectPath": "D:\\Work\\PAF\\Domain\\Domain.csproj"
+              "D:\\Work\\PAF\\WD2\\Domain\\Domain.csproj": {
+                "projectPath": "D:\\Work\\PAF\\WD2\\Domain\\Domain.csproj"
               }
             }
           }
@@ -81,14 +81,14 @@
         }
       }
     },
-    "D:\\Work\\PAF\\Domain\\Domain.csproj": {
+    "D:\\Work\\PAF\\WD2\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Work\\PAF\\Domain\\Domain.csproj",
+        "projectUniqueName": "D:\\Work\\PAF\\WD2\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "D:\\Work\\PAF\\Domain\\Domain.csproj",
+        "projectPath": "D:\\Work\\PAF\\WD2\\Domain\\Domain.csproj",
         "packagesPath": "C:\\Users\\Andrey\\.nuget\\packages\\",
-        "outputPath": "D:\\Work\\PAF\\Domain\\obj\\",
+        "outputPath": "D:\\Work\\PAF\\WD2\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Andrey\\AppData\\Roaming\\NuGet\\NuGet.Config",

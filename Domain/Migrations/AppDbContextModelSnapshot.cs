@@ -195,6 +195,12 @@ namespace Domain.Migrations
                     b.Property<bool>("IsDefaultChamp")
                         .HasColumnType("boolean");
 
+                    b.Property<bool>("IsNeededSubsToProtocol")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("IsRevertSubs")
+                        .HasColumnType("boolean");
+
                     b.Property<int>("LapsCount")
                         .HasColumnType("integer");
 
@@ -218,6 +224,9 @@ namespace Domain.Migrations
 
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("timestamp with time zone");
+
+                    b.Property<int>("SubsCount")
+                        .HasColumnType("integer");
 
                     b.Property<string>("YearString")
                         .HasColumnType("text");
@@ -322,14 +331,26 @@ namespace Domain.Migrations
                     b.Property<long>("ChampionatId")
                         .HasColumnType("bigint");
 
+                    b.Property<bool>("FanCount")
+                        .HasColumnType("boolean");
+
                     b.Property<long>("HomeTeamId")
                         .HasColumnType("bigint");
+
+                    b.Property<bool>("IsEnded")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("IsLive")
+                        .HasColumnType("boolean");
 
                     b.Property<int?>("MatchResult")
                         .HasColumnType("integer");
 
                     b.Property<int>("Round")
                         .HasColumnType("integer");
+
+                    b.Property<string>("Score")
+                        .HasColumnType("text");
 
                     b.Property<long?>("StadiumId")
                         .HasColumnType("bigint");
@@ -403,6 +424,9 @@ namespace Domain.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("boolean");
 
+                    b.Property<long>("LogoId")
+                        .HasColumnType("bigint");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
@@ -412,6 +436,8 @@ namespace Domain.Migrations
                         .HasColumnType("text");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("LogoId");
 
                     b.ToTable("Events");
                 });
@@ -827,6 +853,17 @@ namespace Domain.Migrations
                     b.Navigation("Player");
 
                     b.Navigation("Team");
+                });
+
+            modelBuilder.Entity("Domain.Models.NRI.Event", b =>
+                {
+                    b.HasOne("Domain.Models.LogoFile", "Logo")
+                        .WithMany()
+                        .HasForeignKey("LogoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Logo");
                 });
 
             modelBuilder.Entity("Domain.Models.NRI.Stadium", b =>

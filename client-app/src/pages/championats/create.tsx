@@ -1,7 +1,7 @@
 'use client'
 
 import { addAction } from "@/components/Championats/store/actions"
-import {  ChampionatType } from "@/components/Championats/types"
+import { ChampionatType } from "@/components/Championats/types"
 import CustomButton from "@/components/CustomElement/Button"
 import FileLoader from "@/components/CustomElement/FileLoader"
 import CustomInput from "@/components/CustomElement/Input"
@@ -44,9 +44,7 @@ const CreateChampionat = ({ championat }: PropsType) => {
 
     useEffect(() => {
         if (championat) {
-            console.log(championat);
-            
-            const values:ChampionatType = form.getFieldsValue()
+            const values: ChampionatType = form.getFieldsValue()
             let key: keyof ChampionatType
             for (key in values) {
                 form.setFieldValue(key, championat[key])

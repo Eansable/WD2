@@ -12,5 +12,7 @@ namespace Domain.Models.NRI
         public string ShortName { get; set; }
         public DateTime Create { get; set; }
         public bool IsDeleted { get; set; }
+        public long LogoId { get; set; }
+        public LogoFile Logo { get; set; }
     }
 }

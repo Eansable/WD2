@@ -3246,11 +3246,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Work\\PAF\\stenles\\stenles.csproj",
+      "projectUniqueName": "D:\\Work\\PAF\\WD2\\stenles\\stenles.csproj",
       "projectName": "stenles",
-      "projectPath": "D:\\Work\\PAF\\stenles\\stenles.csproj",
+      "projectPath": "D:\\Work\\PAF\\WD2\\stenles\\stenles.csproj",
       "packagesPath": "C:\\Users\\Andrey\\.nuget\\packages\\",
-      "outputPath": "D:\\Work\\PAF\\stenles\\obj\\",
+      "outputPath": "D:\\Work\\PAF\\WD2\\stenles\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Andrey\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -3268,11 +3268,11 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "D:\\Work\\PAF\\Application\\Application.csproj": {
-              "projectPath": "D:\\Work\\PAF\\Application\\Application.csproj"
+            "D:\\Work\\PAF\\WD2\\Application\\Application.csproj": {
+              "projectPath": "D:\\Work\\PAF\\WD2\\Application\\Application.csproj"
             },
-            "D:\\Work\\PAF\\Domain\\Domain.csproj": {
-              "projectPath": "D:\\Work\\PAF\\Domain\\Domain.csproj"
+            "D:\\Work\\PAF\\WD2\\Domain\\Domain.csproj": {
+              "projectPath": "D:\\Work\\PAF\\WD2\\Domain\\Domain.csproj"
             }
           }
         }

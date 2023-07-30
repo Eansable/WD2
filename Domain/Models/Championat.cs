@@ -23,5 +23,8 @@ namespace Domain.Models
         public int MinutesTime { get; set; }
         public int MaxPlayerPerMatch { get; set; }
         public bool IsDefaultChamp { get; set; }
+        public int SubsCount { get; set; }
+        public bool IsRevertSubs { get; set; }
+        public bool IsNeededSubsToProtocol { get; set; }
     }
 }

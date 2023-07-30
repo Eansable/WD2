@@ -1,16 +1,21 @@
 'use client'
 
-import { DatePicker, Modal, Select } from "antd";
+import { DatePicker, Modal, Select, TimePicker } from "antd";
 import CustomButton from "../CustomElement/Button";
 import styles from "./styles.module.css";
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "@/helpers/hooks";
 import { addMatchAction, addTeamAction, deleteAction, getOneByIdAction } from "./store/actions";
+import { getMatchesByChampIdAction } from "../Matches/store/actions";
 import { getAllTeamAction } from "../Teams/store/actions";
 import ChampionatTable from "./ChampionatTable";
 import { getAllAction } from "../NRI/Stadiums/store/actions";
 import { useRouter } from "next/navigation";
 import CreateChampionat from "@/pages/championats/create";
+import MatchesList from "../Matches/MatchesList";
+import moment from "moment";
+import dayjs, { Dayjs } from "dayjs"
+import Notifications from "@/helpers/Notifications";
 
 interface PropsType {
   id: number;
@@ -20,18 +25,21 @@ interface MatchForm {
   homeId?: number,
   visitorId?: number,
   stadiumId?: number,
-  dateStartMatch?: Date
+  dateStartMatch: Date,
+  time?: Date
 }
 
 const OneChampionat = ({ id }: PropsType) => {
   const dispatch = useAppDispatch()
   const [openAddTeam, setOpenAddTeam] = useState(false)
   const [openAddMatch, setOpenAddMatch] = useState(false)
-  const [newMatch, setNewMatch] = useState<MatchForm>()
+  const [activeTab, setActiveTab] = useState(0)
+  const [newMatch, setNewMatch] = useState<MatchForm>({dateStartMatch: new Date()})
   const { teams } = useAppSelector(state => state.teamReducer)
   const { oneChampionat, isLoading, changed, deleted } = useAppSelector(state => state.championatReducer)
   const { stadiums } = useAppSelector(state => state.stadiumReducer)
   const { roles } = useAppSelector(state => state.accountReducer)
+  const { matches, isLoading: isMatchesLoading } = useAppSelector(state => state.matchesReducer)
   const [searchTeam, setSearchTeam] = useState('')
   const [teamId, setTeamId] = useState<number>()
   const router = useRouter()
@@ -45,7 +53,7 @@ const OneChampionat = ({ id }: PropsType) => {
 
   const closeModalAddMatch = () => {
     setOpenAddMatch(false)
-    setNewMatch(undefined)
+    setNewMatch({dateStartMatch: new Date()})
   }
 
   const addTeam = () => {
@@ -62,17 +70,56 @@ const OneChampionat = ({ id }: PropsType) => {
 
   const getFormat = (format: number) => {
     switch (format) {
-      case 1: 
+      case 1:
         return "Кубок"
       default:
-        return "Чемпионат"  
+        return "Чемпионат"
     }
   }
 
   const getDateString = (date: Date) => {
-    const day = date.getUTCDate() < 10 ? `0${date.getUTCDate()}`  : `${date.getUTCDate()}`
-    const month = date.getUTCMonth() + 1 < 10 ? `0${date.getUTCMonth() + 1}`  : `${date.getUTCMonth() + 1}`
+    const day = date.getUTCDate() < 10 ? `0${date.getUTCDate()}` : `${date.getUTCDate()}`
+    const month = date.getUTCMonth() + 1 < 10 ? `0${date.getUTCMonth() + 1}` : `${date.getUTCMonth() + 1}`
     return `${day}-${month}-${date.getFullYear()}`
+  }
+
+  const getActiveContent = (active: number) => {
+    switch (active) {
+      case 1:
+        return matches ? <MatchesList matches={matches} isResult={false} /> : null
+      case 2:
+        return matches ? <MatchesList matches={matches} isResult={true} /> : null
+      case 3:
+        return <div>Раздел в разработке </div>
+      default:
+        return oneChampionat?.table ? <ChampionatTable table={oneChampionat?.table} championatId={oneChampionat.id} /> : null
+    }
+  }
+
+
+  const handleTime = (value: Dayjs | null) => {
+    const date = new Date(newMatch.dateStartMatch)
+    if (value === null)
+    return 
+    date.setHours(value.hour())
+    date.setMinutes(value.minute())
+    setNewMatch({
+      ...newMatch,
+      dateStartMatch: date
+    })
+  }
+
+  const handleDate = (value: Dayjs | null) => {
+    const date = new Date(newMatch.dateStartMatch)
+    if (value === null)
+       return 
+    date.setDate(value.date())
+    date.setMonth(value.month())
+    date.setFullYear(value.year())
+    setNewMatch({
+      ...newMatch,
+      dateStartMatch: date
+    })
   }
 
   useEffect(() => {
@@ -86,8 +133,10 @@ const OneChampionat = ({ id }: PropsType) => {
   }, [openAddMatch])
 
   useEffect(() => {
-    if (!isNaN(id))
+    if (!isNaN(id)) {
       dispatch(getOneByIdAction({ id: Number(id) }))
+      dispatch(getMatchesByChampIdAction({ champId: Number(id) }))
+    }
   }, [id])
 
   useEffect(() => {
@@ -99,6 +148,7 @@ const OneChampionat = ({ id }: PropsType) => {
     if (changed) {
       dispatch(getOneByIdAction({ id: Number(id) }))
       closeModalAddTeam()
+      Notifications.success(changed, 10000)
     }
 
   }, [changed])
@@ -120,10 +170,40 @@ const OneChampionat = ({ id }: PropsType) => {
             Формат: {oneChampionat?.championatFormat !== undefined ? getFormat(oneChampionat.championatFormat) : null}
           </p>
           <p>
-            Начало: { oneChampionat?.startDate ? getDateString(new Date(oneChampionat.startDate)) : null}
+            Начало: {oneChampionat?.startDate ? getDateString(new Date(oneChampionat.startDate)) : null}
+          </p>
+          <p>
+            Окончание: {oneChampionat?.endDate ? getDateString(new Date(oneChampionat.endDate)) : null}
           </p>
         </div>
-        {oneChampionat?.table ? <ChampionatTable table={oneChampionat?.table} championatId={oneChampionat.id}></ChampionatTable> : null}
+        <div className={styles.champ__tabs}>
+          <div
+            className={`${styles.tab} ${activeTab === 0 ? styles.tab_active : ''}`}
+            onClick={() => setActiveTab(0)}
+          >
+            Таблица
+          </div>
+          <div
+            className={`${styles.tab} ${activeTab === 1 ? styles.tab_active : ''}`}
+            onClick={() => setActiveTab(1)}
+          >
+            Результаты
+          </div>
+          <div
+            className={`${styles.tab} ${activeTab === 2 ? styles.tab_active : ''}`}
+            onClick={() => setActiveTab(2)}
+          >
+            Календарь
+          </div>
+          <div
+            className={`${styles.tab} ${activeTab === 3 ? styles.tab_active : ''}`}
+            onClick={() => setActiveTab(3)}
+          >
+            Статистика
+          </div>
+        </div>
+        {getActiveContent(activeTab)}
+
       </div>
       {roles.includes('admin') ? <div className={styles.championat__manage}>
         <CustomButton
@@ -235,7 +315,13 @@ const OneChampionat = ({ id }: PropsType) => {
           }) : null}
         </Select>
         <DatePicker
+          value={dayjs(newMatch?.dateStartMatch)}
+          onChange={handleDate}
         ></DatePicker>
+        <TimePicker
+          format="HH:mm"
+          onChange={handleTime}
+        ></TimePicker>
         <CustomButton onClick={addMatch}>Добавить матч</CustomButton>
       </Modal>
     </div>
