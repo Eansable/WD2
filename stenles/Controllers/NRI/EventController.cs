@@ -19,7 +19,7 @@ namespace stenles.Controllers.NRI
 
         [Authorize(Roles = "admin")]
         [HttpPost("Add")]
-        public async Task<bool> Add([FromBody] Add.EventAdd query)
+        public async Task<bool> Add([FromForm] Add.EventAdd query)
         {
             return await Mediator.Send(query);
         }

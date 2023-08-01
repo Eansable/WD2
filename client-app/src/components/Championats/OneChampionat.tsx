@@ -13,7 +13,6 @@ import { getAllAction } from "../NRI/Stadiums/store/actions";
 import { useRouter } from "next/navigation";
 import CreateChampionat from "@/pages/championats/create";
 import MatchesList from "../Matches/MatchesList";
-import moment from "moment";
 import dayjs, { Dayjs } from "dayjs"
 import Notifications from "@/helpers/Notifications";
 
@@ -148,6 +147,7 @@ const OneChampionat = ({ id }: PropsType) => {
     if (changed) {
       dispatch(getOneByIdAction({ id: Number(id) }))
       closeModalAddTeam()
+      closeModalAddMatch()
       Notifications.success(changed, 10000)
     }
 

@@ -11,6 +11,7 @@ import { useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
 import styles from "./styles.module.css"
 import loader from "@/components/CustomElement/Loader/LocalLoader"
+import Notifications from "@/helpers/Notifications"
 
 interface PropsType {
     championat?: ChampionatType
@@ -39,6 +40,7 @@ const CreateChampionat = ({ championat }: PropsType) => {
     useEffect(() => {
         if (changed) {
             router.push('/championats/' + addedId)
+            Notifications.success(changed, 10)
         }
     }, [changed])
 

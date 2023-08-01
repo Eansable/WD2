@@ -1,14 +1,25 @@
+import { notification } from "antd"
+
 const success = (text:string, duration:number = 15) => {
-    const notification = document.createElement("div")
-    notification.innerText = text
-    document.body.appendChild(notification)
-    setTimeout(() => {
-        document.body.removeChild(notification)
-    }, duration)
+   notification.success({
+    message: text,
+    placement: "top",
+    duration
+   })
+}
+
+const warning = (text:string, duration:number = 15) => {
+   notification.warning({
+    message: text,
+    placement: "top",
+    duration
+   })
 }
 
 const Notifications = {
     success,
+    warning
 }
+
 
 export default Notifications

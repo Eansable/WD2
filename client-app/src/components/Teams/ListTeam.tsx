@@ -13,6 +13,7 @@ import { addTeamAction, getAllTeamAction } from "./store/actions";
 import FileLoader from "../CustomElement/FileLoader";
 import { TeamInterface } from "./types";
 import { editTeamAction } from "./store/actions";
+import Notifications from "@/helpers/Notifications";
 
 const ListTeam = () => {
   const dispatch = useAppDispatch();
@@ -68,6 +69,7 @@ const ListTeam = () => {
     if (changed) {
       dispatch(getAllTeamAction());
       closeModal();
+      Notifications.success(changed, 10)
     }
   }, [changed]);
 
@@ -119,7 +121,7 @@ const ListTeam = () => {
                 Выберите лого:
                 <FileLoader
                   onChange={(e) => e.target.files?.length ? setLogo(e.target.files[0]) : setLogo(undefined)}
-                ></FileLoader>
+                />
               </label>
               <footer className={styles.modal__footer}>
                 <CustomButton onClick={saveTeam} disabled={!Boolean(name)}>Сохранить</CustomButton>
