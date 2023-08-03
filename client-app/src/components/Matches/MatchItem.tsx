@@ -10,19 +10,20 @@ const MatchItem = ({ match }: PropsType) => {
     return <Link href={`/match/${match.id}`} className={styles.match__wrapper}>
 
             <div className={styles.match__team}>
-                {match?.homeLogo ? <img src={`https://localhost:44326/api/logo/GetById?id=${match.homeLogo}`}></img> : <img src='./defaultLeague.png' />}
-                <p>{match.homeName}</p>
+                {match?.home.teamLogo ? <img src={`https://localhost:44326/api/logo/GetById?id=${match.home.teamLogo}`}></img> : <img src='./defaultLeague.png' />}
+                <p>{match.home.teamName}</p>
             </div>
-        <p className={styles.match__result}> vs </p>
+        <p className={styles.match__result}> {match?.score ? match.score : "vs"} </p>
             <div className={styles.match__team}>
-                {match?.visitorLogo ? <img src={`https://localhost:44326/api/logo/GetById?id=${match.visitorLogo}`}></img> : <img src='./defaultLeague.png' />}
-                <p>{match.visitorName}</p>
+                {match?.visitor.teamLogo ? <img src={`https://localhost:44326/api/logo/GetById?id=${match.visitor.teamLogo}`}></img> : <img src='./defaultLeague.png' />}
+                <p>{match.visitor.teamName}</p>
             </div>
         <div className={styles.match__date}>
             <p>
                 {moment(new Date(match.date)).format("DD-MM-YYYY HH:mm")}
             </p>
         </div>
+        {match.isLive ? <div className={styles.live}>Live</div> : null}
 
     </Link >
 }

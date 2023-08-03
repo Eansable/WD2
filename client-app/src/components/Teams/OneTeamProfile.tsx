@@ -14,17 +14,18 @@ const OneTeamProfile = ({ id }: OneTeamProfileType) => {
   const dispatch = useAppDispatch();
   const { oneTeam, isLoading } = useAppSelector((state) => state.teamReducer);
 
- 
+
   useEffect(() => {
-    dispatch(getOneTeamAction())
-  }, [])
-  
+    if (id)
+      dispatch(getOneTeamAction())
+  }, [id])
+
   return !isLoading ? (
     <section>Team with id: {id}
-    <PlayersTeam teamId={id}></PlayersTeam>
-    
+      <PlayersTeam teamId={id}></PlayersTeam>
+
     </section>
-    
+
   ) : (
     <>{LocaleLoading}</>
   );

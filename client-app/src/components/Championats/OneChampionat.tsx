@@ -85,9 +85,9 @@ const OneChampionat = ({ id }: PropsType) => {
   const getActiveContent = (active: number) => {
     switch (active) {
       case 1:
-        return matches ? <MatchesList matches={matches} isResult={false} /> : null
+        return  <MatchesList matches={matches} isResult={true} champId={id} /> 
       case 2:
-        return matches ? <MatchesList matches={matches} isResult={true} /> : null
+        return <MatchesList matches={matches} isResult={false} champId={id} />
       case 3:
         return <div>Раздел в разработке </div>
       default:
@@ -134,7 +134,6 @@ const OneChampionat = ({ id }: PropsType) => {
   useEffect(() => {
     if (!isNaN(id)) {
       dispatch(getOneByIdAction({ id: Number(id) }))
-      dispatch(getMatchesByChampIdAction({ champId: Number(id) }))
     }
   }, [id])
 

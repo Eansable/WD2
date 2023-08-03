@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace Application.Matches.Dto
 {
-    public class OneMatchDto : MatchDto
+    public class MatchPlayerDto
     {
-        public string? StadiumName { get; set; }
-        public long? StadiumId { get; set; }
-
-
+        public string PlayerName { get; set; }
+        public long PlayerId { get; set; }
+        public bool IsSquad { get; set; }
     }
 }

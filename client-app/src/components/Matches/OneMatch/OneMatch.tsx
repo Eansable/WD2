@@ -10,13 +10,14 @@ import styles from "./styles.module.css"
 import StartMatch from "./StartMatch"
 import AddSquad from "./AddSquad"
 import AddResult from "./AddResult"
+import Notifications from "@/helpers/Notifications"
 interface PropsType {
     id: number
 }
 
 const OneMatch = ({ id }: PropsType) => {
     const dispatch = useAppDispatch()
-    const { oneMatch, isLoading } = useAppSelector(state => state.matchesReducer)
+    const { oneMatch, isLoading, changed } = useAppSelector(state => state.matchesReducer)
     const { roles } = useAppSelector(state => state.accountReducer)
     const [activeStartMatch, setActiveStartMatch] = useState(false)
     const [activeAddSquad, setActiveAddSquad] = useState(false)
@@ -27,6 +28,17 @@ const OneMatch = ({ id }: PropsType) => {
             dispatch(getByIdAction({ matchId: id }))
         }
     }, [id])
+
+    useEffect(() => {
+        if (oneMatch?.isLive)
+            setActiveStartMatch(oneMatch.isLive)
+    }, [oneMatch])
+
+    useEffect(() => {
+        if (changed) {
+            Notifications.success(changed, 10)
+        }
+    }, [changed])
 
     return isLoading ? <>{LocalLoading}</> :
         <div className={styles.wrapper}>
@@ -41,8 +53,8 @@ const OneMatch = ({ id }: PropsType) => {
                     setActiveAddResult={setActiveAddResult}
                 />
                 : null}
-            {activeStartMatch ? <StartMatch></StartMatch> : null}
-            {activeAddSquad ? <AddSquad></AddSquad> : null}
+            {activeStartMatch && oneMatch ? <StartMatch match={oneMatch} /> : null}
+            {activeAddSquad ? <AddSquad id={id}></AddSquad> : null}
             {activeAddResult ? <AddResult></AddResult> : null}
 
         </div>

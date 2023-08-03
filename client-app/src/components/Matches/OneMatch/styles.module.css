@@ -6,6 +6,7 @@
     gap: 16px;
     width: 100%;
 }
+
 /*  */
 
 /* MATCH BANNER */
@@ -17,6 +18,16 @@
     border-radius: 5px;
     border: 1px solid #888888;
     aspect-ratio: 3 / 1;
+    position: relative;
+}
+
+.baner a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #000000;
+
 }
 
 .visitor {
@@ -33,8 +44,7 @@
 }
 
 .visitor img,
-.home img 
-{
+.home img {
     width: 60px;
     aspect-ratio: 1 / 1;
 }
@@ -84,6 +94,30 @@
     text-align: center;
 }
 
+.live {
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    padding-left: 20px;
+}
+
+.live::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #ff0019;
+    position: absolute;
+    top: calc(50% - 5px);
+    left: 5px;
+}
+
+.score {
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: 5px;
+}
+
 /*  */
 
 /* MANAGE MATCH */
@@ -91,6 +125,80 @@
 .manage {
     display: flex;
     gap: 16px;
+}
+
+/*  */
+
+/* ADD SQUAD */
+
+.add__squad {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+.add__squad_home,
+.add__squad_visitor {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.checkbox {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+/*  */
+
+/* START MATCH */
+.players_list {
+    display: flex;
+    justify-content: space-between;
+    gap: 32px;
+    background-color: #f9f9f9;
+    border: #888888 1px solid;
+    padding: 32px;
+    border-radius: 5px;
+}
+
+.team_item,
+.visitor_team_item
+{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+}
+
+.player_item {
+    display: flex;
+    gap: 8px;
+    justify-content: space-between;
+    border: #888888 1px solid;
+    padding: 6px 14px;
+    align-items: center;
+}
+
+.player_item button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.visitor_team_item .player_item {
+    flex-direction: row-reverse;
+}
+
+.player_item img {
+    width: 16px;
+    aspect-ratio: 1 / 1;
+}
+
+.player_manage {
+    display: flex;
 }
 
 /*  */

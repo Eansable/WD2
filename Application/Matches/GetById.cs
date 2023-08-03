@@ -28,28 +28,58 @@ namespace Application.Matches
 
             public async Task<OneMatchDto> Handle(MatchesGetById request, CancellationToken cancellationToken)
             {
+               
                 var match = _context.Matches.Where(m => m.Id == request.MatchId)
                     .Include(m => m.HomeTeam)
                     .Include(m => m.Visitor)
-                    .Select(m => new OneMatchDto()
-                    {
-                        Id = m.Id,
-                        HomeId = m.HomeTeam.Id,
-                        HomeName = m.HomeTeam.Name,
-                        HomeLogo = m.HomeTeam.LogoId,
-                        VisitorId = m.Visitor.Id,
-                        VisitorName = m.Visitor.Name,
-                        VisitorLogo = m.Visitor.LogoId,
-                        Date = m.StartMatch.ToLocalTime(),
-                        StadiumId = m.StadiumId,
-                        StadiumName = m.Stadium.Name
-                    })
+                    .Include(m => m.Stadium)
                     .FirstOrDefault();
-                if(match == null)
+
+                var homePlayers = _context.Players.Where(p => p.TeamId == match.HomeTeamId)
+                    .Select(p => new MatchPlayerDto()
+                    {
+                        PlayerId = p.Id,
+                        PlayerName = p.SecondName + " " + p.Name,
+                        IsSquad = _context.Squads.Any(s => s.PlayerId == p.Id && s.MatchId == match.Id)
+                    })
+                    .ToList();
+
+                var visitorPlayers = _context.Players.Where(p => p.TeamId == match.VisitorId)
+                    .Select(p => new MatchPlayerDto()
+                    {
+                        PlayerId = p.Id,
+                        PlayerName = p.SecondName + " " + p.Name,
+                        IsSquad = _context.Squads.Any(s => s.PlayerId == p.Id && s.MatchId == match.Id)
+                    })
+                    .ToList();
+
+                var result = new OneMatchDto()
+                {
+                    Id = match.Id,
+                    Home = new TeamMatchDto() { 
+                        TeamId = match.HomeTeam.Id, 
+                        TeamName = match.HomeTeam.Name, 
+                        TeamLogo = match.HomeTeam.LogoId,
+                        TeamPlayers = homePlayers
+                    },
+                    Visitor = new TeamMatchDto() { 
+                        TeamId = match.Visitor.Id, 
+                        TeamName = match.Visitor.Name,
+                        TeamLogo = match.Visitor.LogoId,
+                        TeamPlayers = visitorPlayers
+                    },
+                    Date = match.StartMatch.ToLocalTime(),
+                    StadiumId = match.StadiumId,
+                    StadiumName = match.Stadium.Name,
+                    IsLive= match.IsLive,
+                    IsEnded= match.IsEnded,
+                    Score = match.HomeGoals.ToString() + ":" + match.VisitorGoals.ToString(),
+                }; 
+                if (match == null)
                 {
                     throw new RestException(System.Net.HttpStatusCode.NotFound, "Матч не найден!");
                 };    
-                return match;
+                return result;
             }
         }
     }

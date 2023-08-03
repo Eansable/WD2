@@ -4,12 +4,14 @@ import { MatchType } from "../types";
 interface StateType {
     isLoading: boolean,
     matches?: MatchType[]
-    oneMatch?: MatchType
+    oneMatch?: MatchType,
+    changed?: string
 }
 
 const initialState: StateType = {
     isLoading: false,
-    matches: undefined
+    matches: undefined,
+    changed: undefined
 }
 
 export const matchesReducer = createSlice({
@@ -18,6 +20,7 @@ export const matchesReducer = createSlice({
     reducers: {
         setLoading: (state) => {
             state.isLoading = true
+            state.changed = undefined
         },
         setError: (state) => {
             state.isLoading = false
@@ -29,6 +32,22 @@ export const matchesReducer = createSlice({
         getByIdSuccess: (state, action) => {
             state.isLoading = false
             state.oneMatch = action.payload
+        },
+        startMatchSuccess: (state, action) => {
+            state.isLoading = false
+            state.changed = action.payload ? "Матч начат!" : undefined
+        },
+        endMatchSuccess: (state, action) => {
+            state.isLoading = false
+            state.changed = action.payload ? "Матч закончен!" : undefined
+        },
+        addSquadSuccess: (state, action) => {
+            state.isLoading = false
+            state.changed = action.payload ? "Стартовый состав добавлен на игру!" : undefined
+        },
+        addGoalSuccess: (state, action) => {
+            state.isLoading = false
+            state.changed = action.payload ? "Гол записан!" : undefined
         }
     }
 })

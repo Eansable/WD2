@@ -25,11 +25,12 @@ export const PlayersReducer = createSlice({
             state.isLoading = false
         },
         getByTeamIdSuccess: (state, action) => {
+            state.isLoading = false
             state.players = action.payload
         },
         addSuccess: (state, action) => {
             state.isLoading = false,
-            state.changed = action.payload ? "Игрок успешно создан" : undefined
+            state.changed = action.payload ? "Игрок успешно добавлен" : undefined
         }
     }
 })

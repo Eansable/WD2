@@ -23,7 +23,25 @@ namespace stenles.Controllers
         }
         [Authorize(Roles ="admin")]
         [HttpPost("StartMatch")]
-        public async Task<bool> GetById([FromBody] StartMatch.StartMatchRequest request)
+        public async Task<bool> StartMatch([FromBody] StartMatch.StartMatchRequest request)
+        {
+            return await Mediator.Send(request);
+        }
+        [Authorize(Roles = "admin")]
+        [HttpPost("EndMatch")]
+        public async Task<bool> EndMatch([FromBody] EndMatch.EndMatchRequest request)
+        {
+            return await Mediator.Send(request);
+        }
+        [Authorize(Roles = "admin")]
+        [HttpPost("AddSquad")]
+        public async Task<bool> AddSquad([FromBody] AddSquad.AddSquadRequest request)
+        {
+            return await Mediator.Send(request);
+        }
+        [Authorize(Roles = "admin")]
+        [HttpPost("AddGoal")]
+        public async Task<bool> AddGoal([FromBody] AddGoal.MatchAddGoal request)
         {
             return await Mediator.Send(request);
         }

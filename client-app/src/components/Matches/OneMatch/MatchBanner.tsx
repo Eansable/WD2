@@ -7,41 +7,50 @@ import { Dispatch, SetStateAction } from "react"
 
 interface PropsType {
     match?: MatchType,
-    
+
 }
 
 const MatchBanner = ({ match }: PropsType) => {
     return match ? <section className={styles.baner}>
         <div className={styles.home}>
-            <p>{match.homeName}</p>
-            <img
-                src={match.homeLogo ? `https://localhost:44326/api/logo/GetById?id=${match.homeLogo}` : './defaultLeague.png'}
-                alt={match.homeName}
-            />
+            <Link href={`/teams/${match.home.teamId}`}>
+                <p>{match.home.teamName}</p>
+                <img
+                    src={match.home.teamLogo ? `https://localhost:44326/api/logo/GetById?id=${match.home.teamLogo}` : './defaultLeague.png'}
+                    alt={match.home.teamName}
+                />
+            </Link>
         </div>
         <div className={styles.baner__info}>
-            <Link 
-            href={`/stadiums/${match.stadiumId}`} 
-            className={styles.stadiums}>
+            <Link
+                href={`/stadiums/${match.stadiumId}`}
+                className={styles.stadiums}>
                 {match.stadiumName}
             </Link>
-            <div className={styles.baner__date}>
+            {match?.isLive || match.isEnded ? <div className={styles.score}>
+                {match?.score ? match.score : "0:0"}
+            </div> : <div className={styles.baner__date}>
                 <footer>
-                   {moment(match.date).format("DD-MM-YYYY")} 
+                    {moment(match.date).format("DD-MM-YYYY")}
                 </footer>
                 <header>
-                   {moment(match.date).format("HH:mm")} 
+                    {moment(match.date).format("HH:mm")}
                 </header>
-            </div>
+            </div>}
         </div>
         <div className={styles.visitor}>
-            <img
-                src={match.visitorLogo ? `https://localhost:44326/api/logo/GetById?id=${match.visitorLogo}` : './defaultLeague.png'}
-                alt={match.visitorName}
-            />
-            <p>{match.visitorName}</p>
+            <Link href={`/teams/${match.visitor.teamId}`}>
+                <img
+                    src={match.visitor.teamLogo ? `https://localhost:44326/api/logo/GetById?id=${match.visitor.teamLogo}` : './defaultLeague.png'}
+                    alt={match.visitor.teamName}
+                />
+                <p>{match.visitor.teamName}</p>
+            </Link>
         </div>
-    </section> : <>{LocalLoading}</>
+        {match.isLive ? <div className={styles.live}>Live</div> : null}
+    </section>
+        :
+        <>{LocalLoading}</>
 }
 
 export default MatchBanner

@@ -6,6 +6,7 @@ import { DatePicker, Form, Modal } from "antd";
 import CustomButton from "../CustomElement/Button";
 import CustomInput from "../CustomElement/Input";
 import { PlayerFormType } from "./types";
+import Notifications from "@/helpers/Notifications";
 
 interface PropsType {
   teamId: number;
@@ -13,7 +14,7 @@ interface PropsType {
 
 const PlayersTeam = ({ teamId }: PropsType) => {
   const dispatch = useAppDispatch();
-  const { players, isLoading } = useAppSelector(
+  const { players, isLoading, changed } = useAppSelector(
     (state) => state.PlayersReducer
   );
   const [form] = Form.useForm();
@@ -32,7 +33,15 @@ const PlayersTeam = ({ teamId }: PropsType) => {
     dispatch(getByTeamIdAction({ teamId }));
   }, []);
 
-  return isLoading ? (
+  useEffect(() => {
+    if (changed) {
+      closeModal()
+      dispatch(getByTeamIdAction({ teamId }));
+      Notifications.success(changed, 10)
+    }
+  }, [changed]);
+
+  return !isLoading ? (
     <div>
       <div>Состав команды</div>
       {players ? (
@@ -51,7 +60,12 @@ const PlayersTeam = ({ teamId }: PropsType) => {
           Добавить игрока в команду
         </CustomButton>
       </footer>
-      <Modal open={open} onCancel={closeModal}>
+      <Modal
+        open={open}
+        onCancel={closeModal}
+        closable={false}
+        footer={null}
+      >
         <Form form={form} onFinish={savePlayer}>
           <Form.Item name="name" label="Имя">
             <CustomInput></CustomInput>
