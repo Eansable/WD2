@@ -3,12 +3,14 @@ import { UserType } from "../../types"
 
 interface initialStateType {
     isLoading: boolean,
-    users?: UserType[]
+    users?: UserType[],
+    oneUser?: UserType
 }
 
 const initialState: initialStateType = {
     isLoading: false,
-    users: undefined
+    users: undefined,
+    oneUser: undefined
 }
 
 export const usersReducer = createSlice({

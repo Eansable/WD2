@@ -2,7 +2,7 @@
 
 import { useAppDispatch, useAppSelector } from "@/helpers/hooks";
 import { useEffect, useState } from "react";
-import { loginAction } from "./store/actions";
+import { clearErrorAction, loginAction } from "./store/actions";
 import NotFound from "../NotFound";
 import CustomButton from "../CustomElement/Button";
 import styles from "./loginPage.module.css";
@@ -11,7 +11,7 @@ import { useRouter } from "next/navigation";
 
 const LoginPage = () => {
   const dispatch = useAppDispatch();
-  const { user, roles } = useAppSelector((state) => state.accountReducer);
+  const { user, roles, isError } = useAppSelector((state) => state.accountReducer);
   const router = useRouter()
 
   const [login, setLogin] = useState("");
@@ -30,27 +30,44 @@ const LoginPage = () => {
     if (roles.length) {
       router.push("/account")
     }
-  }, []) 
+  }, [roles])
 
   return (
-    <div className={styles.loginPage}>
+    <div
+      className={styles.loginPage}
+      onFocus={() => {
+        if (isError)
+          dispatch(clearErrorAction())
+      }}
+    >
       {roles.length === 0 ? (
-        <div 
+        <div
           className={styles.wrapper}
           onKeyUp={(e) => {
             if (e.code === "Enter")
               loginHandler()
           }}
         >
-          <CustomInput
-            onChange={(e) => setLogin(e.target.value)}
-            value={login}
-          />
-          <CustomInput
-            onChange={(e) => setPassword(e.target.value)}
-            value={password}
-            type="password"
-          />
+          <label>
+            Логин:
+            <CustomInput
+              onChange={(e) => setLogin(e.target.value)}
+              value={login}
+            />
+          </label>
+          <label>
+            Пароль:
+            <CustomInput
+              onChange={(e) => setPassword(e.target.value)}
+              value={password}
+              type="password"
+            />
+          </label>
+          {isError ?
+            <div className={styles.error_message}>
+              Не правильный логин или пароль
+            </div>
+            : null}
           <CustomButton onClick={loginHandler}>Войти</CustomButton>
         </div>
       ) : (

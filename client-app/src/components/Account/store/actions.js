@@ -8,7 +8,8 @@ const {
     setError,
     loginSuccess,
     refreshSuccess,
-    refreshUserDataSuccess
+    refreshUserDataSuccess,
+    clearError
 } = accountReducer.actions
 
 export const registerAction = (values) => {
@@ -46,6 +47,13 @@ export const refreshUserDataAction = (values) => {
             func: api.refreshUserData,
             params: values
         }
+    }
+    return defActionSlice(dispatchObj)
+}
+
+export const clearErrorAction = (values) => {
+    const dispatchObj = {
+        req: clearError,
     }
     return defActionSlice(dispatchObj)
 }
