@@ -1,4 +1,5 @@
 'use client'
+
 import { useAppDispatch, useAppSelector } from "@/helpers/hooks";
 import { useEffect, useState } from "react";
 import { loginAction } from "./store/actions";
@@ -34,7 +35,13 @@ const LoginPage = () => {
   return (
     <div className={styles.loginPage}>
       {roles.length === 0 ? (
-        <div className={styles.wrapper}>
+        <div 
+          className={styles.wrapper}
+          onKeyUp={(e) => {
+            if (e.code === "Enter")
+              loginHandler()
+          }}
+        >
           <CustomInput
             onChange={(e) => setLogin(e.target.value)}
             value={login}

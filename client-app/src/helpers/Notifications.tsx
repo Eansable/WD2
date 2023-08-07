@@ -16,9 +16,18 @@ const warning = (text:string, duration:number = 15) => {
    })
 }
 
+const error = (text:string, duration:number = 15) => {
+   notification.error({
+    message: text,
+    placement: "top",
+    duration
+   })
+}
+
 const Notifications = {
     success,
-    warning
+    warning,
+    error
 }
 
 

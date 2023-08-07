@@ -19,8 +19,10 @@ namespace Application.Account
             /// Пароль
             /// </summary>
             public string Password { get; set; }
-            public long UserType { get; set; }
-            public string Email { get; set; }
+            public long? UserType { get; set; }
+            public string? Email { get; set; }
+            public string? Phone { get; set; }
+            public string? OwnerName { get; set; }
         }
 
         public class Validator : AbstractValidator<Request>
@@ -29,7 +31,6 @@ namespace Application.Account
             {
                 RuleFor(x => x.UserName).NotEmpty();
                 RuleFor(x => x.Password).NotEmpty();
-                RuleFor(x => x.UserType).NotEmpty();
             }
         }
 
@@ -52,7 +53,9 @@ namespace Application.Account
                 var user = new User() {
                     UserName = request.UserName,
                     Email = request.Email,
-                    RegistrationDate = DateTime.Now
+                    RegistrationDate = DateTime.Now,
+                    PhoneNumber = request.Phone,
+                    OwnerName = request.OwnerName,
                 };
 
                 var hashedPassword = _passwordHasher.HashPassword(user, request.Password);

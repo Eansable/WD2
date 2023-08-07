@@ -7,6 +7,7 @@ import PlayersReducer from "../components/Players/store/reducer";
 import stadiumReducer from "@/components/NRI/Stadiums/store/reducer";
 import eventReducer from "@/components/NRI/Events/store/reducer";
 import matchesReducer from "@/components/Matches/store/reducer";
+import usersReducer from "@/components/Managment/Users/store/reducer";
 
 export default combineReducers({
     PositionReducer,
@@ -16,5 +17,6 @@ export default combineReducers({
     PlayersReducer,
     stadiumReducer,
     matchesReducer,
-    eventReducer
+    eventReducer,
+    usersReducer
 })

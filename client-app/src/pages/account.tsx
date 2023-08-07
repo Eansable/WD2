@@ -14,6 +14,7 @@ export default function Home() {
       <div className="statics">Статистика профиля</div>
       <CustomButton>Изменить профиль</CustomButton>
       {roles.includes("admin") ? <Link href="/nri">Управление справочниками</Link> : null}
+      {roles.includes("admin") ? <Link href="/users">Пользователи</Link> : null}
     </section>
   );
 }

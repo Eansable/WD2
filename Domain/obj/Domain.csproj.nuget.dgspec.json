@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Work\\PAF\\WD2\\Domain\\Domain.csproj": {}
+    "D:\\Projects\\WD2\\stenles\\Domain\\Domain.csproj": {}
   },
   "projects": {
-    "D:\\Work\\PAF\\WD2\\Domain\\Domain.csproj": {
+    "D:\\Projects\\WD2\\stenles\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Work\\PAF\\WD2\\Domain\\Domain.csproj",
+        "projectUniqueName": "D:\\Projects\\WD2\\stenles\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "D:\\Work\\PAF\\WD2\\Domain\\Domain.csproj",
-        "packagesPath": "C:\\Users\\Andrey\\.nuget\\packages\\",
-        "outputPath": "D:\\Work\\PAF\\WD2\\Domain\\obj\\",
+        "projectPath": "D:\\Projects\\WD2\\stenles\\Domain\\Domain.csproj",
+        "packagesPath": "C:\\Users\\tarasevich_a\\.nuget\\packages\\",
+        "outputPath": "D:\\Projects\\WD2\\stenles\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Andrey\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\tarasevich_a\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,6 +22,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "D:\\Projects\\CA": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -87,7 +88,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

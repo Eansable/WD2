@@ -18,3 +18,58 @@
 .account {
   
 }
+
+/* REGISTRATION */
+
+.registration {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.registration label {
+  display: grid;
+  grid-template-columns: 170px auto;
+  align-items: center;
+}
+
+.error_input,
+.error_input_login,
+.error_input_password {
+  position: relative;
+}
+
+.error_input input,
+.error_input_login input,
+.error_input_password input {
+  border-color: red;
+  margin-bottom: 20px;
+}
+
+.error_input::after,
+.error_input_login::after,
+.error_input_password::after {
+  content: "Пароли не совпадают!";
+  color: red;
+  position: absolute;
+  bottom: 0;
+  left: 170px;
+}
+
+.error_input_login::after {
+  content: "Введите логин!";
+}
+
+.error_input_password::after {
+  content: "Введите пароль!";
+}
+
+.registration footer {
+  display: flex;
+  justify-content: end;
+}
+
+/*  */

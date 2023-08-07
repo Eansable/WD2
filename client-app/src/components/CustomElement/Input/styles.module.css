@@ -7,5 +7,5 @@
 }
 
 .custom__input:focus-visible {
-  outline: solid 2px green;
+  outline: solid 1px green;
 }
