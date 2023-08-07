@@ -2,6 +2,7 @@
 html, body {
     padding: 0;
     margin: 0;
+    font-family: "Philosopher", sans-serif;
 }
 
 * {
@@ -23,4 +24,31 @@ html, body {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+@font-face {
+    font-family: "Philosopher";
+    src: url("/Philosopher-Regular.ttf");
+    font-weight: 400;
+}
+
+
+@font-face {
+    font-family: "Philosopher";
+    src: url("/Philosopher-Italic.ttf");
+    font-style: italic;
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "Philosopher";
+    src: url("/Philosopher-Bold.ttf");
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: "Philosopher";
+    src: url("/Philosopher-Regular.ttf");
+    font-weight: 700;
+    font-style: italic;
 }

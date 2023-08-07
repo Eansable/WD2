@@ -5,10 +5,11 @@ import { AddGoalAction } from "../store/actions"
 
 interface PropsType {
     player: MatchPlayer,
-    match: MatchType
+    match: MatchType, 
+    isVisitor: boolean
 }
 
-const SquadPlayer = ({player, match}: PropsType) => {
+const SquadPlayer = ({player, match, isVisitor}: PropsType) => {
     const dispatch = useAppDispatch()
     return <div className={styles.player_item}>
         {player.playerName}
@@ -17,7 +18,7 @@ const SquadPlayer = ({player, match}: PropsType) => {
                 onClick={() => dispatch(AddGoalAction({
                     playerId: player.playerId,
                     matchId: match.id,
-                    teamId: match.home.teamId,
+                    teamId: isVisitor ? match.visitor.teamId : match.home.teamId,
                     minute: 1,
                     eventId: 1
                 }))}

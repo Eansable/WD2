@@ -37,6 +37,7 @@ const OneMatch = ({ id }: PropsType) => {
     useEffect(() => {
         if (changed) {
             Notifications.success(changed, 10)
+            dispatch(getByIdAction({ matchId: id }))
         }
     }, [changed])
 

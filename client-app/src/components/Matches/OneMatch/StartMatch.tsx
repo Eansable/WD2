@@ -29,6 +29,7 @@ const StartMatch = ({ match }: PropsType) => {
                             return <SquadPlayer
                                 player={player}
                                 match={match}
+                                isVisitor={false}
                             />
                         }) :
                         <>Состав на матч не добавлен</>}
@@ -39,6 +40,7 @@ const StartMatch = ({ match }: PropsType) => {
                             return <SquadPlayer
                                 player={player}
                                 match={match}
+                                isVisitor={true}
                             />
                         }) :
                         <>Состав на матч не добавлен</>}

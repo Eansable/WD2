@@ -39,10 +39,17 @@ namespace Application.Matches
                     match.IsEnded = true;
                     
                     if (match.HomeGoals.HasValue)
-                        homeStats.GoalsConceded += match.HomeGoals.Value;
-
-                    if (match.HomeGoals.HasValue)
+                    {
                         visitorStats.GoalsConceded += match.HomeGoals.Value;
+                        homeStats.Goals += match.HomeGoals.Value;
+                    }
+
+
+                    if (match.VisitorGoals.HasValue)
+                    {
+                        visitorStats.Goals += match.VisitorGoals.Value;
+                        homeStats.GoalsConceded += match.VisitorGoals.Value;
+                    }
 
                     if (match.HomeGoals.Value == match.VisitorGoals.Value)
                     {
