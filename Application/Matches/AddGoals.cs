@@ -29,7 +29,7 @@ namespace Application.Matches
                 {
                     throw new RestException(System.Net.HttpStatusCode.NotFound, "Матч не найден!");
                 }
-                if (!match.IsEnded || match.IsLive)
+                if (match.IsLive)
                 {
                     var matchEvent = new MatchEvent()
                     {

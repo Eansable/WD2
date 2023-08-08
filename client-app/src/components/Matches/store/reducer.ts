@@ -22,7 +22,7 @@ export const matchesReducer = createSlice({
             state.isLoading = true
             state.changed = undefined
         },
-        setError: (state) => {
+        setError: (state, action) => {
             state.isLoading = false
         },
         getMatchesByChampIdSuccess: (state, action) => {

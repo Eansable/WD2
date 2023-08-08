@@ -1,4 +1,3 @@
-using Application.UserConnection;
 using Domain.Context;
 using Domain.Helpers.JWT;
 using Domain.Middleware;
@@ -6,11 +5,9 @@ using Domain.Models.Account;
 using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
@@ -80,7 +77,6 @@ builder.Services.Configure<DataProtectionTokenProviderOptions>(options =>
     options.TokenLifespan = TimeSpan.FromMinutes(short.Parse(builder.Configuration.GetSection("Tokens")["TokenLifespan"])));
 
 
-
 var app = builder.Build();
 
 AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
@@ -92,6 +88,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+
 app.UseHttpsRedirection();
 #if DEBUG
 app.UseCors("CorsPolicy");
@@ -99,6 +96,7 @@ app.UseCors("CorsPolicy");
 app.UseAuthorization();
 
 app.MapControllers();
+app.UseMiddleware<ErrorHandlingMiddleware>();
 
 app.UseMvc();
 

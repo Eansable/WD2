@@ -26,22 +26,22 @@ const StartMatch = ({ match }: PropsType) => {
                 <div className={styles.team_item}>
                     {match.home.teamPlayers?.length ?
                         match.home.teamPlayers.map(player => {
-                            return <SquadPlayer
+                            return player.isSquad ? <SquadPlayer
                                 player={player}
                                 match={match}
                                 isVisitor={false}
-                            />
+                            /> : null
                         }) :
                         <>Состав на матч не добавлен</>}
                 </div>
                 <div className={styles.visitor_team_item}>
                     {match.visitor.teamPlayers?.length ?
                         match.visitor.teamPlayers.map(player => {
-                            return <SquadPlayer
+                            return player.isSquad ? <SquadPlayer
                                 player={player}
                                 match={match}
                                 isVisitor={true}
-                            />
+                            /> : null
                         }) :
                         <>Состав на матч не добавлен</>}
                 </div>

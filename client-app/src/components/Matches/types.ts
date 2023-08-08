@@ -10,7 +10,7 @@ export interface MatchType {
     score?: string | null 
 }
 
-interface MatchTeam {
+export interface MatchTeam {
     teamName: string,
     teamId: number,
     teamLogo: number,
@@ -19,5 +19,6 @@ interface MatchTeam {
 
 export interface MatchPlayer {
     playerName: string,
-    playerId: number
+    playerId: number,
+    isSquad: boolean
 }
