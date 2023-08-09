@@ -209,3 +209,4 @@ D:\Work\PAF\WD2\stenles\obj\Debug\net7.0\stenles.pdb
 D:\Work\PAF\WD2\stenles\obj\Debug\net7.0\stenles.genruntimeconfig.cache
 D:\Work\PAF\WD2\stenles\obj\Debug\net7.0\ref\stenles.dll
 D:\Projects\WD2\stenles\stenles\bin\Debug\net7.0\Newtonsoft.Json.dll
+D:\Work\PAF\WD2\stenles\bin\Debug\net7.0\Newtonsoft.Json.dll

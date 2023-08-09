@@ -1,3 +1,4 @@
+import Notifications from "@/helpers/Notifications"
 import axios from "axios"
 
 axios.defaults.baseURL = 'https://localhost:44326/api'
@@ -26,6 +27,7 @@ axios.interceptors.request.use((config) => {
 
 axios.interceptors.response.use(undefined, (error) => {
     const originalReq = error.config
+    console.log(error);
     if (error.config.url === "/account/refreshUserData" && !originalReq._retry) {
         originalReq._error = true
         const jsonUser = window.localStorage.getItem("user")
@@ -57,6 +59,9 @@ axios.interceptors.response.use(undefined, (error) => {
                     }
                 })
         }
+    }
+    if (error?.response?.data?.message) {
+        Notifications.error(error?.response?.data?.message, 15)
     }
 })
 
