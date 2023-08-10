@@ -1,4 +1,5 @@
 ﻿using Domain.Context;
+using Domain.Errors;
 using Domain.Models.Account;
 using FluentValidation;
 using MediatR;
@@ -49,7 +50,11 @@ namespace Application.Account
 
             public async Task<bool> Handle(Request request, CancellationToken cancellationToken)
             {
-                
+                var userCheck = _context.Users.Where(u => u.UserName == request.UserName).FirstOrDefault();
+                if (userCheck != null)
+                {
+                    throw new RestException(System.Net.HttpStatusCode.BadRequest, "Пользователь с таким логином уже существует");
+                }
                 var user = new User() {
                     UserName = request.UserName,
                     Email = request.Email,

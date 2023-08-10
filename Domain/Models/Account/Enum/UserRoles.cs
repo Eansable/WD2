@@ -11,6 +11,8 @@ namespace Domain.Models.Account.Enum
         admin,
         teamManager,
         player,
-        authorized
+        authorized,
+        judge,
+        contentManager
     };
 }

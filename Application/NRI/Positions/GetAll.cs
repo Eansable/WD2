@@ -32,7 +32,7 @@ namespace Application.NRI.Positions
                 try
                 {
                     var pos = _context.Positions.ToList();
-
+                    
                     return pos;
                 }
                 catch (Exception ex)

@@ -9,7 +9,7 @@ const OneUser = ({ id } : PropsType) => {
     const dispatch = useAppDispatch()
     const {oneUser, isLoading} = useAppSelector(state => state.usersReducer)
     const route = useRouter()
-
+    
 }
 
 export default OneUser
