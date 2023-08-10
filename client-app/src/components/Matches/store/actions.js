@@ -10,7 +10,8 @@ const {
     getByIdSuccess,
     startMatchSuccess,
     addSquadSuccess,
-    endMatchSuccess
+    endMatchSuccess,
+    addCardSuccess
 } = matchesReducer.actions
 
 export const getMatchesByChampIdAction = (values) => {
@@ -85,6 +86,19 @@ export const AddGoalAction = (values) => {
         suc: AddGoalAction,
         service: {
             func: api.addGoal,
+            params: values
+        }
+    }
+    return defActionSlice(defObj)
+}
+
+export const AddCardAction = (values) => {
+    const defObj = {
+        req: setLoading,
+        fail: setError,
+        suc: addCardSuccess,
+        service: {
+            func: api.addCard,
             params: values
         }
     }
