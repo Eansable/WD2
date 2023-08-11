@@ -48,7 +48,11 @@ export const matchesReducer = createSlice({
         addGoalSuccess: (state, action) => {
             state.isLoading = false
             state.changed = action.payload ? "Гол записан!" : undefined
-        }
+        },
+        addCardSuccess: (state, action) => {
+            state.isLoading = false
+            state.changed = action.payload ? "Карточка добавлена!" : undefined
+        },
     }
 })
 

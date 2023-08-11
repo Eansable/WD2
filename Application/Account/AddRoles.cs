@@ -5,6 +5,7 @@ using MediatR;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -38,8 +39,14 @@ namespace Application.Account
                     throw new RestException(System.Net.HttpStatusCode.NotFound, "Игрок не найден!");
                 }
                 var roles = _userManager.GetRolesAsync(user);
+                List<string> listRoles = new List<string>() { "authorized" };
+                foreach (var role in request.Roles)
+                {
+                    listRoles.Add(_context.Roles.Where(r => r.Code == role).Select(r => r.Name).FirstOrDefault());
+                }
 
-                
+                await _userManager.AddToRolesAsync(user, listRoles);
+
                 return true;
 
             }
