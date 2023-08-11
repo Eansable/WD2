@@ -83,7 +83,7 @@ export const AddGoalAction = (values) => {
     const defObj = {
         req: setLoading,
         fail: setError,
-        suc: AddGoalAction,
+        suc: addGoalSuccess,
         service: {
             func: api.addGoal,
             params: values

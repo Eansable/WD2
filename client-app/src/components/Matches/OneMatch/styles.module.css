@@ -19,6 +19,7 @@
     border: 1px solid #888888;
     aspect-ratio: 3 / 1;
     position: relative;
+    padding: 16px;
 }
 
 .baner a {
@@ -118,6 +119,31 @@
     letter-spacing: 5px;
 }
 
+.home_events,
+.visitor_events {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.home_events img,
+.visitor_events img {
+    width: 15px;
+    aspect-ratio: 1 / 1;
+}
+
+.home_event,
+.visitor_event {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.visitor_event {
+    justify-content: flex-start;
+}
+
 /*  */
 
 /* MANAGE MATCH */
@@ -199,6 +225,26 @@
 
 .player_manage {
     display: flex;
+}
+
+.player_manage input {
+    max-width: 30px;
+    max-height: 18px;
+    padding: 0;
+    padding-left: 4px;
+    font-size: 14px;
+}
+
+/* Chrome, Safari, Edge, Opera */
+.player_manage input::-webkit-outer-spin-button,
+.player_manage input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.player_manage input[type=number] {
+  -moz-appearance: textfield;
 }
 
 /*  */

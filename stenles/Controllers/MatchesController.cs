@@ -45,5 +45,11 @@ namespace stenles.Controllers
         {
             return await Mediator.Send(request);
         }
+        [Authorize(Roles = "admin")]
+        [HttpPost("AddCard")]
+        public async Task<bool> AddCard([FromBody] AddCard.MatchesAddCard request)
+        {
+            return await Mediator.Send(request);
+        }
     }
 }

@@ -10,7 +10,7 @@ namespace Application.Matches.Dto
     {
         public string? StadiumName { get; set; }
         public long? StadiumId { get; set; }
-
+        public List<MatchEventDto>? MatchEvents { get; set; }
 
     }
 }

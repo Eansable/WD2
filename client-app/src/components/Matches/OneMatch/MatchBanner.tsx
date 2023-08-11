@@ -22,11 +22,11 @@ const MatchBanner = ({ match }: PropsType) => {
             </Link>
         </div>
         <div className={styles.baner__info}>
-            <Link
+            {/* <Link
                 href={`/stadiums/${match.stadiumId}`}
                 className={styles.stadiums}>
                 {match.stadiumName}
-            </Link>
+            </Link> */}
             {match?.isLive || match.isEnded ? <div className={styles.score}>
                 {match?.score ? match.score : "0:0"}
             </div> : <div className={styles.baner__date}>
@@ -48,6 +48,22 @@ const MatchBanner = ({ match }: PropsType) => {
             </Link>
         </div>
         {match.isLive ? <div className={styles.live}>Live</div> : null}
+        <div className={styles.home_events}>
+            {match.matchEvents?.map(matchEvent => {
+                return matchEvent.teamId === match.home.teamId && matchEvent.name === "Гол" ?
+                 <div className={styles.home_event}> <img src={`https://localhost:44326/api/logo/GetById?id=${matchEvent.logoId}`}/> <Link href={`/users/${matchEvent.playerId}`}>{matchEvent.playerName} </Link> {matchEvent.minute}'</div> 
+                 : null
+            })}
+        </div>
+        <div></div>
+        <div className={styles.visitor_events}>
+            {match.matchEvents?.map(matchEvent => {
+                return matchEvent.teamId === match.visitor.teamId && matchEvent.name === "Гол" ?
+                 <div className={styles.visitor_event}>{matchEvent.minute}' <Link href={`/users/${matchEvent.playerId}`}>{matchEvent.playerName} </Link> <img src={`https://localhost:44326/api/logo/GetById?id=${matchEvent.logoId}`}/></div> 
+                 : null
+            })}
+        </div>
+
     </section>
         :
         <>{LocalLoading}</>

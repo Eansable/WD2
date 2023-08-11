@@ -52,6 +52,19 @@ namespace Application.Matches
                         IsSquad = _context.Squads.Any(s => s.PlayerId == p.Id && s.MatchId == match.Id)
                     })
                     .ToList();
+                List<MatchEventDto> matchEvents = _context.MatchEvents.Where(me => me.MatchId == request.MatchId)
+                    .Include(me => me.Player)
+                    .Include(me => me.Event)
+                    .Select(me => new MatchEventDto()
+                    {
+                        MatchEventId = me.Id,
+                        Name = me.Event.Name,
+                        PlayerId = me.PlayerId,
+                        PlayerName = me.Player.Name + " " + me.Player.SecondName,
+                        TeamId = me.TeamId,
+                        LogoId = me.Event.LogoId,
+                        Minute = me.Minute,
+                    }).ToList();
 
                 var result = new OneMatchDto()
                 {
@@ -74,6 +87,7 @@ namespace Application.Matches
                     IsLive= match.IsLive,
                     IsEnded= match.IsEnded,
                     Score = match.HomeGoals.ToString() + ":" + match.VisitorGoals.ToString(),
+                    MatchEvents = matchEvents,
                 }; 
                 if (match == null)
                 {
