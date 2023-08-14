@@ -3,5 +3,6 @@ export interface UserType {
     email?: string,
     phoneNumber?: string,
     ownerName?: string,
-    id: string
+    id: string,
+    rolesId: string[]
 }

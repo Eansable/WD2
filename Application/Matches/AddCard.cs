@@ -12,6 +12,7 @@ namespace Application.Matches
             public long MatchId { get; set; }
             public long PlayerId { get; set; }
             public long EventId { get; set; }
+            public int Minute { get; set; }
         }
 
         public class Handler : IRequestHandler<MatchesAddCard, bool>

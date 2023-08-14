@@ -23,11 +23,12 @@ export const accountReducer = createSlice({
             state.isLoading = true
             state.isError = false
         },
-        setError: (state, action) => {
+        setError: (state) => {
+            state.isLoading = false
+        },
+        setErrorLogin: (state) => {
             state.isLoading = false
             state.isError = true
-            console.log(action);
-            
         },
         registerSuccess: (state, action) => {
             state.isLoading = false

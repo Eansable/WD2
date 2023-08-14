@@ -26,6 +26,10 @@ export const usersReducer = createSlice({
         getAllSuccess: (state, action) => {
             state.isLoading = false
             state.users = action.payload
+        },
+        getByIdSuccess: (state, action) => {
+            state.isLoading = false
+            state.oneUser = action.payload
         }
     }
 })

@@ -6,6 +6,7 @@ const {
     setLoading,
     registerSuccess,
     setError,
+    setErrorLogin,
     loginSuccess,
     refreshSuccess,
     refreshUserDataSuccess,
@@ -28,7 +29,7 @@ export const registerAction = (values) => {
 export const loginAction = (values) => {
     const dispatchObj = {
         req: setLoading,
-        fail: setError,
+        fail: setErrorLogin,
         suc: loginSuccess,
         service: {
             func: api.login,

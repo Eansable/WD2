@@ -3,12 +3,7 @@ using Domain.Errors;
 using Domain.Models.Account;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Account
 {
@@ -17,9 +12,9 @@ namespace Application.Account
         public class AccountAddRoles : IRequest<bool>
         {
             public Guid UserId { get; set; }
-            public List<int> Roles { get; set; }
+            public List<string> Roles { get; set; }
+            public List<string> RemoveRoles { get; set; }
         }
-
         public class Handler : IRequestHandler<AccountAddRoles, bool>
         {
             private readonly AppDbContext _context;
@@ -42,13 +37,18 @@ namespace Application.Account
                 List<string> listRoles = new List<string>() { "authorized" };
                 foreach (var role in request.Roles)
                 {
-                    listRoles.Add(_context.Roles.Where(r => r.Code == role).Select(r => r.Name).FirstOrDefault());
+                    listRoles.Add(_context.Roles.Where(r => r.NormalizedName == role.ToUpper().Trim()).Select(r => r.Name).FirstOrDefault());
+                }
+                List<string> removeRoles = new List<string>();
+                foreach (var role in request.RemoveRoles)
+                {
+                    removeRoles.Add(_context.Roles.Where(r => r.NormalizedName == role.ToUpper().Trim()).Select(r => r.Name).FirstOrDefault());
                 }
 
                 await _userManager.AddToRolesAsync(user, listRoles);
+                await _userManager.RemoveFromRolesAsync(user, removeRoles);
 
                 return true;
-
             }
         }
     }

@@ -5,7 +5,8 @@ import  {defActionSlice} from "../../../../helpers/defaultAction"
 const { 
  getAllSuccess,
  setError,
- setLoading
+ setLoading,
+ getByIdSuccess
 } = usersReducer.actions
 
 export const getAllAction = (values) => {
@@ -15,6 +16,19 @@ export const getAllAction = (values) => {
         suc: getAllSuccess,
         service: {
             func: api.getAll,
+            params: values
+        }
+    }
+    return defActionSlice(defObj)
+}
+
+export const getByIdAction = (values) => {
+    const defObj = {
+        req: setLoading,
+        fail: setError,
+        suc: getByIdSuccess,
+        service: {
+            func: api.getById,
             params: values
         }
     }

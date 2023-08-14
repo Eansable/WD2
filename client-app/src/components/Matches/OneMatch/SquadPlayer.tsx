@@ -30,6 +30,7 @@ const SquadPlayer = ({ player, match, isVisitor }: PropsType) => {
                 <CustomInput
                     disabled={isLoading}
                     type="number"
+                    pattern="[0-9]*"
                     onKeyUp={(e) => {
                         if (e.key === "Enter") {
                             
