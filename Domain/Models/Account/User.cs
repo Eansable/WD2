@@ -8,7 +8,7 @@ namespace Domain.Models.Account
         public ICollection<UserRole> UserRoles { get; set; }
         public DateTimeOffset RegistrationDate { get; set; }
         public string? Information { get; set; }
-        
+        public long? CaptainTeamId { get; set; }
 
     }
 }

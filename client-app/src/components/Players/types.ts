@@ -5,7 +5,9 @@ export interface PlayerType {
     middleName?: string,
     birthday?: Date,
     teamId?: number,
-    isActive?: boolean
+    isActive?: boolean,
+    avatarId?: number,
+
 }
 
 export interface PlayerFormType {
@@ -14,4 +16,11 @@ export interface PlayerFormType {
     middleName?: string,
     birthday?: Date,
     teamId?: number,
+}
+
+export interface OnePlayerType extends PlayerType {
+    matchCount: number,
+    goalCount: number,
+    yellowCount: number,
+    redCount: number,
 }

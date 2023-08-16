@@ -52,9 +52,10 @@ const OneMatch = ({ id }: PropsType) => {
                     setActiveStart={setActiveStartMatch}
                     setActiveAddSquad={setActiveAddSquad}
                     setActiveAddResult={setActiveAddResult}
+                    match={oneMatch}
                 />
                 : null}
-            {activeStartMatch && oneMatch ? <StartMatch match={oneMatch} /> : null}
+            {activeStartMatch && (oneMatch?.isLive || !oneMatch?.isEnded) ? <StartMatch match={oneMatch} /> : null}
             {activeAddSquad ? <AddSquad id={id}></AddSquad> : null}
             {activeAddResult ? <AddResult></AddResult> : null}
 

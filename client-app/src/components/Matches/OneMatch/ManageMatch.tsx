@@ -1,21 +1,25 @@
 import CustomButton from "@/components/CustomElement/Button"
 import styles from "./styles.module.css"
 import { Dispatch, SetStateAction } from "react"
+import { MatchType } from "../types"
 
 interface PropsType {
     setActiveStart: Dispatch<SetStateAction<boolean>>,
     setActiveAddSquad: Dispatch<SetStateAction<boolean>>,
-    setActiveAddResult: Dispatch<SetStateAction<boolean>>
+    setActiveAddResult: Dispatch<SetStateAction<boolean>>,
+    match?: MatchType
 }
 
 const ManageMatch = ({
     setActiveAddResult,
     setActiveAddSquad,
-    setActiveStart }: PropsType) => {
+    setActiveStart,
+    match
+}: PropsType) => {
     return <div className={styles.manage}>
-        <CustomButton
+        {match?.isLive || !match?.isEnded ? <CustomButton
             onClick={() => setActiveStart(true)}
-        >Начать матч</CustomButton>
+        >Начать матч</CustomButton> : null}
         <CustomButton
             onClick={() => setActiveAddResult(true)}
         >Внести результат</CustomButton>

@@ -24,6 +24,7 @@ namespace Domain.Context
         public DbSet<Stadium> Stadiums { get; set; }
         public DbSet<LogoFile> LogoFiles { get; set; }
         public DbSet<News> News { get; set; }
+        public DbSet<Discfalification> Discfalifications { get; set; }
 
 
 

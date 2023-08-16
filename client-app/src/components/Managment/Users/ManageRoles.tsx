@@ -8,7 +8,6 @@ interface PropsType {
 const ManageRoles = ({ roles = [] }: PropsType) => {
     const [isReferee, setIsReferee] = useState(roles?.includes("referee"));
     const [isContentManager, setIsContentManager] = useState(roles?.includes("contentManager"));
-    const [isCaptain, setIsCaptain] = useState(roles?.includes("teamManager"));
 
     return <div>
         <p> Роли пользователя: </p>
@@ -30,8 +29,6 @@ const ManageRoles = ({ roles = [] }: PropsType) => {
             <label>
                 Капитан команды:
                 <Checkbox
-                    checked={isCaptain}
-                    onChange={() => setIsReferee(!isCaptain)}
                 />
             </label>
             <Checkbox />

@@ -17,6 +17,6 @@ namespace Domain.Models
 
         public int MatchesCount { get; set; }
         public int MatchesLeft { get; set; }
-
+        public bool IsActive { get; set; }
     }
 }

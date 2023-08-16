@@ -26,31 +26,65 @@ namespace Application.Matches
             public async Task<bool> Handle(MatchesAddCard request, CancellationToken cancellationToken)
             {
                 var match = _context.Matches.Where(m => m.Id ==  request.MatchId).FirstOrDefault();
-                var player = _context.Players.Where(p => p.Id ==  request.PlayerId).FirstOrDefault();
                 if (match == null)
                 {
                     throw new RestException(System.Net.HttpStatusCode.NotFound, "Матч не найден!");
                 }
+                if (match.IsLive){
+                    var player = _context.Players.Where(p => p.Id == request.PlayerId).FirstOrDefault();
 
-                var playerYellowCards = _context.MatchEvents.Where(c => c.MatchId == request.MatchId 
-                                                                        && c.PlayerId == request.PlayerId
-                                                                        && c.EventId == 2).ToList();
-                var playerRedCards = _context.MatchEvents.Where(c => c.MatchId == request.MatchId
-                                                                        && c.PlayerId == request.PlayerId
-                                                                        && c.EventId == 3).ToList();
-                if (playerYellowCards.Count < 2 && playerRedCards.Count < 1) {
-                var card = new MatchEvent()
-                {
-                    MatchId = request.MatchId,
-                    PlayerId = request.PlayerId,
-                    Minute = 1,
-                    TeamId = player.TeamId,
-                    EventId = request.EventId,
-                };
-                    _context.MatchEvents.Add(card);
+                    var playerYellowCards = _context.MatchEvents.Where(c => c.MatchId == request.MatchId
+                                                                            && c.PlayerId == request.PlayerId
+                                                                            && c.EventId == 2).ToList();
+                    var playerRedCards = _context.MatchEvents.Where(c => c.MatchId == request.MatchId
+                                                                            && c.PlayerId == request.PlayerId
+                                                                            && c.EventId == 3).ToList();
+                    if (playerYellowCards.Count < 2 && playerRedCards.Count < 1)
+                    {
+                        var card = new MatchEvent()
+                        {
+                            MatchId = request.MatchId,
+                            PlayerId = request.PlayerId,
+                            Minute = request.Minute,
+                            TeamId = player.TeamId,
+                            EventId = request.EventId,
+                        };
+                        if (card.EventId == 3)
+                        {
+                            var discfalification = new Discfalification()
+                            {
+                                ChampionatId = match.ChampionatId,
+                                PlayerId = request.PlayerId,
+                                TeamId = player.TeamId,
+                                MatchesCount = 2,
+                                MatchesLeft = 0,
+                                IsActive = true
+                            };
+                            _context.Discfalifications.Add(discfalification);
+                        }
+                        if (card.EventId == 2 && playerYellowCards.Count >= 1)
+                        {
+                            var discfalification = new Discfalification()
+                            {
+                                ChampionatId = match.ChampionatId,
+                                PlayerId = request.PlayerId,
+                                TeamId = player.TeamId,
+                                MatchesCount = 2,
+                                MatchesLeft = 1,
+                                IsActive = true
+                            };
+                            card.EventId = 4;
+                            _context.Discfalifications.Add(discfalification);
+                        }
+                        _context.MatchEvents.Add(card);
+                    }
+                    else
+                    {
+                        throw new RestException(System.Net.HttpStatusCode.BadRequest, "Не возможно добавить игроку ещё одну карточку!");
+                    }
                 } else
                 {
-                    throw new RestException(System.Net.HttpStatusCode.BadRequest, "Не возможно добавить игроку ещё одну карточку!");
+                    throw new RestException(System.Net.HttpStatusCode.BadRequest, "Матч завершён или не начат!");
                 }
                 return await _context.SaveChangesAsync() > 0;
             }

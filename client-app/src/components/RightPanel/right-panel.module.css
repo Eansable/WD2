@@ -6,24 +6,18 @@
     gap: 32px;
 }
 
-
-.next__game {
-    min-height: 230px;
-    border: 1px solid red
-}
-
 .small__table .line {
     display: grid;
     grid-template-columns: 30px auto repeat(5, 30px);
 }
 
 .line {
-    border-left:#888888 1px solid; 
+    border-left: #888888 1px solid;
 }
 
 .line:first-child {
-    border-top:#888888 1px solid;
-    background-color: green;
+    border-top: #888888 1px solid;
+    background-color: #5C821A;
     color: white;
 }
 

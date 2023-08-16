@@ -2,7 +2,12 @@ import { defActionSlice } from "../../../helpers/defaultAction"
 import api from "./api"
 import { PlayersReducer } from "./reducer"
 
-const { addSuccess,getByTeamIdSuccess,setError,setLoading} = PlayersReducer.actions
+const { addSuccess,
+    getByTeamIdSuccess,
+    setError,
+    setLoading,
+    getByIdSuccess,
+} = PlayersReducer.actions
 
 export const getByTeamIdAction = (params) => {
     const defAction = {
@@ -11,6 +16,18 @@ export const getByTeamIdAction = (params) => {
         suc: getByTeamIdSuccess,
         service: {
             func: api.getByTeamId,
+            params: params
+        }
+    }
+    return defActionSlice(defAction)
+}
+export const getByIdAction = (params) => {
+    const defAction = {
+        req: setLoading,
+        fail: setError,
+        suc: getByIdSuccess,
+        service: {
+            func: api.getById,
             params: params
         }
     }

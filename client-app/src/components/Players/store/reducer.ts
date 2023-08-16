@@ -4,13 +4,15 @@ import { PlayerType } from "../types";
 interface StateType {
     isLoading: boolean,
     changed?: string,
-    players?: PlayerType[]
+    players?: PlayerType[],
+    onePlayer?: PlayerType
 }
 
 const initialState: StateType = {
     isLoading: false,
     players: undefined,
-    changed: undefined
+    changed: undefined,
+    onePlayer: undefined
 }
 
 export const PlayersReducer = createSlice({
@@ -27,6 +29,10 @@ export const PlayersReducer = createSlice({
         getByTeamIdSuccess: (state, action) => {
             state.isLoading = false
             state.players = action.payload
+        },
+        getByIdSuccess: (state, action) => {
+            state.isLoading = false
+            state.onePlayer = action.payload
         },
         addSuccess: (state, action) => {
             state.isLoading = false,

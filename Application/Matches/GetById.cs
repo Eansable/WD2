@@ -40,7 +40,9 @@ namespace Application.Matches
                     {
                         PlayerId = p.Id,
                         PlayerName = p.SecondName + " " + p.Name,
-                        IsSquad = _context.Squads.Any(s => s.PlayerId == p.Id && s.MatchId == match.Id)
+                        IsSquad = _context.Squads.Any(s => s.PlayerId == p.Id && s.MatchId == match.Id),
+                        IsDiscfal = _context.Discfalifications.Where(d => d.PlayerId == p.Id && d.ChampionatId == match.ChampionatId)
+                                                                .Any(d => d.IsActive)
                     })
                     .ToList();
 
@@ -49,7 +51,9 @@ namespace Application.Matches
                     {
                         PlayerId = p.Id,
                         PlayerName = p.SecondName + " " + p.Name,
-                        IsSquad = _context.Squads.Any(s => s.PlayerId == p.Id && s.MatchId == match.Id)
+                        IsSquad = _context.Squads.Any(s => s.PlayerId == p.Id && s.MatchId == match.Id),
+                        IsDiscfal = _context.Discfalifications.Where(d => d.PlayerId == p.Id && d.ChampionatId == match.ChampionatId)
+                                                                .Any(d => d.IsActive)
                     })
                     .ToList();
                 List<MatchEventDto> matchEvents = _context.MatchEvents.Where(me => me.MatchId == request.MatchId)
@@ -64,7 +68,9 @@ namespace Application.Matches
                         TeamId = me.TeamId,
                         LogoId = me.Event.LogoId,
                         Minute = me.Minute,
-                    }).ToList();
+                    })
+                    .OrderBy(e => e.Minute)
+                    .ToList();
 
                 var result = new OneMatchDto()
                 {

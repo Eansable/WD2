@@ -19,5 +19,6 @@ namespace Application.Account.Dto
         public UserType? UserType { get; set; }
         public IList<string>? Roles { get; set; }
         public string? IdToken { get; set; }
+        public long? CaptainTeamId { get; set; }
     }
 }

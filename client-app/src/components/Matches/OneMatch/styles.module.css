@@ -16,7 +16,7 @@
     width: 100%;
     background-color: #f9f9f9;
     border-radius: 5px;
-    border: 1px solid #888888;
+    border: 1px solid #C6D166;
     aspect-ratio: 3 / 1;
     position: relative;
     padding: 16px;
@@ -84,7 +84,7 @@
 }
 
 .baner__date footer {
-    border-bottom: green 1px solid;
+    border-bottom: #5C821A 1px solid;
 }
 
 .stadiums {
@@ -113,35 +113,30 @@
     left: 5px;
 }
 
-.score {
-    font-size: 32px;
-    font-weight: 700;
-    letter-spacing: 5px;
+.match_events_wrapper {
+    grid-column-start: 1;
+    grid-column-end: 4;
 }
 
-.home_events,
-.visitor_events {
+.match_events_list {
+    width: 40%;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: 8px;
 }
 
-.home_events img,
-.visitor_events img {
-    width: 15px;
-    aspect-ratio: 1 / 1;
-}
-
-.home_event,
-.visitor_event {
+.event_item {
     display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 8px;
+    gap: 8px
 }
 
-.visitor_event {
-    justify-content: flex-start;
+.event_item_visitor {
+    flex-direction: row-reverse;
+}
+
+.event_item img {
+    width: 16px;
+    aspect-ratio: 1 / 1;
 }
 
 /*  */
@@ -185,14 +180,13 @@
     justify-content: space-between;
     gap: 32px;
     background-color: #f9f9f9;
-    border: #888888 1px solid;
+    border: #C6D166 1px solid;
     padding: 32px;
     border-radius: 5px;
 }
 
 .team_item,
-.visitor_team_item
-{
+.visitor_team_item {
     display: flex;
     flex-direction: column;
     gap: 8px;
@@ -203,9 +197,19 @@
     display: flex;
     gap: 8px;
     justify-content: space-between;
-    border: #888888 1px solid;
+    border: #C6D166 1px solid;
     padding: 6px 14px;
     align-items: center;
+    position: relative;
+}
+
+.player_item_disabled {
+    width: 100%;
+    height: 100%;
+    background-color: #00000030;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 .player_item button {
@@ -238,13 +242,13 @@
 /* Chrome, Safari, Edge, Opera */
 .player_manage input::-webkit-outer-spin-button,
 .player_manage input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 /* Firefox */
 .player_manage input[type=number] {
-  -moz-appearance: textfield;
+    -moz-appearance: textfield;
 }
 
 /*  */

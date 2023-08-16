@@ -23,9 +23,25 @@ namespace Application.Matches
                 var match = _context.Matches.Where(m => m.Id == request.MatchId).Include(m => m.Championat).FirstOrDefault();
                 var homeStats = _context.ChampionatStats.Where(s => s.ChampionatId == match.ChampionatId && s.TeamId == match.HomeTeamId).FirstOrDefault();
                 var visitorStats = _context.ChampionatStats.Where(s => s.ChampionatId == match.ChampionatId && s.TeamId == match.VisitorId).FirstOrDefault();
-                
+
+               
                 if (match == null) {
                     throw new RestException(System.Net.HttpStatusCode.NotFound, "Матч не найден!");
+                }
+
+                var team1Players = _context.Players.Where(p => p.TeamId == match.HomeTeamId).ToList();
+                var team2Players = _context.Players.Where(p => p.TeamId == match.VisitorId).ToList();
+
+
+                var listDiscfal = _context.Discfalifications.Where(d => d.ChampionatId == match.ChampionatId
+                                                                            && team1Players.Any(p => p.Id == d.PlayerId)
+                                                                            && team2Players.Any(p => p.Id == d.PlayerId)
+                                                                            && d.MatchesCount == d.MatchesLeft)
+                                                                .ToList();
+
+                if (listDiscfal.Count > 0)
+                {
+                    listDiscfal.ForEach(d => d.IsActive = false);
                 }
 
                 if (homeStats == null || visitorStats == null)

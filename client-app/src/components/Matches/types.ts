@@ -8,7 +8,7 @@ export interface MatchType {
     isLive: boolean,
     isEnded: boolean,
     score?: string | null,
-    matchEvents?: MatchEvent[]
+    matchEvents?: MatchEventType[]
 }
 
 export interface MatchTeam {
@@ -21,10 +21,11 @@ export interface MatchTeam {
 export interface MatchPlayer {
     playerName: string,
     playerId: number,
-    isSquad: boolean
+    isSquad: boolean,
+    isDiscfal: boolean
 }
 
-export interface MatchEvent {
+export interface MatchEventType {
     matchEventId: number,
     name: string,
     logoId: number,

@@ -37,6 +37,7 @@ namespace Application.Matches
                          Score = m.HomeGoals.ToString() + ":" + m.VisitorGoals.ToString()
                     }
                     )
+                    .OrderBy(m => m.Date)
                     .ToList();
                 if (matches == null)
                 {

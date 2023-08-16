@@ -10,7 +10,7 @@
 .match__wrapper {
     padding: 24px 36px;
     background-color: #f8f8f8;
-    border: 1px solid #888888;
+    border: 1px solid #C6D166;
     display: grid;
     grid-template-columns: 1fr 54px 1fr;
     transition: all 0.4s ease;

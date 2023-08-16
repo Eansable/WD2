@@ -28,10 +28,20 @@ namespace Application.Matches
                     throw new RestException(System.Net.HttpStatusCode.NotFound, "Матч не найден!");
                 }
 
+                var checkDiscfal = _context.Discfalifications.Where(d => (request.HomePlayersId != null && request.HomePlayersId.Contains(d.PlayerId)) 
+                                                                         || (request.VisitorPlayersId != null && request.VisitorPlayersId.Contains(d.PlayerId)) 
+                                                                         && d.ChampionatId == match.ChampionatId).Any(d => d.IsActive);
+
+                if (checkDiscfal)
+                {
+                    throw new RestException(System.Net.HttpStatusCode.BadRequest, "Игрок с дисквалификацией не может быть добавлен в состав!");
+                }
+
                 if (request.HomePlayersId != null) {
                     List<Squad> homePlayers = new List<Squad>();
                     request.HomePlayersId.ForEach(p =>
                     {
+                        
                         var squad = new Squad()
                         {
                             MatchId = request.MatchId,
@@ -49,6 +59,7 @@ namespace Application.Matches
                     List<Squad> visitorPlayers = new List<Squad>();
                     request.VisitorPlayersId.ForEach(p =>
                     {
+                        
                         var squad = new Squad()
                         {
                             MatchId = request.MatchId,

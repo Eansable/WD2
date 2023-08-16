@@ -12,9 +12,6 @@ const RightPanel = () => {
     return (
         <div className={styles.wrapper}>
             <SmallTable></SmallTable>
-            <div className={styles.next__game}>Следующие игры</div>
-            <button onClick={getPositions} >Click</button>
-
         </div>
     )
 }

@@ -11,5 +11,6 @@ namespace Application.Matches.Dto
         public string PlayerName { get; set; }
         public long PlayerId { get; set; }
         public bool IsSquad { get; set; }
+        public bool IsDiscfal { get; set;}
     }
 }

@@ -46,6 +46,7 @@ namespace Application.Account
                     Id = user.Id,
                     Email = user.Email,
                     Roles = (IList<string>)roles,
+                    CaptainTeamId = user.CaptainTeamId,
                 };
                 return result;
             }

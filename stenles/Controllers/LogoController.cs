@@ -1,6 +1,4 @@
 ﻿using Application.Logos;
-using Application.Players;
-using Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 using Project.Controllers;
 

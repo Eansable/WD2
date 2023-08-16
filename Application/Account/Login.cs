@@ -93,7 +93,8 @@ namespace Application.Account
                     Roles= user.UserRoles.Select(u => u.Role.Name).ToList(),
                     SessionId = token.Id,
                     RefreshToken = token.Value,
-                    Token = _jwtGenerator.CreateTokenWithRoles(user, user.UserRoles.Select(u => u.Role.Name).ToList())
+                    Token = _jwtGenerator.CreateTokenWithRoles(user, user.UserRoles.Select(u => u.Role.Name).ToList()),
+                    CaptainTeamId = user.CaptainTeamId
                 };
                 return result;
             }

@@ -65,6 +65,9 @@ namespace Domain.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("integer");
 
+                    b.Property<long?>("CaptainTeamId")
+                        .HasColumnType("bigint");
+
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("text");
@@ -283,6 +286,43 @@ namespace Domain.Migrations
                     b.HasIndex("TeamId");
 
                     b.ToTable("ChampionatStats");
+                });
+
+            modelBuilder.Entity("Domain.Models.Discfalification", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<long>("ChampionatId")
+                        .HasColumnType("bigint");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("boolean");
+
+                    b.Property<int>("MatchesCount")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("MatchesLeft")
+                        .HasColumnType("integer");
+
+                    b.Property<long>("PlayerId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("TeamId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ChampionatId");
+
+                    b.HasIndex("PlayerId");
+
+                    b.HasIndex("TeamId");
+
+                    b.ToTable("Discfalifications");
                 });
 
             modelBuilder.Entity("Domain.Models.LogoFile", b =>
@@ -791,6 +831,33 @@ namespace Domain.Migrations
                         .IsRequired();
 
                     b.Navigation("Championat");
+
+                    b.Navigation("Team");
+                });
+
+            modelBuilder.Entity("Domain.Models.Discfalification", b =>
+                {
+                    b.HasOne("Domain.Models.Championat", "Championat")
+                        .WithMany()
+                        .HasForeignKey("ChampionatId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Models.Player", "Player")
+                        .WithMany()
+                        .HasForeignKey("PlayerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Models.Team", "Team")
+                        .WithMany()
+                        .HasForeignKey("TeamId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Championat");
+
+                    b.Navigation("Player");
 
                     b.Navigation("Team");
                 });

@@ -1,5 +1,6 @@
 ﻿using Application.Players;
 using Domain.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Project.Controllers;
 
@@ -14,6 +15,12 @@ namespace stenles.Controllers
             return await Mediator.Send(request);
         }
 
+        [HttpGet("GetById")]
+        public async Task<Player> GetById([FromHeader] GetById.PlayersGetById request)
+        {
+            return await Mediator.Send(request);
+        }
+        [Authorize(Roles ="admin")]
         [HttpPost("Add")]
         public async Task<bool> Add([FromBody] Add.PlayerAdd request)
         {

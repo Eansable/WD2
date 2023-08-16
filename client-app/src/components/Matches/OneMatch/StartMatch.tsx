@@ -6,14 +6,14 @@ import styles from "./styles.module.css"
 import SquadPlayer from "./SquadPlayer"
 
 interface PropsType {
-    match: MatchType
+    match?: MatchType
 }
 
 const StartMatch = ({ match }: PropsType) => {
     const dispatch = useAppDispatch()
 
 
-    return (
+    return (match ?
         <div>
             Блок с управлением матча в прямом эфире:
             {!match?.isLive && !match?.isEnded ? <CustomButton
@@ -46,7 +46,8 @@ const StartMatch = ({ match }: PropsType) => {
                         <>Состав на матч не добавлен</>}
                 </div>
             </div>
-        </div>)
+        </div> :
+        null)
 }
 
 export default StartMatch

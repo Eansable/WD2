@@ -1,5 +1,6 @@
 ﻿using Domain.Context;
 using Domain.Errors;
+using Domain.Models;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -24,12 +25,28 @@ namespace Application.Matches
                 if (match == null) {
                     throw new RestException(System.Net.HttpStatusCode.NotFound, "Матч не найден!");
                 }
+
                 var team1Squad = _context.Squads.Where(s => s.MatchId == request.MatchId && s.TeamId == match.HomeTeamId).ToList();
                 var team2Squad = _context.Squads.Where(s => s.MatchId == request.MatchId && s.TeamId == match.VisitorId).ToList();
+
+                var teamsPlayers = _context.Players.Where(p => p.TeamId == match.HomeTeamId || p.TeamId == match.VisitorId).Select(p => p.Id).ToList();
+               
+
+                
+
                 if (team1Squad.Count < match.Championat.PLayersCount || team2Squad.Count < match.Championat.PLayersCount)
                     throw new RestException(System.Net.HttpStatusCode.BadRequest, "Добавте стартовые составы!");
                 if (!match.IsLive)
                 {
+                    List<Discfalification> listDiscfal = _context.Discfalifications.Where(d => d.ChampionatId == match.ChampionatId 
+                                                                                                && teamsPlayers.Any(t1p => t1p == d.PlayerId))
+                                                                                   .ToList();
+
+                    if (listDiscfal.ToList().Count > 0 )
+                    {
+                        listDiscfal.ToList().ForEach(d => d.MatchesLeft++);
+                    }
+
                     match.IsLive = true;
                     match.HomeGoals = 0;
                     match.VisitorGoals = 0;

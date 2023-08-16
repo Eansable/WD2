@@ -1,6 +1,6 @@
 .custom__button {
   border: none;
-  background-color: green;
+  background-color: #5C821A;
   font-size: 16px;
   padding: 8px 14px;
   color: white;
@@ -10,5 +10,5 @@
 }
 
 .custom__button:hover {
-  background-color: rgb(1, 182, 1);
+  background-color: #5C821Ad0;
 }

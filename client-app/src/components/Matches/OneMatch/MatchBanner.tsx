@@ -4,6 +4,7 @@ import styles from "./styles.module.css"
 import moment from "moment"
 import Link from "next/link"
 import { Dispatch, SetStateAction } from "react"
+import EventItem from "./EventItem"
 
 interface PropsType {
     match?: MatchType,
@@ -47,23 +48,19 @@ const MatchBanner = ({ match }: PropsType) => {
                 <p>{match.visitor.teamName}</p>
             </Link>
         </div>
-        {match.isLive ? <div className={styles.live}>Live</div> : null}
-        <div className={styles.home_events}>
-            {match.matchEvents?.map(matchEvent => {
-                return matchEvent.teamId === match.home.teamId && matchEvent.name === "Гол" ?
-                 <div className={styles.home_event}> <img src={`https://localhost:44326/api/logo/GetById?id=${matchEvent.logoId}`}/> <Link href={`/users/${matchEvent.playerId}`}>{matchEvent.playerName} </Link> {matchEvent.minute}'</div> 
-                 : null
-            })}
-        </div>
-        <div></div>
-        <div className={styles.visitor_events}>
-            {match.matchEvents?.map(matchEvent => {
-                return matchEvent.teamId === match.visitor.teamId && matchEvent.name === "Гол" ?
-                 <div className={styles.visitor_event}>{matchEvent.minute}' <Link href={`/users/${matchEvent.playerId}`}>{matchEvent.playerName} </Link> <img src={`https://localhost:44326/api/logo/GetById?id=${matchEvent.logoId}`}/></div> 
-                 : null
-            })}
-        </div>
-
+        
+        {match?.matchEvents?.length ?
+            <div className={styles.match_events_wrapper}>
+                <div className={styles.match_events_list}>
+                    {match.matchEvents.map(event => {
+                        return <EventItem
+                            event={event}
+                            isVisitor={event.teamId === match.visitor.teamId}
+                        />
+                    })}
+                </div>
+            </div>
+            : null}
     </section>
         :
         <>{LocalLoading}</>
