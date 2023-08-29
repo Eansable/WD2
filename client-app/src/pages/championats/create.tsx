@@ -93,7 +93,18 @@ const CreateChampionat = ({ championat }: PropsType) => {
                     </Select.Option>
                 </Select>
             </Form.Item>
-
+            <Form.Item
+                name="countLaps"
+                label="Количество кругов:"
+                initialValue={2}
+                rules={[
+                    {
+                        required: true
+                    }
+                ]}
+            >
+                <CustomInput></CustomInput>
+            </Form.Item>
             <Form.Item
                 name="minutesTime"
                 label="Тайм минут:"

@@ -9,6 +9,7 @@ export interface MatchType {
     isEnded: boolean,
     score?: string | null,
     matchEvents?: MatchEventType[]
+    round?: number
 }
 
 export interface MatchTeam {

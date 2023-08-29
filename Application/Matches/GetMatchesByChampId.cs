@@ -34,10 +34,12 @@ namespace Application.Matches
                          Date = m.StartMatch,
                          IsLive = m.IsLive,
                          IsEnded= m.IsEnded,
-                         Score = m.HomeGoals.ToString() + ":" + m.VisitorGoals.ToString()
+                         Score = m.HomeGoals.ToString() + ":" + m.VisitorGoals.ToString(),
+                         Round = m.Round
                     }
                     )
                     .OrderBy(m => m.Date)
+                    .OrderBy(m => m.Round)
                     .ToList();
                 if (matches == null)
                 {

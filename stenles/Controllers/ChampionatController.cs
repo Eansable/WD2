@@ -1,5 +1,6 @@
 ﻿using Application.Championats;
 using Application.Championats.Dto;
+using Application.Matches.Dto;
 using Domain.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -57,6 +58,12 @@ namespace stenles.Controllers
         [Authorize(Roles = "admin")]
         [HttpPost("AddMatch")]
         public async Task<bool> AddMatch([FromBody] AddMatch.ChampionatAddMatch request)
+        {
+            return await Mediator.Send(request);
+        }
+        [Authorize(Roles = "admin")]
+        [HttpGet("GenerateShedule")]
+        public async Task<List<MatchDto>> GenerateShedule([FromHeader] GenerateSchedule.ChampionatGenerateSchedule request)
         {
             return await Mediator.Send(request);
         }

@@ -1,14 +1,8 @@
 ﻿using Application.Matches.Dto;
 using Domain.Context;
 using Domain.Errors;
-using Domain.Models;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Matches
 {
@@ -87,7 +81,7 @@ namespace Application.Matches
                         TeamLogo = match.Visitor.LogoId,
                         TeamPlayers = visitorPlayers
                     },
-                    Date = match.StartMatch.ToLocalTime(),
+                    Date = match.StartMatch,
                     StadiumId = match.StadiumId,
                     StadiumName = match.Stadium.Name,
                     IsLive= match.IsLive,

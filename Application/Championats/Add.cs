@@ -21,6 +21,7 @@ namespace Application.Championats
             public int PlaeyrsCount { get; set; }
             public int MaxPlayerPerMatch { get; set; }
             public bool? IsDefaultChamp { get; set; }
+            public int CountLaps { get; set; }
         }
 
         public class Handler : IRequestHandler<ChampionatAdd, long>
@@ -49,7 +50,8 @@ namespace Application.Championats
                     CountYellowAfterDis= request.CountYellowAfterDis,
                     MaxPlayerPerMatch = request.MaxPlayerPerMatch,
                     MinutesTime= request.MinutesTime,
-                    YearString = year
+                    YearString = year,
+                    LapsCount = request.CountLaps
                 };
                 if (request.IsDefaultChamp.HasValue)
                 {

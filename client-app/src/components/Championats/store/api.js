@@ -8,7 +8,8 @@ const api = {
   addTeam: (values) => requests.post("championat/AddTeam", values),
   addMatch: (values) => requests.post("championat/AddMatch", values),
   deleteTeam: (values) => requests.post("championat/DeleteTeam", values),
-  getOneById: (values) => requests.get("championat/GetOneById", values)
+  getOneById: (values) => requests.get("championat/GetOneById", values),
+  generateShedule: (values) => requests.get("championat/GenerateShedule", values),
 };
 
 export default api;

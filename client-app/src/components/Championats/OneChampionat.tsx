@@ -5,7 +5,7 @@ import CustomButton from "../CustomElement/Button";
 import styles from "./styles.module.css";
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "@/helpers/hooks";
-import { addMatchAction, addTeamAction, deleteAction, getOneByIdAction } from "./store/actions";
+import { addMatchAction, addTeamAction, deleteAction, generateSheduleAction, getOneByIdAction } from "./store/actions";
 import { getMatchesByChampIdAction } from "../Matches/store/actions";
 import { getAllTeamAction } from "../Teams/store/actions";
 import ChampionatTable from "./ChampionatTable";
@@ -33,7 +33,7 @@ const OneChampionat = ({ id }: PropsType) => {
   const [openAddTeam, setOpenAddTeam] = useState(false)
   const [openAddMatch, setOpenAddMatch] = useState(false)
   const [activeTab, setActiveTab] = useState(0)
-  const [newMatch, setNewMatch] = useState<MatchForm>({dateStartMatch: new Date()})
+  const [newMatch, setNewMatch] = useState<MatchForm>({ dateStartMatch: new Date() })
   const { teams } = useAppSelector(state => state.teamReducer)
   const { oneChampionat, isLoading, changed, deleted } = useAppSelector(state => state.championatReducer)
   const { stadiums } = useAppSelector(state => state.stadiumReducer)
@@ -52,7 +52,7 @@ const OneChampionat = ({ id }: PropsType) => {
 
   const closeModalAddMatch = () => {
     setOpenAddMatch(false)
-    setNewMatch({dateStartMatch: new Date()})
+    setNewMatch({ dateStartMatch: new Date() })
   }
 
   const addTeam = () => {
@@ -65,6 +65,10 @@ const OneChampionat = ({ id }: PropsType) => {
 
   const deleteChampionat = () => {
     dispatch(deleteAction({ id }))
+  }
+
+  const generateShedule = () => {
+    dispatch(generateSheduleAction({ championatId: id }))
   }
 
   const getFormat = (format: number) => {
@@ -85,7 +89,7 @@ const OneChampionat = ({ id }: PropsType) => {
   const getActiveContent = (active: number) => {
     switch (active) {
       case 1:
-        return  <MatchesList matches={matches} isResult={true} champId={id} /> 
+        return <MatchesList matches={matches} isResult={true} champId={id} />
       case 2:
         return <MatchesList matches={matches} isResult={false} champId={id} />
       case 3:
@@ -99,7 +103,7 @@ const OneChampionat = ({ id }: PropsType) => {
   const handleTime = (value: Dayjs | null) => {
     const date = new Date(newMatch.dateStartMatch)
     if (value === null)
-    return 
+      return
     date.setHours(value.hour())
     date.setMinutes(value.minute())
     setNewMatch({
@@ -111,7 +115,7 @@ const OneChampionat = ({ id }: PropsType) => {
   const handleDate = (value: Dayjs | null) => {
     const date = new Date(newMatch.dateStartMatch)
     if (value === null)
-       return 
+      return
     date.setDate(value.date())
     date.setMonth(value.month())
     date.setFullYear(value.year())
@@ -224,7 +228,9 @@ const OneChampionat = ({ id }: PropsType) => {
         >
           Удалить чемпионат
         </CustomButton>
-        <CustomButton>
+        <CustomButton
+          onClick={generateShedule}
+        >
           Сгенерировать календарь
         </CustomButton>
         <CustomButton

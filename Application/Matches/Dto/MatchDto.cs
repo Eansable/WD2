@@ -9,5 +9,6 @@
         public bool IsLive { get; set; }
         public bool IsEnded { get; set; }
         public string? Score { get; set; }
+        public int? Round { get; set; }
     }
 }

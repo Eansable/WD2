@@ -21,6 +21,6 @@ export interface PlayerFormType {
 export interface OnePlayerType extends PlayerType {
     matchCount: number,
     goalCount: number,
-    yellowCount: number,
-    redCount: number,
+    yellowCardCount: number,
+    redCardCount: number,
 }

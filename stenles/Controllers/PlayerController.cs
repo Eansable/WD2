@@ -1,4 +1,5 @@
 ﻿using Application.Players;
+using Application.Players.Dto;
 using Domain.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -16,7 +17,7 @@ namespace stenles.Controllers
         }
 
         [HttpGet("GetById")]
-        public async Task<Player> GetById([FromHeader] GetById.PlayersGetById request)
+        public async Task<OnePlayerDto> GetById([FromHeader] GetById.PlayersGetById request)
         {
             return await Mediator.Send(request);
         }

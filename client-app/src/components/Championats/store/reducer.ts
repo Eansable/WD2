@@ -73,7 +73,11 @@ export const championatReducer = createSlice({
     addMatchSuccess: (state, action) => {
       state.isLoading = false
       state.changed = action.payload ? "Матч успешно добавлен в чемпионат!" : undefined
-    } 
+    }, 
+    generateSgeduleSuccess: (state, action) => {
+      state.isLoading = false
+      state.changed = action.payload ? "Календарь успешно сформирован!" : undefined
+    }, 
   }
 })
 
