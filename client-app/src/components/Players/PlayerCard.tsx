@@ -8,11 +8,12 @@ interface PropsType {
 const PlayerCard = ({ player }: PropsType) => {
   return (
     <div className={styles.card}>
-      <div className={styles.foto}>Foto</div>
-      <div className={styles.info}>
-        {player.name}
-        {player.secondName}
-      </div>
+      <div className={styles.foto}><img src="../defaultPlayer.svg" /></div>
+      <p className={styles.number}>12</p>
+      <p className={styles.name}>
+        {player.name} {player.secondName}
+      </p>
+      <p className={styles.age}>25</p>
     </div>
   );
 };

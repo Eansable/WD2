@@ -7,6 +7,8 @@ import CustomButton from "../CustomElement/Button";
 import CustomInput from "../CustomElement/Input";
 import { PlayerFormType } from "./types";
 import Notifications from "@/helpers/Notifications";
+import PlayerCard from "./PlayerCard";
+import styles from "./styles.module.css"
 
 interface PropsType {
   teamId: number;
@@ -43,18 +45,20 @@ const PlayersTeam = ({ teamId }: PropsType) => {
 
   return !isLoading ? (
     <div>
-      <div>Состав команды</div>
-      {players ? (
-        players?.map((player) => {
-          return (
-            <div>
-              {player.name} {player.secondName} {player.middleName}
-            </div>
-          );
-        })
-      ) : (
-        <h2>Ни одного игрока ещё не добавленно в команду </h2>
-      )}
+      <div className={styles.team_squad_wrapper}>
+        Состав команды
+        <div className={styles.team_squad}>
+          {players ? (
+            players?.map((player) => {
+              return (
+                <PlayerCard player={player} />
+              );
+            })
+          ) : (
+            <h2>Ни одного игрока ещё не добавленно в команду </h2>
+          )}
+        </div>
+      </div>
       <footer>
         <CustomButton onClick={() => setOpen(true)}>
           Добавить игрока в команду

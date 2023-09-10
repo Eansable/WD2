@@ -21,4 +21,25 @@
     border: 1px solid #C6D166;
 }
 
+/* PLAYERS TEAM */
+
+.team_squad {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+}
+
+/* PLAYER CARD */
+
+.card {
+    display: grid;
+    grid-template-columns: 40px 32px auto 64px;
+    column-gap: 16px;
+    width: 100%;
+    border: 1px solid #f9f9f9;
+    border-radius: 5px;
+    align-items: center;
+}
+
 /*  */

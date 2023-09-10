@@ -7,7 +7,6 @@ export interface PlayerType {
     teamId?: number,
     isActive?: boolean,
     avatarId?: number,
-
 }
 
 export interface PlayerFormType {

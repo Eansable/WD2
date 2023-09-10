@@ -17,6 +17,8 @@ namespace Domain.Models
         public bool IsActive { get; set; }
         public long? AvatarId { get; set; }
         public LogoFile? AvatarFile { get; set; }
+        public int? Number { get; set; }
+
 
     }
 }
