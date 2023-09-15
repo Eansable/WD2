@@ -1,11 +1,6 @@
 ﻿using Domain.Context;
 using Domain.Models;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Players
 {
@@ -17,8 +12,9 @@ namespace Application.Players
             public string Name { get; set; }
             public string? SecondName { get; set; }
             public string? MiddleName { get; set; }
-            public DateTime Birthday { get; set; }
+            public DateTime? Birthday { get; set; }
             public long TeamId { get; set; }
+            public int? Number { get; set; }
         }
 
         public class Handler : IRequestHandler<PlayerAdd, bool>
@@ -40,6 +36,7 @@ namespace Application.Players
                     MiddleName = request.MiddleName,
                     SecondName= request.SecondName,
                     IsActive = true,
+                    Number = request.Number,
                 };
                 _context.Players.Add(player);
                 return await _context.SaveChangesAsync() > 0; 

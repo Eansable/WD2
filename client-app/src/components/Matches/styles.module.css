@@ -7,25 +7,30 @@
     grid-column-end: 3;
 }
 
-.match__wrapper {
-    padding: 24px 36px;
+.match_wrapper {
     background-color: #f8f8f8;
     border: 1px solid #C6D166;
+    border-radius: 6px;
+    box-shadow: 2px 4px 8px 0px rgba(0, 0, 0, 0.125);
+    padding: 24px 36px;
+
+}
+
+.match__link {
+    margin-bottom: 20px;
     display: grid;
     grid-template-columns: 1fr 54px 1fr;
     transition: all 0.4s ease;
-    border-radius: 6px;
     text-decoration: none;
     row-gap: 8px;
     position: relative;
-    box-shadow: 2px 4px 8px 0px rgba(0, 0, 0, 0.125);
-
 }
-.match__wrapper:hover {
+
+.match__link:hover {
     transform: scale(1.01);
 }
 
-.match__wrapper p {
+.match__link p {
     color: #000000;
     padding: 0;
     margin: 0;
@@ -50,9 +55,36 @@
 }
 
 .match__date {
-    grid-column-start: 1;
-    grid-column-end: 4;
     text-align:center;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.match__date p {
+    margin: 0;
+}
+
+.match__date button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.match__date img {
+    width: 16px;
+    aspect-ratio: 1/1;
+}
+
+.match_date_flex {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+}
+
+.match_set_date {
+    display: flex;
+    
 }
 
 .match__result {

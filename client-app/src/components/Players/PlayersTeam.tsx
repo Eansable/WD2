@@ -5,10 +5,11 @@ import LocalLoader from "../CustomElement/Loader/LocalLoader";
 import { DatePicker, Form, Modal } from "antd";
 import CustomButton from "../CustomElement/Button";
 import CustomInput from "../CustomElement/Input";
-import { PlayerFormType } from "./types";
+import { PlayerFormType, PlayerType } from "./types";
 import Notifications from "@/helpers/Notifications";
 import PlayerCard from "./PlayerCard";
 import styles from "./styles.module.css"
+import ManagePlayer from "./ManagePlayer";
 
 interface PropsType {
   teamId: number;
@@ -21,10 +22,12 @@ const PlayersTeam = ({ teamId }: PropsType) => {
   );
   const [form] = Form.useForm();
   const [open, setOpen] = useState(false);
+  const [editPlayer, setEditPlayer] = useState<PlayerType>()
 
   const closeModal = () => {
     setOpen(false);
     form.resetFields();
+    setEditPlayer(undefined)
   };
 
   const savePlayer = (values: PlayerFormType) => {
@@ -32,8 +35,9 @@ const PlayersTeam = ({ teamId }: PropsType) => {
   };
 
   useEffect(() => {
-    dispatch(getByTeamIdAction({ teamId }));
-  }, []);
+    if (teamId)
+      dispatch(getByTeamIdAction({ teamId }));
+  }, [teamId]);
 
   useEffect(() => {
     if (changed) {
@@ -51,7 +55,11 @@ const PlayersTeam = ({ teamId }: PropsType) => {
           {players ? (
             players?.map((player) => {
               return (
-                <PlayerCard player={player} />
+                <PlayerCard
+                  player={player}
+                  setEditPlayer={setEditPlayer}
+                  setOpen={setOpen}
+                />
               );
             })
           ) : (
@@ -70,21 +78,10 @@ const PlayersTeam = ({ teamId }: PropsType) => {
         closable={false}
         footer={null}
       >
-        <Form form={form} onFinish={savePlayer}>
-          <Form.Item name="name" label="Имя">
-            <CustomInput></CustomInput>
-          </Form.Item>
-          <Form.Item name="secondName" label="Фамилия">
-            <CustomInput></CustomInput>
-          </Form.Item>
-          <Form.Item name="middleName" label="Отчество">
-            <CustomInput></CustomInput>
-          </Form.Item>
-          <Form.Item name="birthday" label="Имя">
-            <DatePicker></DatePicker>
-          </Form.Item>
-          <CustomButton type="submit">Сохранить</CustomButton>
-        </Form>
+        <ManagePlayer
+          editPlayer={editPlayer}
+          teamId={teamId}
+        ></ManagePlayer>
       </Modal>
     </div>
   ) : (

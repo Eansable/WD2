@@ -33,10 +33,16 @@ export const PlayersReducer = createSlice({
         getByIdSuccess: (state, action) => {
             state.isLoading = false
             state.onePlayer = action.payload
+            if (state.onePlayer)
+                state.onePlayer.birthday = new Date(action.payload.birthday);
         },
         addSuccess: (state, action) => {
-            state.isLoading = false,
+            state.isLoading = false
             state.changed = action.payload ? "Игрок успешно добавлен" : undefined
+        },
+        changeSuccess: (state, action) => {
+            state.isLoading = false
+            state.changed = action.payload ? "Игрок успешно изменён!" : undefined
         }
     }
 })

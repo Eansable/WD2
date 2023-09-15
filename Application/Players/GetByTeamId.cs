@@ -29,7 +29,7 @@ namespace Application.Players
             public async Task<List<Player>> Handle(PlayersGetAllByTeamId request, CancellationToken cancellationToken)
 
             {
-                return _context.Players.Where(p => p.TeamId == request.TeamId).ToList();
+                return _context.Players.Where(p => p.TeamId == request.TeamId).OrderBy(p => p.Number).ToList();
             }
         }
     }

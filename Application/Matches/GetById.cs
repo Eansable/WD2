@@ -82,8 +82,8 @@ namespace Application.Matches
                         TeamPlayers = visitorPlayers
                     },
                     Date = match.StartMatch,
-                    StadiumId = match.StadiumId,
-                    StadiumName = match.Stadium.Name,
+                    StadiumId = match.StadiumId != null ? match.StadiumId : null,
+                    StadiumName = match.Stadium?.Name,
                     IsLive= match.IsLive,
                     IsEnded= match.IsEnded,
                     Score = match.HomeGoals.ToString() + ":" + match.VisitorGoals.ToString(),

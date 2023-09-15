@@ -15,7 +15,7 @@
     column-gap: 32px;
 }
 
-.player__banner div{
+.player__banner div {
     background-color: #f9f9f9;
     border-radius: 5px;
     border: 1px solid #C6D166;
@@ -32,14 +32,76 @@
 
 /* PLAYER CARD */
 
+.card_link {
+    text-decoration: none;
+}
+
 .card {
     display: grid;
-    grid-template-columns: 40px 32px auto 64px;
+    grid-template-columns: 40px 32px auto 64px 32px;
     column-gap: 16px;
     width: 100%;
-    border: 1px solid #f9f9f9;
+    border: 1px solid #C6D166;
     border-radius: 5px;
     align-items: center;
+    padding: 4px 24px;
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    background-color: #d9d9d9;
+}
+
+.card p {
+    padding: 0;
+    margin: 0;
+    color: #000000;
+}
+
+.foto img {
+    width: 46px;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+
+}
+
+.change_number_inactive {
+    display: none;
+}
+
+.manage_player {
+    width: 16px;
+    aspect-ratio: 1 / 1;
+    margin: 4px;
+    cursor: pointer;
+}
+
+
+
+/*  */
+
+/* MANAGE PLAYER */
+.number_input {
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 16px;
+    border: gray 1px solid;
+    transition: all 0.3s ease-in;
+}
+
+.number:focus-visible {
+    outline: solid 1px#5C821A;
+  }
+
+/* Chrome, Safari, Edge, Opera */
+.number::-webkit-outer-spin-button,
+.number::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+/* Firefox */
+.number[type=number] {
+    -moz-appearance: textfield;
 }
 
 /*  */

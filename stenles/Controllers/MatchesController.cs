@@ -51,5 +51,11 @@ namespace stenles.Controllers
         {
             return await Mediator.Send(request);
         }
+        [Authorize(Roles = "admin")]
+        [HttpPost("EditDate")]
+        public async Task<bool> EditDate([FromBody] EditDateMatch.MatchEditDate request)
+        {
+            return await Mediator.Send(request);
+        }
     }
 }

@@ -8,6 +8,7 @@ const api = {
     addSquad: (values) => requests.post("/matches/addSquad", values),
     addGoal: (values) => requests.post("/matches/addGoal", values),
     addCard: (values) => requests.post("/matches/addCard", values),
+    editDate: (values) => requests.post("/matches/editDate", values),
 }
 
 export default api

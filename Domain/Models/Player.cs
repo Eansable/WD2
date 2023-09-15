@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Domain.Models
+﻿namespace Domain.Models
 {
     public class Player : IId
     {
@@ -18,7 +12,5 @@ namespace Domain.Models
         public long? AvatarId { get; set; }
         public LogoFile? AvatarFile { get; set; }
         public int? Number { get; set; }
-
-
     }
 }

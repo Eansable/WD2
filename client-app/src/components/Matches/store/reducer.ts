@@ -53,6 +53,10 @@ export const matchesReducer = createSlice({
             state.isLoading = false
             state.changed = action.payload ? "Карточка добавлена!" : undefined
         },
+        editDateSuccess: (state, action) => {
+            state.isLoading = false
+            state.changed = action.payload ? "Время изменено!" : undefined
+        },
     }
 })
 

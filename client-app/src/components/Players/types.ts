@@ -7,6 +7,7 @@ export interface PlayerType {
     teamId?: number,
     isActive?: boolean,
     avatarId?: number,
+    number?: number
 }
 
 export interface PlayerFormType {
@@ -15,6 +16,7 @@ export interface PlayerFormType {
     middleName?: string,
     birthday?: Date,
     teamId?: number,
+    number?: number
 }
 
 export interface OnePlayerType extends PlayerType {

@@ -27,5 +27,11 @@ namespace stenles.Controllers
         {
             return await Mediator.Send(request);
         }
+        [Authorize(Roles = "admin")]
+        [HttpPost("change")]
+        public async Task<bool> Change([FromBody] Change.PlayerChange request)
+        {
+            return await Mediator.Send(request);
+        }
     }
 }
