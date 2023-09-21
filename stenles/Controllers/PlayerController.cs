@@ -33,5 +33,11 @@ namespace stenles.Controllers
         {
             return await Mediator.Send(request);
         }
+        [Authorize(Roles = "admin")]
+        [HttpPost("changeAvatar")]
+        public async Task<bool> ChangeAvatar([FromForm] ChangeAvatar.PlayerChangeAvatar request)
+        {
+            return await Mediator.Send(request);
+        }
     }
 }
