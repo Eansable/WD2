@@ -24,4 +24,5 @@ export interface OnePlayerType extends PlayerType {
     goalCount: number,
     yellowCardCount: number,
     redCardCount: number,
+    teamName?: string
 }
