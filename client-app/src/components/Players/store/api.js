@@ -5,6 +5,7 @@ const api = {
     getById: (params) => requests.get('/player/getById', params),
     add: (params) => requests.post('/player/add', params),
     change: (params) => requests.post('/player/change', params),
+    changeAvatar: (params) => requests.post('/player/changeAvatar', params),
     
 }
 

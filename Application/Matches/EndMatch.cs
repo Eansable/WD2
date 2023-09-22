@@ -29,13 +29,17 @@ namespace Application.Matches
                     throw new RestException(System.Net.HttpStatusCode.NotFound, "Матч не найден!");
                 }
 
-                var team1Players = _context.Players.Where(p => p.TeamId == match.HomeTeamId).ToList();
-                var team2Players = _context.Players.Where(p => p.TeamId == match.VisitorId).ToList();
+                var team1Players = _context.Players.Where(p => p.TeamId == match.HomeTeamId)
+                    .Select(p => p.Id)
+                    .ToList();
+                var team2Players = _context.Players.Where(p => p.TeamId == match.VisitorId)
+                    .Select(p => p.Id)
+                    .ToList();
 
 
                 var listDiscfal = _context.Discfalifications.Where(d => d.ChampionatId == match.ChampionatId
-                                                                            && team1Players.Any(p => p.Id == d.PlayerId)
-                                                                            && team2Players.Any(p => p.Id == d.PlayerId)
+                                                                            && team1Players.Contains(d.PlayerId)
+                                                                            && team2Players.Contains(d.PlayerId)
                                                                             && d.MatchesCount == d.MatchesLeft)
                                                                 .ToList();
 

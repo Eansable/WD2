@@ -7,7 +7,8 @@ const { addSuccess,
     setError,
     setLoading,
     getByIdSuccess,
-    changeSuccess
+    changeSuccess,
+    changeAvatarSuccess
 } = PlayersReducer.actions
 
 export const getByTeamIdAction = (params) => {
@@ -22,6 +23,7 @@ export const getByTeamIdAction = (params) => {
     }
     return defActionSlice(defAction)
 }
+
 export const getByIdAction = (params) => {
     const defAction = {
         req: setLoading,
@@ -55,6 +57,19 @@ export const changeAction = (params) => {
         suc: changeSuccess,
         service: {
             func: api.change,
+            params
+        }
+    }
+    return defActionSlice(defAction)
+}
+
+export const changeAvatatAction = (params) => {
+    const defAction = {
+        req: setLoading,
+        fail: setError,
+        suc: changeAvatarSuccess,
+        service: {
+            func: api.changeAvatar,
             params
         }
     }

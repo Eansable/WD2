@@ -1,11 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { PlayerType } from "../types";
+import { OnePlayerType, PlayerType } from "../types";
 
 interface StateType {
     isLoading: boolean,
     changed?: string,
     players?: PlayerType[],
-    onePlayer?: PlayerType
+    onePlayer?: OnePlayerType
 }
 
 const initialState: StateType = {
@@ -43,7 +43,11 @@ export const PlayersReducer = createSlice({
         changeSuccess: (state, action) => {
             state.isLoading = false
             state.changed = action.payload ? "Игрок успешно изменён!" : undefined
-        }
+        },
+        changeAvatarSuccess: (state, action) => {
+            state.isLoading = false
+            state.changed = action.payload ? "Игрок успешно изменён!" : undefined
+        },
     }
 })
 

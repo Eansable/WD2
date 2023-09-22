@@ -11,7 +11,7 @@
     border: 1px solid #C6D166;
     aspect-ratio: 3 / 1;
     display: grid;
-    grid-template-columns: 1fr 3fr;
+    grid-template-columns: 1fr 4fr;
     column-gap: 32px;
 }
 
@@ -19,6 +19,20 @@
     background-color: #f9f9f9;
     border-radius: 5px;
     border: 1px solid #C6D166;
+}
+
+.player_avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.player_foto {
+    width: 150px;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
 }
 
 /* PLAYERS TEAM */
