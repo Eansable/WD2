@@ -43,7 +43,7 @@ namespace Application.Matches
                                                                             && d.MatchesCount == d.MatchesLeft)
                                                                 .ToList();
 
-                if (listDiscfal.Count > 0)
+                if (listDiscfal.Count() > 0)
                 {
                     listDiscfal.ForEach(d => d.IsActive = false);
                 }

@@ -18,7 +18,6 @@
 .player__banner div {
     background-color: #f9f9f9;
     border-radius: 5px;
-    border: 1px solid #C6D166;
 }
 
 .player_avatar {
@@ -30,9 +29,22 @@
 }
 
 .player_foto {
-    width: 150px;
+    width: 100%;
     aspect-ratio: 1 / 1;
     border-radius: 50%;
+}
+
+.player_tab {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 12px 24px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.player_tab.active {
+    border-bottom: 3px solid #5C821A;
 }
 
 /* PLAYERS TEAM */
@@ -90,6 +102,43 @@
     cursor: pointer;
 }
 
+.change_avatar {
+    cursor: pointer;
+    transition: color 0.4s ease;
+}
+
+.change_avatar:hover {
+    color: #5C821A;
+}
+
+.change_avatar input {
+    display: none;
+}
+
+.player_banner_info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 16px;
+    padding: 24px 36px;
+}
+
+.player_banner_info h3{
+    font-size: 48px;
+    line-height: 126%;
+    margin: 0;
+}
+
+.player_banner_info p {
+    font-size: 20px;
+    line-height: 24px;
+    margin: 0;
+}
+
+.player_banner_info p a{
+    color: #000000;
+    text-decoration: none;
+}
 
 
 /*  */

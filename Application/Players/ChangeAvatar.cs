@@ -49,6 +49,7 @@ namespace Application.Players
                     Content = ms.ToArray()
                 };
                 await _context.LogoFiles.AddAsync(newAvatar);
+                await _context.SaveChangesAsync();
                 player.AvatarId = newAvatar.Id;
                 return await _context.SaveChangesAsync() > 0;
             }
