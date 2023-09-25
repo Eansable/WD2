@@ -15,6 +15,7 @@ import CreateChampionat from "@/pages/championats/create";
 import MatchesList from "../Matches/MatchesList";
 import dayjs, { Dayjs } from "dayjs"
 import Notifications from "@/helpers/Notifications";
+import ChampionatSettings from "./ChampionatSettings";
 
 interface PropsType {
   id: number;
@@ -239,7 +240,7 @@ const OneChampionat = ({ id }: PropsType) => {
           Настройки чемпионата
         </CustomButton>
       </div> : null}
-      {visibleSetting ? <CreateChampionat championat={oneChampionat}></CreateChampionat> : null}
+      {visibleSetting && oneChampionat ? <ChampionatSettings championat={oneChampionat} /> : null}
       <Modal
         open={openAddTeam}
         onCancel={closeModalAddTeam}

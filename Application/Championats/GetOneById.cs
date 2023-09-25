@@ -53,6 +53,7 @@ namespace Application.Championats
                     Table= table,
                     YearString = championat.YearString,
                     LogoId = championat.LogoId,
+                    IsDefaultChamp = championat.IsDefaultChamp,
                 };
             }
         }

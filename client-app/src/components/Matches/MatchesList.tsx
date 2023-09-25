@@ -4,8 +4,9 @@ import MatchItem from "./MatchItem"
 import { MatchType } from "./types"
 import styles from "./styles.module.css"
 import { useEffect } from "react"
-import { useAppDispatch } from "@/helpers/hooks"
+import { useAppDispatch, useAppSelector } from "@/helpers/hooks"
 import { getMatchesByChampIdAction } from "./store/actions"
+import Notifications from "@/helpers/Notifications"
 
 interface PropsType {
     matches?: MatchType[],
@@ -15,14 +16,28 @@ interface PropsType {
 
 const MatchesList = ({ matches, isResult, champId }: PropsType) => {
     const dispatch = useAppDispatch()
+    const { changed } = useAppSelector(state => state.matchesReducer)
 
-    useEffect(() => {
+    const getMatches = () => {
         dispatch(getMatchesByChampIdAction({
             champId: Number(champId),
             isEndedMatches: isResult
         }
         ))
+    }
+
+    useEffect(() => {
+        if (changed) {
+            getMatches()
+            Notifications.success(changed, 10)
+        }
+    }, [changed])
+
+    useEffect(() => {
+        getMatches()
     }, [isResult])
+
+
 
     return <div className={styles.match__list}>
         {matches ?

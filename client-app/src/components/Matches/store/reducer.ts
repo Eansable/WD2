@@ -57,6 +57,10 @@ export const matchesReducer = createSlice({
             state.isLoading = false
             state.changed = action.payload ? "Время изменено!" : undefined
         },
+        deleteMatchSuccess: (state, action) => {
+            state.isLoading = false
+            state.changed = action.payload ? "Матч удалён!" : undefined
+        },
     }
 })
 

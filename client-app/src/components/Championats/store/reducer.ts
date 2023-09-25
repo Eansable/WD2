@@ -78,6 +78,10 @@ export const championatReducer = createSlice({
       state.isLoading = false
       state.changed = action.payload ? "Календарь успешно сформирован!" : undefined
     }, 
+    changeDefaultSuccess: (state, action) => {
+      state.isLoading = false
+      state.changed = action.payload ? "Настройки чемпионата изменены!" : undefined
+    }, 
   }
 })
 

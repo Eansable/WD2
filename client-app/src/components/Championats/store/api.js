@@ -10,6 +10,7 @@ const api = {
   deleteTeam: (values) => requests.post("championat/DeleteTeam", values),
   getOneById: (values) => requests.get("championat/GetOneById", values),
   generateShedule: (values) => requests.get("championat/GenerateShedule", values),
+  changeDefault: (values) => requests.post("championat/ChangeDefault", values),
 };
 
 export default api;

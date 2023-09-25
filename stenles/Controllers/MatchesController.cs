@@ -57,5 +57,11 @@ namespace stenles.Controllers
         {
             return await Mediator.Send(request);
         }
+        [Authorize(Roles = "admin")]
+        [HttpPost("deleteMatch")]
+        public async Task<bool> DeleteMatch([FromBody] Delete.MatchesDelete request)
+        {
+            return await Mediator.Send(request);
+        }
     }
 }

@@ -67,5 +67,11 @@ namespace stenles.Controllers
         {
             return await Mediator.Send(request);
         }
+        [Authorize(Roles = "admin")]
+        [HttpPost("changeDefault")]
+        public async Task<bool> ChangeDefault([FromBody] ChangeDefault.ChampionatChangeDefault request)
+        {
+            return await Mediator.Send(request);
+        }
     }
 }

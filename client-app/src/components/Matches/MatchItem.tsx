@@ -1,24 +1,33 @@
 import { MatchType } from "./types"
 import styles from "./styles.module.css"
 import Link from "next/link"
-import moment from "moment"
-import { useAppSelector } from "@/helpers/hooks"
-import { MouseEvent, useState } from "react"
+import { useAppDispatch, useAppSelector } from "@/helpers/hooks"
+import { MouseEvent, useEffect, useState } from "react"
 import { DatePicker, TimePicker } from "antd"
-import dayjs, { Dayjs } from "dayjs"
+import dayjs from "dayjs"
+import { editDateAction } from "./store/actions"
+import formatDate from "@/helpers/formatDate"
 
 interface PropsType {
     match: MatchType
 }
 const MatchItem = ({ match }: PropsType) => {
+    const dispatch = useAppDispatch()
     const { roles } = useAppSelector(state => state.accountReducer)
     const [isChangeDate, setIsChangeDate] = useState(false)
-    const [newTime, setNewTime] = useState<Dayjs>(dayjs(new Date()))
+    const [newTime, setNewTime] = useState<Date>(match.date ? new Date(match.date) : new Date())
+    const { changed } = useAppSelector(state => state.matchesReducer)
+
+    useEffect(() => {
+        if (changed) {
+            setIsChangeDate(false)
+            setNewTime(match.date ? new Date(match.date) : new Date())
+        }
+    }, [changed])
 
     const handleChangeDate = (e: MouseEvent<HTMLElement>) => {
         e.stopPropagation()
-        console.log(match.id);
-
+        dispatch(editDateAction({ matchId: match.id, dateTime: formatDate(newTime) }))
     }
     return <div className={styles.match_wrapper}>
         <Link href={`/match/${match.id}`} className={styles.match__link}>
@@ -41,10 +50,19 @@ const MatchItem = ({ match }: PropsType) => {
         <div className={styles.match__date}>
             <div className={styles.match_date_flex}>
                 {!isChangeDate ? <p>
-                    {moment(new Date(match.date)).format("DD-MM-YYYY HH:mm")}
+                    {dayjs(new Date(match.date)).format("DD-MM-YYYY HH:mm")}
                 </p> : <div className={styles.match_set_date}>
-                    <DatePicker 
-                        onChange={(date) => setNewTime(date ? date : dayjs(new Date()))}
+                    <DatePicker
+                        onChange={(date) => {
+                            const tempDate = new Date(newTime)
+                            const year = date?.year() ? date.year() : new Date().getFullYear()
+                            const month = date?.month() ? date.month() : new Date().getMonth()
+                            const day = date?.date() ? date.date() : new Date().getDate()
+                            tempDate.setFullYear(year)
+                            tempDate.setMonth(month)
+                            tempDate.setDate(day)
+                            setNewTime(tempDate)
+                        }}
                         value={dayjs(newTime)}
                     />
                     <TimePicker
@@ -52,13 +70,13 @@ const MatchItem = ({ match }: PropsType) => {
                         format="HH:mm"
                         value={dayjs(newTime)}
                         onChange={(date) => {
-                            const tempDate = newTime
-                            const hour = date?.hour ? date.hour() : 12
-                            const minute = date?.minute ? date.minute() : 12
-                            tempDate.set("hour", hour)
-                            tempDate.set("minute", minute)
+                            const tempDate = new Date(newTime)
+                            const hour = date?.hour() ? date.hour() : 12
+                            const minute = date?.minute() ? date.minute() : 0
+                            tempDate.setHours(hour)
+                            tempDate.setMinutes(minute)
+                            tempDate.setSeconds(0)
                             setNewTime(tempDate)
-
                         }}
                     />
                 </div>

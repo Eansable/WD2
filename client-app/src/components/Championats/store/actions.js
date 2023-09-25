@@ -14,7 +14,8 @@ const {
     deleteSuccess,
     getDefaultSuccess,
     setDefaultLoading,
-    generateSgeduleSuccess
+    generateSgeduleSuccess,
+    changeDefaultSuccess
 } = championatReducer.actions
 
 export const getAllAction = (params) => {
@@ -128,6 +129,19 @@ export const generateSheduleAction = (params) => {
         suc: generateSgeduleSuccess,
         service: {
             func: api.generateShedule,
+            params
+        }
+    }
+    return defActionSlice(defActionObj)
+}
+
+export const changeDefaultAction = (params) => {
+    const defActionObj = { 
+        req: setLoading,
+        fail: setError,
+        suc: changeDefaultSuccess,
+        service: {
+            func: api.changeDefault,
             params
         }
     }
