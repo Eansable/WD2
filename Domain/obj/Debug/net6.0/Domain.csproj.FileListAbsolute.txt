@@ -26,3 +26,17 @@ D:\Work\PAF\WD2\Domain\obj\Debug\net6.0\refint\Domain.dll
 D:\Work\PAF\WD2\Domain\obj\Debug\net6.0\Domain.pdb
 D:\Work\PAF\WD2\Domain\obj\Debug\net6.0\Domain.genruntimeconfig.cache
 D:\Work\PAF\WD2\Domain\obj\Debug\net6.0\ref\Domain.dll
+D:\Projects\WD2\stenles\Domain\bin\Debug\net6.0\Domain.deps.json
+D:\Projects\WD2\stenles\Domain\bin\Debug\net6.0\Domain.runtimeconfig.json
+D:\Projects\WD2\stenles\Domain\bin\Debug\net6.0\Domain.dll
+D:\Projects\WD2\stenles\Domain\bin\Debug\net6.0\Domain.pdb
+D:\Projects\WD2\stenles\Domain\obj\Debug\net6.0\Domain.csproj.AssemblyReference.cache
+D:\Projects\WD2\stenles\Domain\obj\Debug\net6.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\WD2\stenles\Domain\obj\Debug\net6.0\Domain.AssemblyInfoInputs.cache
+D:\Projects\WD2\stenles\Domain\obj\Debug\net6.0\Domain.AssemblyInfo.cs
+D:\Projects\WD2\stenles\Domain\obj\Debug\net6.0\Domain.csproj.CoreCompileInputs.cache
+D:\Projects\WD2\stenles\Domain\obj\Debug\net6.0\Domain.dll
+D:\Projects\WD2\stenles\Domain\obj\Debug\net6.0\refint\Domain.dll
+D:\Projects\WD2\stenles\Domain\obj\Debug\net6.0\Domain.pdb
+D:\Projects\WD2\stenles\Domain\obj\Debug\net6.0\Domain.genruntimeconfig.cache
+D:\Projects\WD2\stenles\Domain\obj\Debug\net6.0\ref\Domain.dll
