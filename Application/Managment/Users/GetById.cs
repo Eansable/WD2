@@ -10,11 +10,11 @@ namespace Application.Managment.Users
 {
     public class GetById
     {
-        public class UsersGetById : IRequest<UserDto>
+        public class UsersGetById : IRequest<ManagmentUserDto>
         {
             public Guid UserId { get; set; }
         }
-        public class Handler : IRequestHandler<UsersGetById, UserDto>
+        public class Handler : IRequestHandler<UsersGetById, ManagmentUserDto>
         {
             private readonly AppDbContext _context;
             private readonly UserManager<User> _userManager;
@@ -23,13 +23,13 @@ namespace Application.Managment.Users
                 _context = context;
                 _userManager = userManager;
             }
-            public async Task<UserDto> Handle(UsersGetById request, CancellationToken cancellationToken)
+            public async Task<ManagmentUserDto> Handle(UsersGetById request, CancellationToken cancellationToken)
             {
                 var user = _context.Users.Where(u => u.Id == request.UserId)
                     .Include(u => u.UserRoles)
                     .FirstOrDefault();
                 var roles = await _userManager.GetRolesAsync(user);
-                var result = new UserDto()
+                var result = new ManagmentUserDto()
                 {
                     Id = user.Id,
                     Email = user.Email,

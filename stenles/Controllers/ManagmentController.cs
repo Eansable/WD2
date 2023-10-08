@@ -18,7 +18,7 @@ namespace stenles.Controllers
         }
         [Authorize(Roles = "admin")]
         [HttpGet("GetById")]
-        public async Task<UserDto> GetById([FromHeader] GetById.UsersGetById query)
+        public async Task<ManagmentUserDto> GetById([FromHeader] GetById.UsersGetById query)
         {
             return await Mediator.Send(query);
         }
