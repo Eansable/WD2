@@ -16,6 +16,7 @@ import MatchesList from "../Matches/MatchesList";
 import dayjs, { Dayjs } from "dayjs"
 import Notifications from "@/helpers/Notifications";
 import ChampionatSettings from "./ChampionatSettings";
+import Table, { ColumnType } from "../CustomElement/Table";
 
 interface PropsType {
   id: number;
@@ -45,6 +46,25 @@ const OneChampionat = ({ id }: PropsType) => {
   const router = useRouter()
   const [visibleSetting, setVisibleSettings] = useState(false)
 
+  const columns: ColumnType[] = [
+    {
+      name: "Название",
+      dataIndex: "teamName"
+    },
+    {
+      name: "Побед",
+      dataIndex: "win"
+    },
+    {
+      name: "Ничьи",
+      dataIndex: "draw"
+    },
+    {
+      name: "Поражений",
+      dataIndex: "lose"
+    }
+
+  ]
 
   const closeModalAddTeam = () => {
     setOpenAddTeam(false)
@@ -207,7 +227,10 @@ const OneChampionat = ({ id }: PropsType) => {
           </div>
         </div>
         {getActiveContent(activeTab)}
-
+        {oneChampionat?.table ? <Table
+          columns={columns}
+          data={oneChampionat.table}
+        /> : null}
       </div>
       {roles.includes('admin') ? <div className={styles.championat__manage}>
         <CustomButton

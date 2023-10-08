@@ -1,0 +1,9 @@
+.table {
+    width: 100%;
+}
+
+.table tbody tr {
+    padding: 8px 14px;
+    margin: 0;
+    
+}
