@@ -1,3 +1,5 @@
+import { MatchType } from "../Matches/types"
+
 export interface PlayerType {
     id: number,
     name: string,
@@ -24,5 +26,7 @@ export interface OnePlayerType extends PlayerType {
     goalCount: number,
     yellowCardCount: number,
     redCardCount: number,
-    teamName?: string
+    teamName?: string,
+    teamLogoId?: number,
+    lastMatch?: MatchType
 }

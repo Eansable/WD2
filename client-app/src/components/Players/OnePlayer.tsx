@@ -1,10 +1,9 @@
 import Page404 from "@/pages/404"
 import { OnePlayerType } from "./types"
 import styles from "./styles.module.css"
-import CustomButton from "../CustomElement/Button"
 import FileLoader from "../CustomElement/FileLoader"
 import { ChangeEvent, useState } from "react"
-import { useAppDispatch } from "@/helpers/hooks"
+import { useAppDispatch, useAppSelector } from "@/helpers/hooks"
 import { changeAvatatAction } from "./store/action"
 import Link from "next/link"
 import routes from "./routes"
@@ -16,6 +15,7 @@ interface PropsType {
 const OnePlayer = ({ player }: PropsType) => {
     const dispatch = useAppDispatch()
     const [element, setElement] = useState(routes[0].element)
+    const { roles } = useAppSelector(state => state.accountReducer)
     const changeAvatar = (event: ChangeEvent<HTMLInputElement>) => {
         event.preventDefault();
         const fd = new FormData()
@@ -36,20 +36,22 @@ const OnePlayer = ({ player }: PropsType) => {
                     }
                     className={styles.player_foto}
                 />
-                <label className={styles.change_avatar}>
+                {roles.includes("admin") ? <label className={styles.change_avatar}>
                     <FileLoader
                         onChange={changeAvatar}
                     />
                     Изменить аватар
-                </label>
+                </label> : null}
             </div>
             <div className={styles.player_banner_info}>
                 <h3>
                     {player.name}
                 </h3>
-                <p>
+                <p className={styles.player_banner_team}>
                     <Link href={`teams/${player.teamId}`}>
-                        {player?.teamName}
+                        <img src={player.teamLogoId ?
+                            `https://localhost:44326/api/logo/GetById?id=${player.teamLogoId}`
+                            : "../defaultClub.png"} />{player?.teamName}
                     </Link>
                 </p>
             </div>

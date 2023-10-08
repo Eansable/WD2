@@ -123,7 +123,7 @@
     padding: 24px 36px;
 }
 
-.player_banner_info h3{
+.player_banner_info h3 {
     font-size: 48px;
     line-height: 126%;
     margin: 0;
@@ -135,13 +135,25 @@
     margin: 0;
 }
 
-.player_banner_info p a{
+.player_banner_info p a {
     color: #000000;
     text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.player_banner_info img {
+    width: 24px;
+    aspect-ratio: 1 / 1;
 }
 
 
-/*  */
+/*Overview*/
+
+.overview {
+    width: 33%;
+}
 
 /* MANAGE PLAYER */
 .number_input {
@@ -154,7 +166,7 @@
 
 .number:focus-visible {
     outline: solid 1px#5C821A;
-  }
+}
 
 /* Chrome, Safari, Edge, Opera */
 .number::-webkit-outer-spin-button,

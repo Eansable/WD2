@@ -28,6 +28,10 @@ namespace Application.Matches
                 {
                     throw new RestException(System.Net.HttpStatusCode.NotFound, "Матч не найден!");    
                 }
+                if (match.IsEnded || match.IsLive)
+                {
+                    throw new RestException(System.Net.HttpStatusCode.Forbidden, "Матч уже начат или закончен, можно удалить только не начатые матчи!");
+                }
                 _context.Matches.Remove(match);
                 return await _context.SaveChangesAsync() > 0;
             }

@@ -5,13 +5,15 @@ interface StateType {
     isLoading: boolean,
     matches?: MatchType[]
     oneMatch?: MatchType,
-    changed?: string
+    changed?: string,
+    changedDeleted?: string
 }
 
 const initialState: StateType = {
     isLoading: false,
     matches: undefined,
-    changed: undefined
+    changed: undefined,
+    changedDeleted: undefined
 }
 
 export const matchesReducer = createSlice({
@@ -21,6 +23,7 @@ export const matchesReducer = createSlice({
         setLoading: (state) => {
             state.isLoading = true
             state.changed = undefined
+            state.changedDeleted = undefined
         },
         setError: (state, action) => {
             state.isLoading = false
@@ -60,6 +63,7 @@ export const matchesReducer = createSlice({
         deleteMatchSuccess: (state, action) => {
             state.isLoading = false
             state.changed = action.payload ? "Матч удалён!" : undefined
+            state.changedDeleted = action.payload ? "Матч удалён!" : undefined
         },
     }
 })

@@ -1,5 +1,5 @@
-
-html, body {
+html,
+body {
     padding: 0;
     margin: 0;
     font-family: "Philosopher", sans-serif;
@@ -51,4 +51,15 @@ html, body {
     src: url("/Philosopher-Regular.ttf");
     font-weight: 700;
     font-style: italic;
+}
+
+button.ant-popover-open {
+    background-color: #5C821Aa0;
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: all 0.3s ease-in;
+    border: none;
+    padding: 8px 14px;
+
 }

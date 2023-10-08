@@ -3,15 +3,17 @@ import styles from "./styles.module.css"
 import Link from "next/link"
 import { useAppDispatch, useAppSelector } from "@/helpers/hooks"
 import { MouseEvent, useEffect, useState } from "react"
-import { DatePicker, TimePicker } from "antd"
+import { DatePicker, Popconfirm, TimePicker } from "antd"
 import dayjs from "dayjs"
-import { editDateAction } from "./store/actions"
+import { deleteMatcAction, editDateAction } from "./store/actions"
 import formatDate from "@/helpers/formatDate"
+import CustomButton from "../CustomElement/Button"
 
 interface PropsType {
-    match: MatchType
+    match: MatchType,
+    isManagment?: boolean
 }
-const MatchItem = ({ match }: PropsType) => {
+const MatchItem = ({ match, isManagment = true }: PropsType) => {
     const dispatch = useAppDispatch()
     const { roles } = useAppSelector(state => state.accountReducer)
     const [isChangeDate, setIsChangeDate] = useState(false)
@@ -81,7 +83,7 @@ const MatchItem = ({ match }: PropsType) => {
                     />
                 </div>
                 }
-                {roles.includes("admin") && !isChangeDate ? <img
+                {roles.includes("admin") && !isChangeDate && isManagment ? <img
                     src="../EditPen.svg"
                     alt="change date"
                     onClick={() => setIsChangeDate(true)}
@@ -90,6 +92,21 @@ const MatchItem = ({ match }: PropsType) => {
             {isChangeDate ? <button onClick={handleChangeDate}>
                 Сохранить
             </button> : null}
+            {roles.includes("admin") && isManagment ? <Popconfirm
+                title="Вы действительно хотите удалить матч?"
+                onCancel={() => null}
+                onConfirm={() => dispatch(deleteMatcAction(
+                    {
+                        matchId: match.id
+                    }
+                ))}
+            >
+                    <img
+                        title="Удалить"
+                        src="../DeleteCross.svg"
+                        className={styles.delete_match}
+                    />
+            </Popconfirm> : null}
         </div>
         {match.isLive ? <div className={styles.live}>Live</div> : null}
 

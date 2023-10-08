@@ -13,7 +13,7 @@
     border-radius: 6px;
     box-shadow: 2px 4px 8px 0px rgba(0, 0, 0, 0.125);
     padding: 24px 36px;
-
+    position: relative;
 }
 
 .match__link {
@@ -111,4 +111,14 @@
     position: absolute;
     top: calc(50% - 5px);
     left: 5px;
+}
+
+/* MATCH ITEM */
+
+.delete_match {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }

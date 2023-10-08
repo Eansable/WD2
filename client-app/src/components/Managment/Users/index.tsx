@@ -6,6 +6,7 @@ import { useEffect } from "react"
 import { getAllAction } from "./store/actions"
 import LocalLoading from "../../CustomElement/Loader/LocalLoader"
 import { useRouter } from "next/navigation"
+import styles from "./styles.module.css"
 
 const UsersList = () => {
     const dispatch = useAppDispatch()
@@ -16,7 +17,7 @@ const UsersList = () => {
         dispatch(getAllAction())
     }, [])
 
-    return !isLoading ? <div>
+    return !isLoading ? <div className={styles.wrapper}>
         <Table 
             dataSource={users}
             pagination={false}

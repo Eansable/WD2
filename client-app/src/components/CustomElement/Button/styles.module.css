@@ -12,3 +12,11 @@
 .custom__button:hover {
   background-color: #5C821Ad0;
 }
+
+button.ant-popover-open {
+  background-color: #5C821Aa0;
+  color: white;
+  font-size: 16px;
+  border-radius: 5px;
+  transition: all 0.3s ease-in;
+}
