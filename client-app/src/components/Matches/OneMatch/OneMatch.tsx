@@ -11,6 +11,7 @@ import StartMatch from "./StartMatch"
 import AddSquad from "./AddSquad"
 import AddResult from "./AddResult"
 import Notifications from "@/helpers/Notifications"
+import MatchTabs from "./MatchTabs"
 interface PropsType {
     id: number
 }
@@ -47,6 +48,9 @@ const OneMatch = ({ id }: PropsType) => {
                 match={oneMatch}
 
             />
+            {oneMatch ? <MatchTabs
+                match={oneMatch}
+            /> : null}
             {roles.includes("admin") ?
                 <ManageMatch
                     setActiveStart={setActiveStartMatch}

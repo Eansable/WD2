@@ -23,19 +23,15 @@ const MatchBanner = ({ match }: PropsType) => {
             </Link>
         </div>
         <div className={styles.baner__info}>
-            {/* <Link
-                href={`/stadiums/${match.stadiumId}`}
-                className={styles.stadiums}>
-                {match.stadiumName}
-            </Link> */}
+            
             {match?.isLive || match.isEnded ? <div className={styles.score}>
                 {match?.score ? match.score : "0:0"}
             </div> : <div className={styles.baner__date}>
                 <footer>
-                    {moment(match.date).format("DD-MM-YYYY")}
+                    {match.date ? moment(new Date(match.date)).format("DD-MM-YYYY") : "Не установлено"}
                 </footer>
                 <header>
-                    {moment(match.date).format("HH:mm")}
+                    {match.date ? moment(new Date(match.date)).format("HH:mm") : ""}
                 </header>
             </div>}
         </div>
