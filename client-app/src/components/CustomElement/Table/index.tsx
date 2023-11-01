@@ -29,7 +29,11 @@ const Table = ({ columns, data }: PropsType) => {
             <tr>
 
                 {columns.map(col => {
-                    return <th>{col.name}</th>
+                    return <th>
+                        <p>
+                            {col.name}
+                        </p>
+                    </th>
                 })}
             </tr>
         </thead>

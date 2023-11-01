@@ -2,8 +2,16 @@
     width: 100%;
 }
 
+.table thead p {
+    margin-bottom: 12px;
+}
+
+.table thead tr th {
+    font-size: 12px;
+    font-weight: 400;
+}
+
 .table tbody tr {
     padding: 8px 14px;
     margin: 0;
-    
 }

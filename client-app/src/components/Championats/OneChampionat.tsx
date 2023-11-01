@@ -227,10 +227,13 @@ const OneChampionat = ({ id }: PropsType) => {
           </div>
         </div>
         {getActiveContent(activeTab)}
-        {oneChampionat?.table ? <Table
-          columns={columns}
-          data={oneChampionat.table}
-        /> : null}
+        <div className={styles.table_wrapper_custom}>
+
+          {oneChampionat?.table ? <Table
+            columns={columns}
+            data={oneChampionat.table}
+          /> : null}
+        </div>
       </div>
       {roles.includes('admin') ? <div className={styles.championat__manage}>
         <CustomButton

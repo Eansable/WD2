@@ -1,0 +1,20 @@
+.match_tabs header {
+    display: flex;
+    width: 100%;
+}
+
+.match_tabs_button {
+    padding: 4px 8px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 500;
+    transition: color 0.4s ease;
+}
+
+.match_tabs_button_active {
+    color: #5c821a;
+    border-bottom: 2px solid #5c821a;
+    cursor: default;
+}
