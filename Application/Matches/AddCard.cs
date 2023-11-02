@@ -51,6 +51,11 @@ namespace Application.Matches
                         };
                         if (card.EventId == 3)
                         {
+                            var squadPlayer = _context.Squads.Where(s => s.MatchId == request.MatchId && s.PlayerId== request.PlayerId).FirstOrDefault();
+                            if (squadPlayer != null && squadPlayer.MinuteStart != null)
+                            {
+                                squadPlayer.MinuteEnd = request.Minute;
+                            }
                             var discfalification = new Discfalification()
                             {
                                 ChampionatId = match.ChampionatId,
@@ -64,6 +69,8 @@ namespace Application.Matches
                         }
                         if (card.EventId == 2 && playerYellowCards.Count >= 1)
                         {
+                            var squadPlayer = _context.Squads.Where(s => s.MatchId == request.MatchId && s.PlayerId == request.PlayerId).FirstOrDefault();
+
                             var discfalification = new Discfalification()
                             {
                                 ChampionatId = match.ChampionatId,

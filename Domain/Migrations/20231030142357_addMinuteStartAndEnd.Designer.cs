@@ -3,6 +3,7 @@ using System;
 using Domain.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Domain.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231030142357_addMinuteStartAndEnd")]
+    partial class addMinuteStartAndEnd
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -434,9 +437,6 @@ namespace Domain.Migrations
                     b.Property<int>("Minute")
                         .HasColumnType("integer");
 
-                    b.Property<long?>("PLayerOutId")
-                        .HasColumnType("bigint");
-
                     b.Property<long>("PlayerId")
                         .HasColumnType("bigint");
 
@@ -448,8 +448,6 @@ namespace Domain.Migrations
                     b.HasIndex("EventId");
 
                     b.HasIndex("MatchId");
-
-                    b.HasIndex("PLayerOutId");
 
                     b.HasIndex("PlayerId");
 
@@ -629,10 +627,10 @@ namespace Domain.Migrations
                     b.Property<long>("MatchId")
                         .HasColumnType("bigint");
 
-                    b.Property<int?>("MinuteEnd")
+                    b.Property<int>("MinuteEnd")
                         .HasColumnType("integer");
 
-                    b.Property<int?>("MinuteStart")
+                    b.Property<int>("MinuteStart")
                         .HasColumnType("integer");
 
                     b.Property<long>("PlayerId")
@@ -923,10 +921,6 @@ namespace Domain.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Domain.Models.Player", "PlayerOut")
-                        .WithMany()
-                        .HasForeignKey("PLayerOutId");
-
                     b.HasOne("Domain.Models.Player", "Player")
                         .WithMany()
                         .HasForeignKey("PlayerId")
@@ -944,8 +938,6 @@ namespace Domain.Migrations
                     b.Navigation("Match");
 
                     b.Navigation("Player");
-
-                    b.Navigation("PlayerOut");
 
                     b.Navigation("Team");
                 });

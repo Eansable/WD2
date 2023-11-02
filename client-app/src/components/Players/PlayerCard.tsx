@@ -5,6 +5,7 @@ import styles from "./styles.module.css";
 import { PlayerType } from "./types";
 import { useAppSelector } from "@/helpers/hooks";
 import { Dispatch, MouseEvent, SetStateAction, useState } from "react";
+import getPlayerAge from "@/helpers/getAge";
 
 interface PropsType {
   player: PlayerType,
@@ -33,7 +34,7 @@ const PlayerCard = ({ player, setEditPlayer, setOpen }: PropsType) => {
           {player.name} {player.secondName}
         </p>
       </Link>
-      <p className={styles.age}>25</p>
+      <p className={styles.age}>{getPlayerAge(player.birthday ? new Date(player.birthday) : new Date())}</p>
       {roles.includes("admin") ?
         <img
           className={styles.manage_player}

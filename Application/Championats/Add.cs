@@ -21,6 +21,7 @@ namespace Application.Championats
             public int PlaeyrsCount { get; set; }
             public int MaxPlayerPerMatch { get; set; }
             public bool? IsDefaultChamp { get; set; }
+            public bool IsNeedSubsToProtocol { get; set; }
             public int CountLaps { get; set; }
         }
 
@@ -51,7 +52,8 @@ namespace Application.Championats
                     MaxPlayerPerMatch = request.MaxPlayerPerMatch,
                     MinutesTime= request.MinutesTime,
                     YearString = year,
-                    LapsCount = request.CountLaps
+                    LapsCount = request.CountLaps,
+                    IsNeededSubsToProtocol = request.IsNeedSubsToProtocol
                 };
                 if (request.IsDefaultChamp.HasValue)
                 {

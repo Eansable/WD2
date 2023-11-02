@@ -33,6 +33,9 @@ const ManagePlayer = ({ editPlayer, teamId }: PropsType) => {
     }
 
     const savePlayer = (values: PlayerFormType) => {
+        values.birthDay = values.birthDay?.set('h', 0)?.set("m", values.birthDay?.utcOffset()).set("s", 0)
+        console.log(values.birthDay);
+        
         if (editPlayer) {
             changePlayer(values)
         } else {
@@ -47,7 +50,6 @@ const ManagePlayer = ({ editPlayer, teamId }: PropsType) => {
 
     useEffect(() => {
         if (editPlayer){
-            
             form.setFieldValue("birthDay", dayjs(editPlayer.birthday || "1970-01-01"))
             form.setFieldsValue(editPlayer)}
     }, [editPlayer])
@@ -90,7 +92,9 @@ const ManagePlayer = ({ editPlayer, teamId }: PropsType) => {
                 name="birthDay"
                 label="Дата рождения"
             >
-                <DatePicker />
+                <DatePicker
+                    format="DD-MM-YYYY"
+                />
             </Form.Item>
             {(editPlayer && roles.includes("admin")) ? <Form.Item
                 name="teamId"
@@ -98,8 +102,6 @@ const ManagePlayer = ({ editPlayer, teamId }: PropsType) => {
             >
                 <Select>
                     {teams.map(team => {
-                        console.log(team);
-
                         return <Select.Option
                             key={team.id}
                             value={team.id}

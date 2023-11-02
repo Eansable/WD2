@@ -16,6 +16,8 @@ namespace Domain.Models
         public int Minute { get; set; }
         public long PlayerId { get; set; }
         public Player Player { get; set; }
+        public long? PLayerOutId { get; set; }
+        public Player? PlayerOut { get; set; }
         public long TeamId { get; set; }
         public Team Team { get; set; }
     }

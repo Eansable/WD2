@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Domain.Models
+﻿namespace Domain.Models
 {
     public class Squad : IId
     {
@@ -15,5 +9,7 @@ namespace Domain.Models
         public long TeamId { get; set; }
         public Team Team { get; set; }
         public bool IsStartSquad { get; set; }
+        public int? MinuteStart { get; set; }
+        public int? MinuteEnd { get; set; }
     }
 }

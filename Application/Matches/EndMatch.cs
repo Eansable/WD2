@@ -29,17 +29,17 @@ namespace Application.Matches
                     throw new RestException(System.Net.HttpStatusCode.NotFound, "Матч не найден!");
                 }
 
-                var team1Players = _context.Players.Where(p => p.TeamId == match.HomeTeamId)
+                var team1PlayersId = _context.Players.Where(p => p.TeamId == match.HomeTeamId)
                     .Select(p => p.Id)
                     .ToList();
-                var team2Players = _context.Players.Where(p => p.TeamId == match.VisitorId)
+                var team2PlayersId = _context.Players.Where(p => p.TeamId == match.VisitorId)
                     .Select(p => p.Id)
                     .ToList();
 
 
                 var listDiscfal = _context.Discfalifications.Where(d => d.ChampionatId == match.ChampionatId
-                                                                            && team1Players.Contains(d.PlayerId)
-                                                                            && team2Players.Contains(d.PlayerId)
+                                                                            && team1PlayersId.Contains(d.PlayerId)
+                                                                            && team2PlayersId.Contains(d.PlayerId)
                                                                             && d.MatchesCount == d.MatchesLeft)
                                                                 .ToList();
 
@@ -47,6 +47,8 @@ namespace Application.Matches
                 {
                     listDiscfal.ForEach(d => d.IsActive = false);
                 }
+
+
 
                 if (homeStats == null || visitorStats == null)
                 {
@@ -57,7 +59,21 @@ namespace Application.Matches
                 {
                     match.IsLive = false;
                     match.IsEnded = true;
-                    
+
+                    if (match.Championat.IsNeededSubsToProtocol)
+                    {
+
+                    var playersMatch = _context.Squads.Where(s => s.MatchId == request.MatchId).ToList();
+
+                    foreach (var player in playersMatch)
+                    {
+                        if (player.MinuteEnd == null && player.MinuteStart != null) 
+                        {
+                            player.MinuteEnd = match.Championat.MinutesTime * 2;
+                        }
+                    }
+                    }
+
                     if (match.HomeGoals.HasValue)
                     {
                         visitorStats.GoalsConceded += match.HomeGoals.Value;

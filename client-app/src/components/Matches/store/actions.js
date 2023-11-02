@@ -13,7 +13,8 @@ const {
     endMatchSuccess,
     addCardSuccess,
     editDateSuccess,
-    deleteMatchSuccess
+    deleteMatchSuccess,
+    addSubsSuccess
 } = matchesReducer.actions
 
 export const getMatchesByChampIdAction = (values) => {
@@ -101,6 +102,18 @@ export const AddCardAction = (values) => {
         suc: addCardSuccess,
         service: {
             func: api.addCard,
+            params: values
+        }
+    }
+    return defActionSlice(defObj)
+}
+export const AddSubsAction = (values) => {
+    const defObj = {
+        req: setLoading,
+        fail: setError,
+        suc: addSubsSuccess,
+        service: {
+            func: api.addSubs,
             params: values
         }
     }

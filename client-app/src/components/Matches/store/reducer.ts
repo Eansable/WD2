@@ -65,6 +65,10 @@ export const matchesReducer = createSlice({
             state.changed = action.payload ? "Матч удалён!" : undefined
             state.changedDeleted = action.payload ? "Матч удалён!" : undefined
         },
+        addSubsSuccess: (state, action) => {
+            state.isLoading = false
+            state.changed = action.payload ? "Замена успешно сохранена!" : undefined
+        },
     }
 })
 

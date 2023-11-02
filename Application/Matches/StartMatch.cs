@@ -40,7 +40,22 @@ namespace Application.Matches
                 {
                     List<Discfalification> listDiscfal = _context.Discfalifications.Where(d => d.ChampionatId == match.ChampionatId 
                                                                                                 && teamsPlayers.Any(t1p => t1p == d.PlayerId))
-                                                                                   .ToList();
+                                                                              .ToList();
+
+                    foreach (var player in team1Squad) {
+                        if (player.IsStartSquad)
+                        {
+                            player.MinuteStart = 1;
+                        }
+                    }
+
+                    foreach (var player in team2Squad)
+                    {
+                        if (player.IsStartSquad)
+                        {
+                            player.MinuteStart = 1;
+                        }
+                    }
 
                     if (listDiscfal.ToList().Count > 0 )
                     {

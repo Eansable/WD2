@@ -1,3 +1,4 @@
+import { Dayjs } from "dayjs"
 import { MatchType } from "../Matches/types"
 
 export interface PlayerType {
@@ -16,7 +17,7 @@ export interface PlayerFormType {
     name: string,
     secondName?: string,
     middleName?: string,
-    birthday?: Date,
+    birthDay?: Dayjs,
     teamId?: number,
     number?: number
 }

@@ -176,12 +176,24 @@ const CreateChampionat = ({ championat }: PropsType) => {
                 <DatePicker></DatePicker>
             </Form.Item>
             <Form.Item
+                name="isNeedSubsToProtocol"
+                label="Нужно ли вносить замены в протокол?"
+                initialValue={false}
+            >
+                <Checkbox
+                    onChange={(e) => form.setFieldValue("isNeedSubsToProtocol", e.target.checked)
+                    }
+                />
+            </Form.Item>
+            <Form.Item
                 name="isDefaultChamp"
                 label="Сделать стандартным чемпионатом"
                 initialValue={false}
             >
-                <Checkbox onChange={(e) => form.setFieldValue("isDefaultChamp", e.target.checked)
-                }></Checkbox>
+                <Checkbox
+                    onChange={(e) => form.setFieldValue("isDefaultChamp", e.target.checked)
+                    }
+                />
             </Form.Item>
             <CustomButton type="submit">Сохранить</CustomButton>
         </Form>
