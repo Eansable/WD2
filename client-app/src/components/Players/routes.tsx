@@ -1,6 +1,6 @@
-import Matches from "./Matches"
-import Overview from "./Overview"
-import Stats from "./Stats"
+import Matches from "./OnePlayerTabs/Matches"
+import Overview from "./OnePlayerTabs/Overview"
+import Stats from "./OnePlayerTabs/Stats"
 
 const routes = [
     {
