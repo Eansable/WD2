@@ -15,7 +15,8 @@ const {
     getDefaultSuccess,
     setDefaultLoading,
     generateSgeduleSuccess,
-    changeDefaultSuccess
+    changeDefaultSuccess,
+    changeLogoSuccess
 } = championatReducer.actions
 
 export const getAllAction = (params) => {
@@ -142,6 +143,19 @@ export const changeDefaultAction = (params) => {
         suc: changeDefaultSuccess,
         service: {
             func: api.changeDefault,
+            params
+        }
+    }
+    return defActionSlice(defActionObj)
+}
+
+export const changeLogoAction = (params) => {
+    const defActionObj = { 
+        req: setLoading,
+        fail: setError,
+        suc: changeLogoSuccess,
+        service: {
+            func: api.changeLogo,
             params
         }
     }

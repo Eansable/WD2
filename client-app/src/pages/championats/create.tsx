@@ -127,7 +127,7 @@ const CreateChampionat = ({ championat }: PropsType) => {
                     }
                 ]}
             >
-                <CustomInput></CustomInput>
+                <CustomInput />
             </Form.Item>
             <Form.Item
                 name="playersCount"
@@ -139,7 +139,33 @@ const CreateChampionat = ({ championat }: PropsType) => {
                     }
                 ]}
             >
-                <CustomInput></CustomInput>
+                <CustomInput />
+            </Form.Item>
+            <Form.Item
+                name="maxPlayer"
+                label="Максимальное количество игроков в заявке:"
+                initialValue={25}
+                rules={[
+                    {
+                        required: true
+                    }
+                ]}
+            >
+                <CustomInput
+                    type="number"
+                />
+            </Form.Item>
+            <Form.Item
+                name="subsCount"
+                label="Число замен"
+                initialValue={5}
+                rules={[
+                    {
+                        required: true
+                    }
+                ]}
+            >
+                <CustomInput />
             </Form.Item>
             <Form.Item
                 name="maxPlayerPerMatch"
@@ -151,7 +177,7 @@ const CreateChampionat = ({ championat }: PropsType) => {
                     }
                 ]}
             >
-                <CustomInput></CustomInput>
+                <CustomInput />
             </Form.Item>
             <Form.Item
                 name="startDate"

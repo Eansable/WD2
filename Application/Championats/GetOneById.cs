@@ -54,6 +54,11 @@ namespace Application.Championats
                     YearString = championat.YearString,
                     LogoId = championat.LogoId,
                     IsDefaultChamp = championat.IsDefaultChamp,
+                    IsNeededSubsToProtocol= championat.IsNeededSubsToProtocol,
+                    MaxPlayer = championat.MaxPlayer,
+                    MaxPlayerPerMatch = championat.MaxPlayerPerMatch,
+                    SubsCount = championat.SubsCount
+                    
                 };
             }
         }

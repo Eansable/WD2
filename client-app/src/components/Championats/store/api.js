@@ -11,6 +11,7 @@ const api = {
   getOneById: (values) => requests.get("championat/GetOneById", values),
   generateShedule: (values) => requests.get("championat/GenerateShedule", values),
   changeDefault: (values) => requests.post("championat/ChangeDefault", values),
+  changeLogo: (values) => requests.post("championat/ChangeLogo", values),
 };
 
 export default api;

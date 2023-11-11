@@ -9,3 +9,15 @@
 .custom__input:focus-visible {
   outline: solid 1px#5C821A;
 }
+
+
+/* Chrome, Safari, Edge, Opera */
+.custom__input::-webkit-outer-spin-button,
+.custom__input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+/* Firefox */
+.custom__input[type=number] {
+  -moz-appearance: textfield;
+}

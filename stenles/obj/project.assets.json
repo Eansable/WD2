@@ -575,7 +575,7 @@
           }
         }
       },
-      "Microsoft.EntityFrameworkCore.Analyzers/7.0.5": {
+      "Microsoft.EntityFrameworkCore.Analyzers/7.0.13": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/_._": {}
@@ -1860,8 +1860,9 @@
           "Domain": "1.0.0",
           "FluentValidation": "11.5.2",
           "MediatR": "11.1.0",
-          "MediatR.Extensions.Microsoft.DependencyInjection": "11.1.0",
-          "Microsoft.AspNet.Mvc": "5.2.9"
+          "MediatR.Extensions.Microsoft.DependencyInjection": "11.0.0",
+          "Microsoft.AspNet.Mvc": "5.2.9",
+          "Microsoft.EntityFrameworkCore.Analyzers": "7.0.13"
         },
         "compile": {
           "bin/placeholder/Application.dll": {}
@@ -2442,17 +2443,17 @@
         "microsoft.entityframeworkcore.abstractions.nuspec"
       ]
     },
-    "Microsoft.EntityFrameworkCore.Analyzers/7.0.5": {
-      "sha512": "yMLM/aK1MikVqpjxd7PJ1Pjgztd3VAd26ZHxyjxG3RPeM9cHjvS5tCg9kAAayR6eHmBg0ffZsHdT28WfA5tTlA==",
+    "Microsoft.EntityFrameworkCore.Analyzers/7.0.13": {
+      "sha512": "3GiAd0b30L+31/86mtpLDf0Hf4Fnze4yx7hVXaW4wBd6KomIqacGaf+s9rMYNdJZEyKvUJPaBsghY+FgKOoAHg==",
       "type": "package",
-      "path": "microsoft.entityframeworkcore.analyzers/7.0.5",
+      "path": "microsoft.entityframeworkcore.analyzers/7.0.13",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
         "analyzers/dotnet/cs/Microsoft.EntityFrameworkCore.Analyzers.dll",
         "lib/netstandard2.0/_._",
-        "microsoft.entityframeworkcore.analyzers.7.0.5.nupkg.sha512",
+        "microsoft.entityframeworkcore.analyzers.7.0.13.nupkg.sha512",
         "microsoft.entityframeworkcore.analyzers.nuspec"
       ]
     },
@@ -5625,19 +5626,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Andrey\\.nuget\\packages\\": {}
+    "C:\\Users\\tarasevich_a\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Work\\PAF\\WD2\\stenles\\stenles.csproj",
+      "projectUniqueName": "D:\\Projects\\WD2\\stenles\\stenles\\stenles.csproj",
       "projectName": "stenles",
-      "projectPath": "D:\\Work\\PAF\\WD2\\stenles\\stenles.csproj",
-      "packagesPath": "C:\\Users\\Andrey\\.nuget\\packages\\",
-      "outputPath": "D:\\Work\\PAF\\WD2\\stenles\\obj\\",
+      "projectPath": "D:\\Projects\\WD2\\stenles\\stenles\\stenles.csproj",
+      "packagesPath": "C:\\Users\\tarasevich_a\\.nuget\\packages\\",
+      "outputPath": "D:\\Projects\\WD2\\stenles\\stenles\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Andrey\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\tarasevich_a\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -5645,18 +5646,18 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\sdk\\7.0.306\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
+        "D:\\Projects\\CA": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "D:\\Work\\PAF\\WD2\\Application\\Application.csproj": {
-              "projectPath": "D:\\Work\\PAF\\WD2\\Application\\Application.csproj"
+            "D:\\Projects\\WD2\\stenles\\Application\\Application.csproj": {
+              "projectPath": "D:\\Projects\\WD2\\stenles\\Application\\Application.csproj"
             },
-            "D:\\Work\\PAF\\WD2\\Domain\\Domain.csproj": {
-              "projectPath": "D:\\Work\\PAF\\WD2\\Domain\\Domain.csproj"
+            "D:\\Projects\\WD2\\stenles\\Domain\\Domain.csproj": {
+              "projectPath": "D:\\Projects\\WD2\\stenles\\Domain\\Domain.csproj"
             }
           }
         }
@@ -5741,7 +5742,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
       }
     }
   },

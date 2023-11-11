@@ -30,12 +30,11 @@ namespace Application.Teams
                 {
                     throw new Exception("Команда с таким именем уже существует");
                 }
-                Team team = new Team()
+                Team team = new ()
                 {
                     Name = request.Name,
                     Description = request.Description,
                     CreateTeam = DateTime.Now,
-                    CaptainId = 1,
                     IsActive = true,
                 };
                 if (!(request.Logo.Length == 0)) 

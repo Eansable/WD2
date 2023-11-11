@@ -132,9 +132,31 @@
 
 .tab_active {
     background-color: #C6D166;
+
+}
+
+.table__wrapper_custom {}
+
+/* CHAMPIONAT SETTINGS */
+
+.form_settings {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.form_settings h3,
+.form_settings p {
+    margin: 0;
+}
+
+.form_logo {
+    cursor: pointer;
     
 }
 
-.table__wrapper_custom {
-    
+.form_logo input {
+    display: none;
 }
+
+/*  */

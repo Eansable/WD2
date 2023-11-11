@@ -24,6 +24,7 @@ namespace Application.Account
             public string? Email { get; set; }
             public string? Phone { get; set; }
             public string? OwnerName { get; set; }
+            public long? TeamId { get; set; }
         }
 
         public class Validator : AbstractValidator<Request>
@@ -51,6 +52,8 @@ namespace Application.Account
             public async Task<bool> Handle(Request request, CancellationToken cancellationToken)
             {
                 var userCheck = _context.Users.Where(u => u.UserName == request.UserName).FirstOrDefault();
+                var team = _context.Teams.Where(t => request.TeamId != null && t.Id == request.TeamId).FirstOrDefault();
+
                 if (userCheck != null)
                 {
                     throw new RestException(System.Net.HttpStatusCode.BadRequest, "Пользователь с таким логином уже существует");
@@ -62,20 +65,37 @@ namespace Application.Account
                     PhoneNumber = request.Phone,
                     OwnerName = request.OwnerName,
                 };
+                List<string> listRoles = new () { "authorized" };
+
+
+                
 
                 var hashedPassword = _passwordHasher.HashPassword(user, request.Password);
                 user.PasswordHash = hashedPassword;
 
-                List<string> listRoles = new List<string>() { "authorized" };
 
                 var userTypeCode = _context.UserTypes.Where(u => u.Code == request.UserType).Select(u => u.Code).FirstOrDefault();
                 listRoles.Add(await _context.Roles.Where(x => x.Code == userTypeCode).Select(x => x.Name).FirstOrDefaultAsync());
-               
+
+                if (request.TeamId != null)
+                {
+                    user.CaptainTeamId = request.TeamId;
+                    listRoles.Add("teamManager");
+
+                }
 
                 await _userManager.CreateAsync(user);
                 await _userManager.AddToRolesAsync(user, listRoles);
-                    
-                return true;
+
+              
+
+                if (team != null)
+                {
+                    team.CaptainId = user.Id;
+                }
+
+                return await _context.SaveChangesAsync() > 0;
+                ;
 
             }
         }

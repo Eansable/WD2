@@ -73,5 +73,11 @@ namespace stenles.Controllers
         {
             return await Mediator.Send(request);
         }
+        [Authorize(Roles = "admin")]
+        [HttpPost("changeLogo")]
+        public async Task<bool> ChangeLogo([FromForm] ChangeLogo.ChampionatChangeLogo request)
+        {
+            return await Mediator.Send(request);
+        }
     }
 }

@@ -82,6 +82,10 @@ export const championatReducer = createSlice({
       state.isLoading = false
       state.changed = action.payload ? "Настройки чемпионата изменены!" : undefined
     }, 
+    changeLogoSuccess: (state, action) => {
+      state.isLoading = false
+      state.changed = action.payload ? "Лого чемпионата изменены!" : undefined
+    }, 
   }
 })
 

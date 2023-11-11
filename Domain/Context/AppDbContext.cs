@@ -25,7 +25,7 @@ namespace Domain.Context
         public DbSet<LogoFile> LogoFiles { get; set; }
         public DbSet<News> News { get; set; }
         public DbSet<Discfalification> Discfalifications { get; set; }
-
+        public DbSet<ChampionatTeamPlayer> ChampionatTeamPlayers { get; set; }
 
 
         public AppDbContext(DbContextOptions<AppDbContext> options)

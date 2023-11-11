@@ -20,6 +20,12 @@ namespace Application.Championats.Dto
         public List<ChampionatStatsDto>? Table { get; set; }
         public long? LogoId { get; set; }
         public bool IsDefaultChamp { get; set; }
+        public bool IsNeededSubsToProtocol { get; set; }
+        public int MaxPlayer { get; set; }
+        public int SubsCount { get; set; }
+        public int MaxPlayerPerMatch { get; set; }
+
+
 
     }
 }

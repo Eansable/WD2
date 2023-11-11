@@ -26,5 +26,6 @@ namespace Domain.Models
         public int SubsCount { get; set; }
         public bool IsRevertSubs { get; set; }
         public bool IsNeededSubsToProtocol { get; set; }
+        public int MaxPlayer { get; set; }
     }
 }

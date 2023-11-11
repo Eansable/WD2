@@ -1,13 +1,17 @@
-import { useAppDispatch } from "@/helpers/hooks"
-import { useState } from "react"
+import { useAppDispatch, useAppSelector } from "@/helpers/hooks"
+import { useEffect, useState } from "react"
 import { registerAction } from '../components/Account/store/actions'
 import Notifications from "@/helpers/Notifications"
 import CustomInput from "@/components/CustomElement/Input"
 import styles from "./styles.module.css"
 import CustomButton from "@/components/CustomElement/Button"
+import { Select } from "antd"
+import { getAllTeamAction } from "@/components/Teams/store/actions"
 
 const Registration = () => {
     const dispatch = useAppDispatch()
+    const { roles } = useAppSelector(state => state.accountReducer)
+    const { teams } = useAppSelector(state => state.teamReducer)
 
     const [login, setLogin] = useState('')
     const [password, setPassword] = useState('')
@@ -15,10 +19,10 @@ const Registration = () => {
     const [mail, setMail] = useState('')
     const [name, setName] = useState('')
     const [phone, setPhone] = useState('')
+    const [teamId, setTeamID] = useState(null)
     const [errors, setErrors] = useState<string[]>([])
 
     const handleClick = () => {
-
         if (login && password) {
             if (password === confirmedPassword) {
                 dispatch(registerAction({
@@ -27,7 +31,8 @@ const Registration = () => {
                     email: mail,
                     userType: 4,
                     ownerName: name,
-                    phone
+                    phone,
+                    teamId
                 }))
             } else {
                 Notifications.error("Подтверждённый пароль не совпадает с введённым паролем")
@@ -40,8 +45,13 @@ const Registration = () => {
             !password ? errorsTemp.push("password") : null
             setErrors(errorsTemp)
         }
-
     }
+
+    useEffect(() => {
+        if (!teams.length) {
+            dispatch(getAllTeamAction())
+        }
+    }, [])
 
     return (
         <div
@@ -125,6 +135,24 @@ const Registration = () => {
                     onChange={(e) => setPhone(e.target.value)}
                 />
             </label>
+            {roles.includes("admin") ? <label>
+                Капитан команды:
+                <Select
+                    placeholder="Выберети команду"
+                    value={teamId}
+                    onChange={(value) => setTeamID(value)}
+                > 
+                    {teams ? teams.map( team => {
+                        return <Select.Option
+                            key={team.id}
+                            value={team.id}
+                        >
+                            {team.name}
+                        </Select.Option>
+                    }
+                    ) : null}
+                </Select>
+            </label> : null}
             <footer>
 
                 <CustomButton
