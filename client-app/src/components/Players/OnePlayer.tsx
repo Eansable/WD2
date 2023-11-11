@@ -20,8 +20,8 @@ const OnePlayer = ({ player }: PropsType) => {
         event.preventDefault();
         const fd = new FormData()
         if (player?.id && event.target.files?.length) {
-            fd.append('champId', String(player.id))
-            fd.append("newLogo", event.target.files[0])
+            fd.append('playerId', String(player.id))
+            fd.append("avatar", event.target.files[0])
             dispatch(changeAvatatAction(fd))
         }
     }
