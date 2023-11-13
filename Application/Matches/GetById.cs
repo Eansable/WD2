@@ -27,6 +27,7 @@ namespace Application.Matches
                     .Include(m => m.HomeTeam)
                     .Include(m => m.Visitor)
                     .Include(m => m.Stadium)
+                    .Include(m => m.Championat)
                     .FirstOrDefault();
 
                 var homePlayers = _context.Players.Where(p => p.TeamId == match.HomeTeamId)
@@ -88,6 +89,8 @@ namespace Application.Matches
                     IsEnded= match.IsEnded,
                     Score = match.HomeGoals.ToString() + ":" + match.VisitorGoals.ToString(),
                     MatchEvents = matchEvents,
+                    Round = match.Round,
+                    IsNeedSubsToProtocol = match.Championat.IsNeededSubsToProtocol
                 }; 
                 if (match == null)
                 {

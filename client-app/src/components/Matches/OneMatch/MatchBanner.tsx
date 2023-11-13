@@ -13,6 +13,9 @@ interface PropsType {
 
 const MatchBanner = ({ match }: PropsType) => {
     return match ? <section className={styles.baner}>
+        <div className={styles.match_info}>
+            Тур {match.round}
+        </div>
         <div className={styles.home}>
             <Link href={`/teams/${match.home.teamId}`}>
                 <p>{match.home.teamName}</p>
@@ -23,7 +26,7 @@ const MatchBanner = ({ match }: PropsType) => {
             </Link>
         </div>
         <div className={styles.baner__info}>
-            
+
             {match?.isLive || match.isEnded ? <div className={styles.score}>
                 {match?.score ? match.score : "0:0"}
             </div> : <div className={styles.baner__date}>
@@ -44,7 +47,7 @@ const MatchBanner = ({ match }: PropsType) => {
                 <p>{match.visitor.teamName}</p>
             </Link>
         </div>
-        
+
         {match?.matchEvents?.length ?
             <div className={styles.match_events_wrapper}>
                 <div className={styles.match_events_list}>

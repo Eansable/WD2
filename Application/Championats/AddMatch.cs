@@ -13,6 +13,7 @@ namespace Application.Championats
             public long StadiumId { get; set; }
             public DateTime? DateStartMatch { get; set; }
             public long ChampionatId { get; set;}
+            public int Round { get; set; }
         }
         public class Handler : IRequestHandler<ChampionatAddMatch, bool>
         {
@@ -31,7 +32,8 @@ namespace Application.Championats
                     HomeTeamId = request.HomeId,
                     VisitorId = request.VisitorId,
                     StadiumId = request.StadiumId,
-                    StartMatch = request.DateStartMatch.HasValue ? request.DateStartMatch.Value : DateTime.Now
+                    StartMatch = request.DateStartMatch.HasValue ? request.DateStartMatch.Value : DateTime.Now,
+                    Round = request.Round,
                 };
                 await _context.AddAsync(match);
                 return await _context.SaveChangesAsync() > 0;

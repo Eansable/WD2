@@ -4,12 +4,13 @@ export interface MatchType {
     visitor: MatchTeam,
     date: Date,
     stadiumId: number,
-    stadiumName: string 
+    stadiumName: string
     isLive: boolean,
     isEnded: boolean,
     score?: string | null,
     matchEvents?: MatchEventType[]
-    round?: number
+    round?: number,
+    isNeedSubsToProtocol: boolean
 }
 
 export interface MatchTeam {

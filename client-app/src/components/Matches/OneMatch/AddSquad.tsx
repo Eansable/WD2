@@ -40,11 +40,17 @@ const AddSquad = ({ id }: PropsType) => {
         }))
     }
 
+    const getBlockSelectedPlayer = (players: [number], start: number, end: number) => {
+        for (let i = start; i < end; i++ ) {
+            
+        }
+    }
+
     return (<>
         Выберите игроков которые учавствуют в матче:
         <div className={styles.add__squad}>
             <div className={styles.add__squad_home}>
-                {oneMatch?.home?.teamPlayers ? oneMatch.home.teamPlayers.map(player =>
+                {oneMatch?.home?.teamPlayers ? oneMatch.home.teamPlayers.filter(p => !oneMatch.isNeedSubsToProtocol || !homeSquad.includes(p.playerId)).map(player =>
                     <CheckboxPlayer
                         player={player}
                         onClick={checkHomePlayer}
@@ -61,6 +67,18 @@ const AddSquad = ({ id }: PropsType) => {
 
                     />) : null}
             </div>
+            {oneMatch?.isNeedSubsToProtocol ? <>
+                <div>
+                    Игроки стартового состава:
+
+                    Запасные игроки:
+                </div>
+                <div>
+                    Игроки стартового состава:
+
+                    Запасные игроки:
+                </div>
+            </> : null}
         </div>
         <CustomButton
             onClick={saveSquad}

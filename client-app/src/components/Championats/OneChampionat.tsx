@@ -17,6 +17,7 @@ import dayjs, { Dayjs } from "dayjs"
 import Notifications from "@/helpers/Notifications";
 import ChampionatSettings from "./ChampionatSettings";
 import Table, { ColumnType } from "../CustomElement/Table";
+import CustomInput from "../CustomElement/Input";
 
 interface PropsType {
   id: number;
@@ -27,24 +28,28 @@ interface MatchForm {
   visitorId?: number,
   stadiumId?: number,
   dateStartMatch: Date,
-  time?: Date
+  time?: Date,
+  round?: number
 }
 
 const OneChampionat = ({ id }: PropsType) => {
   const dispatch = useAppDispatch()
+
   const [openAddTeam, setOpenAddTeam] = useState(false)
   const [openAddMatch, setOpenAddMatch] = useState(false)
   const [activeTab, setActiveTab] = useState(0)
   const [newMatch, setNewMatch] = useState<MatchForm>({ dateStartMatch: new Date() })
+  const [searchTeam, setSearchTeam] = useState('')
+  const [teamId, setTeamId] = useState<number>()
+  const [visibleSetting, setVisibleSettings] = useState(false)
+
   const { teams } = useAppSelector(state => state.teamReducer)
   const { oneChampionat, isLoading, changed, deleted } = useAppSelector(state => state.championatReducer)
   const { stadiums } = useAppSelector(state => state.stadiumReducer)
   const { roles } = useAppSelector(state => state.accountReducer)
   const { matches, isLoading: isMatchesLoading } = useAppSelector(state => state.matchesReducer)
-  const [searchTeam, setSearchTeam] = useState('')
-  const [teamId, setTeamId] = useState<number>()
+
   const router = useRouter()
-  const [visibleSetting, setVisibleSettings] = useState(false)
 
   const columns: ColumnType[] = [
     {
@@ -81,7 +86,10 @@ const OneChampionat = ({ id }: PropsType) => {
   }
 
   const addMatch = () => {
-    dispatch(addMatchAction({ ...newMatch, championatId: id }))
+    dispatch(addMatchAction({
+      ...newMatch,
+      championatId: id
+    }))
   }
 
   const deleteChampionat = () => {
@@ -293,67 +301,94 @@ const OneChampionat = ({ id }: PropsType) => {
         closable={false}
         footer={null}
       >
-        <Select
-          className={styles.team__select}
-          onSearch={(value) => setSearchTeam(value)}
-          onChange={(value) => setNewMatch({
-            ...newMatch,
-            homeId: value
-          })}
-          value={newMatch?.homeId}
-        >
+        <label>
+          Команда 1:
+          <Select
+            className={styles.team__select}
+            onSearch={(value) => setSearchTeam(value)}
+            onChange={(value) => setNewMatch({
+              ...newMatch,
+              homeId: value
+            })}
+            value={newMatch?.homeId}
+          >
 
-          {oneChampionat?.table ? oneChampionat.table?.map(team => {
+            {oneChampionat?.table ? oneChampionat.table?.map(team => {
 
-            return team.teamId === newMatch?.visitorId ? null : <Select.Option key={team.teamId} value={team.teamId}>
-              {team.teamName}
-            </Select.Option>
-          }) : null}
-        </Select>
+              return team.teamId === newMatch?.visitorId ? null : <Select.Option key={team.teamId} value={team.teamId}>
+                {team.teamName}
+              </Select.Option>
+            }) : null}
+          </Select>
+        </label>
 
-        <Select
-          className={styles.team__select}
-          onSearch={(value) => setSearchTeam(value)}
-          onChange={(value) => setNewMatch({
-            ...newMatch,
-            visitorId: value
-          })}
-          value={newMatch?.visitorId}
-        >
+        <label>
+          Команда 2:
+          <Select
+            className={styles.team__select}
+            onSearch={(value) => setSearchTeam(value)}
+            onChange={(value) => setNewMatch({
+              ...newMatch,
+              visitorId: value
+            })}
+            value={newMatch?.visitorId}
+          >
 
-          {oneChampionat?.table ? oneChampionat.table?.map(team => {
+            {oneChampionat?.table ? oneChampionat.table?.map(team => {
 
-            return team.teamId === newMatch?.homeId ? null : <Select.Option key={team.teamId} value={team.teamId}>
-              {team.teamName}
-            </Select.Option>
-          }) : null}
-        </Select>
+              return team.teamId === newMatch?.homeId ? null : <Select.Option key={team.teamId} value={team.teamId}>
+                {team.teamName}
+              </Select.Option>
+            }) : null}
+          </Select>
+        </label>
 
-        <Select
-          className={styles.team__select}
-          onSearch={(value) => setSearchTeam(value)}
-          onChange={(value) => setNewMatch({
-            ...newMatch,
-            stadiumId: value
-          })}
-          value={newMatch?.stadiumId}
-        >
+        <label>
+          Стадион:
+          <Select
+            className={styles.team__select}
+            onSearch={(value) => setSearchTeam(value)}
+            onChange={(value) => setNewMatch({
+              ...newMatch,
+              stadiumId: value
+            })}
+            value={newMatch?.stadiumId}
+          >
 
-          {stadiums?.length ? stadiums?.map(stadium => {
+            {stadiums?.length ? stadiums?.map(stadium => {
 
-            return <Select.Option key={stadium.id} value={stadium.id}>
-              {stadium.name}
-            </Select.Option>
-          }) : null}
-        </Select>
-        <DatePicker
-          value={dayjs(newMatch?.dateStartMatch)}
-          onChange={handleDate}
-        ></DatePicker>
-        <TimePicker
-          format="HH:mm"
-          onChange={handleTime}
-        ></TimePicker>
+              return <Select.Option key={stadium.id} value={stadium.id}>
+                {stadium.name}
+              </Select.Option>
+            }) : null}
+          </Select>
+        </label>
+        <label>
+          Дата:
+          <DatePicker
+            value={dayjs(newMatch?.dateStartMatch)}
+            onChange={handleDate}
+          ></DatePicker>
+        </label>
+        <label>
+          Время:
+          <TimePicker
+            format="HH:mm"
+            onChange={handleTime}
+          ></TimePicker>
+        </label>
+        <br/>
+        <label>
+          Тур:
+          <CustomInput
+            type="input"
+            value={String(newMatch?.round ? newMatch.round : "")}
+            onChange={(event) => setNewMatch({
+              ...newMatch,
+              round: Number(event.target.value)
+            })}
+          />
+        </label>
         <CustomButton onClick={addMatch}>Добавить матч</CustomButton>
       </Modal>
     </div>

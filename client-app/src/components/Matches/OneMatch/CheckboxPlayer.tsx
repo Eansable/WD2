@@ -9,8 +9,11 @@ interface PropsType {
 
 const CheckboxPlayer = ({ player, onClick, isActive }: PropsType) => {
     return (
-        <div className={styles.checkbox} onClick={() => onClick(player.playerId)}>
-            <img src={isActive ? "/checkbox-active.svg" : "/checkbox.svg"}/>
+        <div
+            className={styles.checkbox}
+            onClick={() => onClick(player.playerId)}
+        >
+            <img src={isActive ? "/checkbox-active.svg" : "/checkbox.svg"} />
             {player.playerName}
         </div>
     )
