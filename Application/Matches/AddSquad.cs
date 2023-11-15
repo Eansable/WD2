@@ -2,6 +2,7 @@
 using Domain.Errors;
 using Domain.Models;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.Matches
 {
@@ -23,7 +24,9 @@ namespace Application.Matches
             }
             public async Task<bool> Handle(AddSquadRequest request, CancellationToken cancellationToken)
             {
-                var match = _context.Matches.Where(m => m.Id == request.MatchId).FirstOrDefault();
+                var match = _context.Matches.Where(m => m.Id == request.MatchId)
+                    .Include(m => m.Championat)
+                    .FirstOrDefault();
                 if (match == null) {
                     throw new RestException(System.Net.HttpStatusCode.NotFound, "Матч не найден!");
                 }
@@ -39,9 +42,8 @@ namespace Application.Matches
 
                 if (request.HomePlayersId != null) {
                     List<Squad> homePlayers = new List<Squad>();
-                    request.HomePlayersId.ForEach(p =>
+                    request.HomePlayersId.ForEach((p) =>
                     {
-                        
                         var squad = new Squad()
                         {
                             MatchId = request.MatchId,
@@ -50,7 +52,6 @@ namespace Application.Matches
                         };  
                         homePlayers.Add(squad);
                     });
-
                     await _context.Squads.AddRangeAsync(homePlayers);
                 }
 
@@ -59,13 +60,11 @@ namespace Application.Matches
                     List<Squad> visitorPlayers = new List<Squad>();
                     request.VisitorPlayersId.ForEach(p =>
                     {
-                        
                         var squad = new Squad()
                         {
                             MatchId = request.MatchId,
                             PlayerId = p,
                             TeamId = match.VisitorId,
-                            
                         };
                         visitorPlayers.Add(squad);
                     });

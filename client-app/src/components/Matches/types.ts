@@ -10,7 +10,8 @@ export interface MatchType {
     score?: string | null,
     matchEvents?: MatchEventType[]
     round?: number,
-    isNeedSubsToProtocol: boolean
+    isNeedSubsToProtocol: boolean,
+    playerCountOnStart: number
 }
 
 export interface MatchTeam {
@@ -24,7 +25,8 @@ export interface MatchPlayer {
     playerName: string,
     playerId: number,
     isSquad: boolean,
-    isDiscfal: boolean
+    isDiscfal: boolean,
+    number?: number
 }
 
 export interface MatchEventType {

@@ -4,6 +4,8 @@ import CustomButton from "@/components/CustomElement/Button"
 import CheckboxPlayer from "./CheckboxPlayer"
 import { useState } from "react"
 import { AddSquadAction } from "../store/actions"
+import { MatchPlayer } from "../types"
+import SquadList from "./AddSquad/SquadList"
 
 interface PropsType {
     id: number
@@ -21,7 +23,6 @@ const AddSquad = ({ id }: PropsType) => {
         } else {
             setHomeSquad(homeSquad.filter(p => p !== id))
         }
-
     }
 
     const checkVisitorPlayer = (id: number) => {
@@ -40,45 +41,91 @@ const AddSquad = ({ id }: PropsType) => {
         }))
     }
 
-    const getBlockSelectedPlayer = (players: [number], start: number, end: number) => {
-        for (let i = start; i < end; i++ ) {
-            
-        }
+    const getSelectedPlayer = (func: (id: number) => void, squad: number[], player?: MatchPlayer) => {
+        if (player)
+            return <CheckboxPlayer
+                player={player}
+                onClick={func}
+                isActive={squad.includes(player.playerId)}
+            />
+
     }
 
     return (<>
         Выберите игроков которые учавствуют в матче:
+        <SquadList />
         <div className={styles.add__squad}>
             <div className={styles.add__squad_home}>
-                {oneMatch?.home?.teamPlayers ? oneMatch.home.teamPlayers.filter(p => !oneMatch.isNeedSubsToProtocol || !homeSquad.includes(p.playerId)).map(player =>
-                    <CheckboxPlayer
-                        player={player}
-                        onClick={checkHomePlayer}
-                        isActive={homeSquad.includes(player.playerId)}
-                    />
-                ) : null}
+                {oneMatch?.home?.teamPlayers ? oneMatch.home.teamPlayers
+                    .filter(p => !oneMatch.isNeedSubsToProtocol || !homeSquad.includes(p.playerId))
+                    .map(player =>
+                        <CheckboxPlayer
+                            player={player}
+                            onClick={checkHomePlayer}
+                            isActive={homeSquad.includes(player.playerId)}
+                        />
+                    ) : null}
             </div>
             <div className={styles.add__squad_visitor}>
-                {oneMatch?.visitor?.teamPlayers ? oneMatch.visitor.teamPlayers.map(player =>
-                    <CheckboxPlayer
-                        player={player}
-                        onClick={checkVisitorPlayer}
-                        isActive={visitorSquad.includes(player.playerId)}
+                {oneMatch?.visitor?.teamPlayers ? oneMatch.visitor.teamPlayers.
+                    filter(p => !oneMatch.isNeedSubsToProtocol || !visitorSquad.includes(p.playerId))
+                    .map(player =>
+                        <CheckboxPlayer
+                            player={player}
+                            onClick={checkVisitorPlayer}
+                            isActive={visitorSquad.includes(player.playerId)}
 
-                    />) : null}
+                        />) : null}
             </div>
             {oneMatch?.isNeedSubsToProtocol ? <>
-                <div>
-                    Игроки стартового состава:
-
-                    Запасные игроки:
+                <div className={styles.selected_players}>
+                    <p>
+                        Игроки стартового состава:
+                    </p>
+                    {homeSquad.map((id, index) => {
+                        if (index <= oneMatch.playerCountOnStart)
+                            return getSelectedPlayer(checkHomePlayer, homeSquad, oneMatch?.home?.teamPlayers?.find(p => p.playerId === id))
+                    })}
+                    <p>
+                        Запасные игроки:
+                    </p>
+                    {homeSquad.map((id, index) => {
+                        if (index > oneMatch.playerCountOnStart)
+                            return getSelectedPlayer(checkHomePlayer, homeSquad, oneMatch?.home?.teamPlayers?.find(p => p.playerId === id))
+                    })}
                 </div>
-                <div>
-                    Игроки стартового состава:
-
-                    Запасные игроки:
+                <div className={styles.selected_players}>
+                    <p>
+                        Игроки стартового состава:
+                    </p>
+                    {visitorSquad.map((id, index) => {
+                        if (index <= oneMatch.playerCountOnStart)
+                            return getSelectedPlayer(checkVisitorPlayer, visitorSquad, oneMatch?.visitor?.teamPlayers?.find(p => p.playerId === id))
+                    })}
+                    <p>
+                        Запасные игроки:
+                    </p>
+                    {visitorSquad.map((id, index) => {
+                        if (index > oneMatch.playerCountOnStart)
+                            return getSelectedPlayer(checkVisitorPlayer, visitorSquad, oneMatch?.visitor?.teamPlayers?.find(p => p.playerId === id))
+                    })}
                 </div>
+
             </> : null}
+            <div>
+                <CustomButton
+                    onClick={() => setHomeSquad([])}
+                >
+                    Сбросить
+                </CustomButton>
+            </div>
+            <div>
+                <CustomButton
+                    onClick={() => setVisitorSquad([])}
+                >
+                    Сбросить
+                </CustomButton>
+            </div>
         </div>
         <CustomButton
             onClick={saveSquad}
@@ -90,7 +137,3 @@ const AddSquad = ({ id }: PropsType) => {
 }
 
 export default AddSquad
-
-const CheckBoxPlayer = () => {
-    return
-}

@@ -37,7 +37,9 @@ namespace Application.Matches
                         PlayerName = p.SecondName + " " + p.Name,
                         IsSquad = _context.Squads.Any(s => s.PlayerId == p.Id && s.MatchId == match.Id),
                         IsDiscfal = _context.Discfalifications.Where(d => d.PlayerId == p.Id && d.ChampionatId == match.ChampionatId)
-                                                                .Any(d => d.IsActive)
+                                                                .Any(d => d.IsActive),
+                        Number = p.Number
+                                                                
                     })
                     .ToList();
 
@@ -48,7 +50,8 @@ namespace Application.Matches
                         PlayerName = p.SecondName + " " + p.Name,
                         IsSquad = _context.Squads.Any(s => s.PlayerId == p.Id && s.MatchId == match.Id),
                         IsDiscfal = _context.Discfalifications.Where(d => d.PlayerId == p.Id && d.ChampionatId == match.ChampionatId)
-                                                                .Any(d => d.IsActive)
+                                                                .Any(d => d.IsActive),
+                        Number = p.Number
                     })
                     .ToList();
                 List<MatchEventDto> matchEvents = _context.MatchEvents.Where(me => me.MatchId == request.MatchId)
@@ -90,7 +93,9 @@ namespace Application.Matches
                     Score = match.HomeGoals.ToString() + ":" + match.VisitorGoals.ToString(),
                     MatchEvents = matchEvents,
                     Round = match.Round,
-                    IsNeedSubsToProtocol = match.Championat.IsNeededSubsToProtocol
+                    IsNeedSubsToProtocol = match.Championat.IsNeededSubsToProtocol,
+                    PlayerCountOnStart = match.Championat.PLayersCount
+                    
                 }; 
                 if (match == null)
                 {

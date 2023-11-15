@@ -12,6 +12,7 @@ namespace Application.Matches.Dto
         public long? StadiumId { get; set; }
         public List<MatchEventDto>? MatchEvents { get; set; }
         public bool IsNeedSubsToProtocol { get; set; }
+        public int PlayerCountOnStart { get; set; }
 
     }
 }
