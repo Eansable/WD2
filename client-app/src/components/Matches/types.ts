@@ -38,3 +38,15 @@ export interface MatchEventType {
     teamId: number,
     minute: number,
 }
+
+export interface SquadListType {
+    startSquad?: SquadPlayer[],
+    subs?: SquadPlayer[],
+    teamId?: number
+}
+
+export interface SquadPlayer {
+    playerId: number,
+    isCaptain?: boolean,
+    isGoalkeaper?: boolean
+}

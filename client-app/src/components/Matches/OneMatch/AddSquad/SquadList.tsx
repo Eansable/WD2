@@ -1,5 +1,5 @@
 import { useAppSelector } from "@/helpers/hooks"
-import { MatchPlayer } from "../../types"
+import { MatchPlayer, SquadListType } from "../../types"
 import SelectedPlayerCard from "./SelectedPlayerCard"
 import styles from "./styles.module.css"
 import { useState } from "react"
@@ -12,16 +12,24 @@ const SquadList = ({ }: PropsType) => {
     const { roles } = useAppSelector(state => state.accountReducer)
 
     const [activeTeam, setActiveTeam] = useState(true)
-    const [homeSquad, setHomeSquad] = useState({
+    const [homeSquad, setHomeSquad] = useState<SquadListType>({
         startSquad: [],
         subs: [],
-        teamId: null
+        teamId: undefined
     })
-    const [visitorSquad, setVisitorSquad] = useState({
+    const [visitorSquad, setVisitorSquad] = useState<SquadListType>({
         startSquad: [],
         subs: [],
-        teamId: null
+        teamId: undefined
     })
+
+    const changePlayer = (player: MatchPlayer) => {
+        if (activeTeam) {
+
+        } else {
+
+        }
+    }
 
     const getActiveTeam = () => activeTeam ? oneMatch?.home.teamPlayers : oneMatch?.visitor.teamPlayers
     const getActiveTeamSquad = () => activeTeam ? homeSquad : visitorSquad
@@ -45,10 +53,20 @@ const SquadList = ({ }: PropsType) => {
         </header>
         {getActiveTeam()?.map(player => {
             return <SelectedPlayerCard
+                changePlayer = {changePlayer}
                 player={player}
             />
         })}
-        <footer>
+        <footer
+            className={styles.start_sqaud}
+            onDragOver={e => {
+                e.preventDefault()
+            }}
+            onDrop={(e) => {
+                console.log(e)
+
+            }}
+        >
 
         </footer>
     </div>
