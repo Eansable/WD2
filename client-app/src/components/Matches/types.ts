@@ -40,8 +40,8 @@ export interface MatchEventType {
 }
 
 export interface SquadListType {
-    startSquad?: SquadPlayer[],
-    subs?: SquadPlayer[],
+    startSquad: SquadPlayer[],
+    subs: SquadPlayer[],
     teamId?: number
 }
 
