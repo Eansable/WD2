@@ -3,40 +3,42 @@ import { MatchPlayer, SquadListType } from "../../types"
 import styles from "./styles.module.css"
 
 interface PropsType {
-    player: MatchPlayer,
-    changePlayer: (player: MatchPlayer) => void
+    player?: MatchPlayer,
+    changePlayer: (player: MatchPlayer) => void,
+    disabled?: boolean,
+    isSelected?: boolean
 }
 
-const SelectedPlayerCard = ({ player, changePlayer }: PropsType) => {
+const SelectedPlayerCard = ({
+    player,
+    changePlayer,
+    disabled = false,
+    isSelected = false
+}: PropsType) => {
     const selectItem = useRef<HTMLDivElement>(null);
 
-   
-    return <div
-        className={styles.selected_player_wrapper}
-        draggable
+    return player ? <div
+        className={`
+        ${styles.selected_player_wrapper}
+        ${!disabled ? styles.selected_player_wrapper_disabled : ""}
+        `}
+        draggable={!disabled}
         onDragStart={(e) => {
             // console.log(e);
-            
-        }}
-        onDrop={(e) => {
-            console.log("sdgsgsf");
-            
-        }}
-        onDragEnd={(e) => {
-            // console.log(e)
+
         }}
         ref={selectItem}
     >
-        <div 
-            className={styles.selected_player_checkbox}
+        <div
+            className={`${styles.selected_player_checkbox} ${styles.selected_player_checkbox_active}`}
             onClick={() => {
                 changePlayer(player)
             }}
         >
-
+            <img src={isSelected ? "/checkbox-active.svg" : "/checkbox.svg"} />
         </div>
         {player.playerName}
-    </div>
+    </div> : null
 }
 
 export default SelectedPlayerCard
