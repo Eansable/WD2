@@ -38,7 +38,8 @@ namespace Application.Matches
                         IsSquad = _context.Squads.Any(s => s.PlayerId == p.Id && s.MatchId == match.Id),
                         IsDiscfal = _context.Discfalifications.Where(d => d.PlayerId == p.Id && d.ChampionatId == match.ChampionatId)
                                                                 .Any(d => d.IsActive),
-                        Number = p.Number
+                        Number = p.Number,
+                        AvatarId= p.AvatarId
                                                                 
                     })
                     .ToList();
@@ -51,7 +52,9 @@ namespace Application.Matches
                         IsSquad = _context.Squads.Any(s => s.PlayerId == p.Id && s.MatchId == match.Id),
                         IsDiscfal = _context.Discfalifications.Where(d => d.PlayerId == p.Id && d.ChampionatId == match.ChampionatId)
                                                                 .Any(d => d.IsActive),
-                        Number = p.Number
+                        Number = p.Number,
+                        AvatarId = p.AvatarId
+
                     })
                     .ToList();
                 List<MatchEventDto> matchEvents = _context.MatchEvents.Where(me => me.MatchId == request.MatchId)

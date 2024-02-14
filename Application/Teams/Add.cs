@@ -37,9 +37,9 @@ namespace Application.Teams
                     CreateTeam = DateTime.Now,
                     IsActive = true,
                 };
-                if (!(request.Logo.Length == 0)) 
+                if ((request?.Logo?.Length > 0)) 
                 {
-                   using var ms = new MemoryStream();
+                   using var ms = new MemoryStream();   
                     request.Logo.CopyTo(ms);
                     var file = new LogoFile()
                     {

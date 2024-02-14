@@ -13,5 +13,6 @@ namespace Application.Matches.Dto
         public bool IsSquad { get; set; }
         public bool IsDiscfal { get; set;}
         public int? Number { get; set; }
+        public long? AvatarId { get; set; }
     }
 }
