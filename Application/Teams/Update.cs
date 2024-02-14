@@ -44,7 +44,7 @@ namespace Application.Teams
                     team.Description = request.Description;
                 }
 
-                if (request.Logo.Length > 0) {
+                if (request?.Logo?.Length > 0) {
                     var oldFile = _context.LogoFiles.Where(l => l.Id == team.LogoId).FirstOrDefault();
                     if (oldFile != null) {
                         _context.LogoFiles.Remove(oldFile);

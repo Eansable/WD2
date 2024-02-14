@@ -26,7 +26,8 @@ export interface MatchPlayer {
     playerId: number,
     isSquad: boolean,
     isDiscfal: boolean,
-    number?: number
+    number?: number,
+    avatarId: number
 }
 
 export interface MatchEventType {
@@ -48,5 +49,6 @@ export interface SquadListType {
 export interface SquadPlayer {
     playerId: number,
     isCaptain?: boolean,
-    isGoalkeaper?: boolean
+    isGoalkeaper?: boolean,
+    isStartSquad?: boolean
 }

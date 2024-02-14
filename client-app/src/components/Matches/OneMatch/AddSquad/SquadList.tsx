@@ -1,28 +1,32 @@
 'use client'
 
+'use client'
+
 import { useAppSelector } from "@/helpers/hooks"
+import { MatchPlayer, MatchType, SquadListType } from "../../types"
 import { MatchPlayer, MatchType, SquadListType } from "../../types"
 import SelectedPlayerCard from "./SelectedPlayerCard"
 import styles from "./styles.module.css"
-import { useState } from "react"
+import { MouseEvent, useState } from "react"
 
 interface PropsType {
     oneMatch: MatchType
+    oneMatch: MatchType
 }
 
+const SquadList = ({ oneMatch }: PropsType) => {
 const SquadList = ({ oneMatch }: PropsType) => {
     const { roles } = useAppSelector(state => state.accountReducer)
 
     const [activeTeam, setActiveTeam] = useState(true)
     const [homeSquad, setHomeSquad] = useState<SquadListType>({
-        startSquad: [],
-        subs: [],
+        squad: [],
         teamId: undefined
     })
 
+
     const [visitorSquad, setVisitorSquad] = useState<SquadListType>({
-        startSquad: [],
-        subs: [],
+        squad: [],
         teamId: undefined
     })
 
@@ -50,6 +54,8 @@ const SquadList = ({ oneMatch }: PropsType) => {
                 isGoalkeaper: false
             })
         }
+
+        activeTeam ? setHomeSquad(tempSquad) : setVisitorSquad(tempSquad)
     }
 
     const getActiveTeam = () => activeTeam ? oneMatch?.home.teamPlayers : oneMatch?.visitor.teamPlayers
@@ -74,6 +80,7 @@ const SquadList = ({ oneMatch }: PropsType) => {
         </header>
         {getActiveTeam()?.map(player => {
             return <SelectedPlayerCard
+                changePlayer={changePlayer}
                 changePlayer={changePlayer}
                 player={player}
                 disabled={checkSelectedPlayer(player)}
