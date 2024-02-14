@@ -54,10 +54,14 @@
     gap: 6px;
 }
 
-.selected_player_checkbox {
-    border: 2px black solid;
-    border-radius: 3px;
-    width: 24px;
-    aspect-ratio: 1 / 1;
-    cursor: pointer;
+.selected_player_wrapper_disabled {
+    cursor: no-drop;
 }
+
+.selected_player_checkbox {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
