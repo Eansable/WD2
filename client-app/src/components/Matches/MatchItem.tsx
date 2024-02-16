@@ -6,8 +6,6 @@ import { MouseEvent, useEffect, useState } from "react"
 import { DatePicker, Popconfirm, TimePicker } from "antd"
 import dayjs from "dayjs"
 import { deleteMatcAction, editDateAction } from "./store/actions"
-import formatDate from "@/helpers/formatDate"
-import CustomButton from "../CustomElement/Button"
 
 interface PropsType {
     match: MatchType,
@@ -29,7 +27,7 @@ const MatchItem = ({ match, isManagment = true }: PropsType) => {
 
     const handleChangeDate = (e: MouseEvent<HTMLElement>) => {
         e.stopPropagation()
-        dispatch(editDateAction({ matchId: match.id, dateTime: formatDate(newTime) }))
+        dispatch(editDateAction({ matchId: match.id, dateTime: newTime }))
     }
     return <div className={styles.match_wrapper}>
         <Link href={`/match/${match.id}`} className={styles.match__link}>
@@ -37,7 +35,7 @@ const MatchItem = ({ match, isManagment = true }: PropsType) => {
                 {match?.home.teamLogo ?
                     <img src={`https://localhost:44326/api/logo/GetById?id=${match.home.teamLogo}`} />
                     :
-                    <img src='./defaultLeague.png' />}
+                    <img src='../defaultClub.png' />}
                 <p>{match.home.teamName}</p>
             </div>
             <p className={styles.match__result}> {match?.score ? match.score : "vs"} </p>
@@ -45,7 +43,7 @@ const MatchItem = ({ match, isManagment = true }: PropsType) => {
                 {match?.visitor.teamLogo ?
                     <img src={`https://localhost:44326/api/logo/GetById?id=${match.visitor.teamLogo}`} />
                     :
-                    <img src='./defaultLeague.png' />}
+                    <img src='../defaultClub.png' />}
                 <p>{match.visitor.teamName}</p>
             </div>
         </Link >

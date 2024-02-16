@@ -28,7 +28,11 @@ namespace Application.Championats
                 {
                     throw new RestException(System.Net.HttpStatusCode.NotFound, "Чемпионат с таким Id не найден");
                 }
-                var table = _context.ChampionatStats.Where(s => s.ChampionatId == request.Id).Include(t => t.Team).OrderByDescending(t => t.Points).Select(tab => new ChampionatStatsDto() {
+                var table = _context.ChampionatStats.Where(s => s.ChampionatId == request.Id)
+                    .Include(t => t.Team)
+                    .OrderByDescending(t => t.Points)
+                    .OrderByDescending(cs => (cs.Goals - cs.GoalsConceded))
+                    .Select(tab => new ChampionatStatsDto() {
                     TeamId = tab.TeamId,
                     TeamName = tab.Team.Name,
                     TeamLogoId = tab.Team.LogoId,

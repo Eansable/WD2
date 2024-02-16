@@ -35,7 +35,10 @@ namespace Application.Championats
                     throw new RestException(System.Net.HttpStatusCode.NotFound, "Чемпионат не найден!");
 
                 }
-                var champStats = _context.ChampionatStats.Where(cs => cs.ChampionatId == champ.Id).Include(t => t.Team).OrderByDescending(cs => cs.Points).Select(c => new ChampionatStatsDto()
+                var champStats = _context.ChampionatStats.Where(cs => cs.ChampionatId == champ.Id).Include(t => t.Team)
+                    .OrderByDescending(cs => cs.Points)
+                    .OrderByDescending(cs => cs.Goals - cs.GoalsConceded)
+                    .Select(c => new ChampionatStatsDto()
                 {
                     TeamId= c.TeamId,
                     TeamName = c.Team.Name,
@@ -43,9 +46,9 @@ namespace Application.Championats
                     Win = c.Win,
                     Draw= c.Draw,
                     Lose = c.Lose,
-                     Goals= c.Goals,
-                     GoalsConceded= c.GoalsConceded,
-                     Points= c.Points,
+                    Goals= c.Goals,
+                    GoalsConceded= c.GoalsConceded,
+                    Points= c.Points,
                 }).ToList();
                 return champStats;
             }

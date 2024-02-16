@@ -12,7 +12,7 @@ interface PropsType {
 
 const ChampionatTable = ({ table, championatId }: PropsType) => {
     const dispatch = useAppDispatch()
-    
+
     const deleteTeam = (id: number) => {
         return () => {
             dispatch(deleteTeamAction({
@@ -35,7 +35,13 @@ const ChampionatTable = ({ table, championatId }: PropsType) => {
         {table.map((stand, index) => {
             return <>
                 <div className={index % 2 == 0 ? styles.gray__cell : ''}>{index + 1}</div>
-                <div className={index % 2 == 0 ? styles.gray__cell : ''}><img src={`https://localhost:44326/api/logo/GetById?id=${stand?.teamLogoId}`} />{stand.teamName}</div>
+                <div className={index % 2 == 0 ? styles.gray__cell : ''}>
+                    <img
+                        src={stand?.teamLogoId ?
+                            `https://localhost:44326/api/logo/GetById?id=${stand.teamLogoId}` :
+                            '../defaultClub.png'} />
+                    {stand.teamName}
+                </div>
                 <div className={index % 2 == 0 ? styles.gray__cell : ''}>{stand.draw + stand.win + stand.lose}</div>
                 <div className={index % 2 == 0 ? styles.gray__cell : ''}>{stand.win}</div>
                 <div className={index % 2 == 0 ? styles.gray__cell : ''}>{stand.draw}</div>

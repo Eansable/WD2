@@ -28,7 +28,6 @@
     justify-content: center;
     text-decoration: none;
     color: #000000;
-
 }
 
 .visitor {
@@ -57,6 +56,10 @@
     gap: 8px;
     font-size: 36px;
     font-weight: 500;
+}
+
+.home p {
+    text-align: end;
 }
 
 .baner__info {

@@ -38,8 +38,8 @@ namespace Application.Matches
                          Round = m.Round
                     }
                     )
-                    .OrderBy(m => m.Date)
                     .OrderBy(m => m.Round)
+                    .OrderBy(m => m.Date)
                     .ToList();
                 if (matches == null)
                 {

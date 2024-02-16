@@ -53,9 +53,9 @@ const AddSquad = ({ id }: PropsType) => {
 
     return (<>
         Выберите игроков которые учавствуют в матче:
-        {oneMatch ? <SquadList
+        {/* {oneMatch ? <SquadList
             oneMatch={oneMatch}
-        /> : null}
+        /> : null} */}
         <div className={styles.add__squad}>
             <div className={styles.add__squad_home}>
                 {oneMatch?.home?.teamPlayers ? oneMatch.home.teamPlayers

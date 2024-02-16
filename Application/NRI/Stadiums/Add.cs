@@ -32,7 +32,7 @@ namespace Application.NRI.Stadiums
                     Adress = request.Adress,
                     Description = request.Description,
                 };
-                if (request.Logo.Length > 0)
+                if (request?.Logo?.Length > 0)
                 {
                     using var ms = new MemoryStream();
                     request.Logo.CopyTo(ms);

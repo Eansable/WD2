@@ -3,7 +3,6 @@ import LocalLoading from "../../CustomElement/Loader/LocalLoader"
 import styles from "./styles.module.css"
 import moment from "moment"
 import Link from "next/link"
-import { Dispatch, SetStateAction } from "react"
 import EventItem from "./EventItem"
 
 interface PropsType {
@@ -20,7 +19,7 @@ const MatchBanner = ({ match }: PropsType) => {
             <Link href={`/teams/${match.home.teamId}`}>
                 <p>{match.home.teamName}</p>
                 <img
-                    src={match.home.teamLogo ? `https://localhost:44326/api/logo/GetById?id=${match.home.teamLogo}` : './defaultLeague.png'}
+                    src={match.home.teamLogo ? `https://localhost:44326/api/logo/GetById?id=${match.home.teamLogo}` : '../defaultClub.png'}
                     alt={match.home.teamName}
                 />
             </Link>
@@ -41,7 +40,7 @@ const MatchBanner = ({ match }: PropsType) => {
         <div className={styles.visitor}>
             <Link href={`/teams/${match.visitor.teamId}`}>
                 <img
-                    src={match.visitor.teamLogo ? `https://localhost:44326/api/logo/GetById?id=${match.visitor.teamLogo}` : './defaultLeague.png'}
+                    src={match.visitor.teamLogo ? `https://localhost:44326/api/logo/GetById?id=${match.visitor.teamLogo}` : '../defaultClub.png'}
                     alt={match.visitor.teamName}
                 />
                 <p>{match.visitor.teamName}</p>
